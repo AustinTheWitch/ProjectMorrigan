@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://cfyjvk1j2vfnh"]
+[gd_scene load_steps=5 format=3 uid="uid://decjtuvpg0gsx"]
 
-[node name="Player" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_f010i"]
+[ext_resource type="Texture2D" uid="uid://dlbvwih6nyx8p" path="res://Art/Sprites/PlayerSprite.png" id="2_21sd0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mht1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_21sd0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Movement",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oloeh"]
+size = Vector2(24, 63)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(39, 572)
+collision_mask = 65534
+script = ExtResource("1_f010i")
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_2mht1")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visibility_layer = 768
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_oloeh")
+
+[node name="Blink" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(90, 0)
+collision_mask = 65280
+collide_with_areas = true
+
+[connection signal="timeout" from="Blink" to="." method="blinktime"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://blkr6bt6jd1k2"]
+
+[ext_resource type="Script" path="res://Scripts/grimoireui.gd" id="1_egs0i"]
+
+[node name="GrimioreUI" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 2
+tab_focus_mode = 0
+script = ExtResource("1_egs0i")
+
+[node name="Spells" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Spell Tree" type="VBoxContainer" parent="Spells"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Familiars" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
