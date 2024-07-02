@@ -7715,8 +7715,8 @@ pattern_0 = SubResource("TileMapPattern_qyimv")
 pattern_1 = SubResource("TileMapPattern_u7rfl")
 
 [node name="TileMap" type="TileMap"]
-light_mask = 256
-visibility_layer = 255
+light_mask = 768
+visibility_layer = 1023
 position = Vector2(67, 633)
 tile_set = SubResource("TileSet_vxgux")
 format = 2
