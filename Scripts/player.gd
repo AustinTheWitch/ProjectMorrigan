@@ -13,13 +13,13 @@ var defense: int
 var speed: int = 220
 var movement: bool = false
 #Jump-----------------------------------------------------------------------------------------------
-var force: int = -600
+var force: int = -220
 var jumped: bool = false
 #Blink----------------------------------------------------------------------------------------------
 var potency: int = 275
 var blinked: bool = false
 var blinkcooldown: Timer
-var blinkcharges: int = 2
+var blinkcharges: int = 1
 var currentcharge: int = 0
 
 func _ready():
@@ -40,9 +40,7 @@ func _physics_process(delta):
 func playerjump():
 	if Input.is_action_just_pressed("Up") and jumped == false:
 		jumped = true
-		raycast.target_position.y = force
-		raycast.target_position.x = 0
-		print(raycast.get_collider())
+		move_and_collide(Vector2(0, force))
 		#jump anim track here
 	elif is_on_floor():
 		jumped = false
@@ -51,20 +49,17 @@ func playerjump():
 func setdirection():
 	if Input.is_action_pressed("Right"):
 		direction = 1
-		raycast.target_position.x = potency * direction
 		velocity.x = direction * speed
 		player.flip_h = false
 		#movement anim track here
 		movement = true
 	elif Input.is_action_pressed("Left"):
 		direction = -1
-		raycast.target_position.x = potency * direction
 		velocity.x = direction * speed
 		player.flip_h = true
 		#movement anim track here
 		movement = true
 	else:
-		raycast.target_position.x = potency * direction * -1
 		velocity.x = move_toward(velocity.x, 0, speed)
 		movement = false
 #set player blink-----------------------------------------------------------------------------------
@@ -72,14 +67,18 @@ func blink():
 	if Input.is_action_just_pressed("Blink") and blinked == false:
 		currentcharge += 1
 		if currentcharge >= blinkcharges: blinked = true
-		if movement == false:
-			if raycast.is_colliding(): 
-				potency = position.x - raycast.get_collider().position.x * -1
-			else: potency = 275
-			position.x += potency * direction * -1
-		else: 
-			if raycast.is_colliding(): position.x = raycast.get_collider().position.x
-			else: position.x = global_position.x + (potency * direction)
+		var blink_direction = direction if movement or jumped else -direction
+		move_and_collide(Vector2(potency * blink_direction, 0))
+		#if movement == false:
+		#	raycast.target_position.x = potency * direction * -1
+		#	raycast.force_raycast_update()
+		#	if raycast.is_colliding(): position.x = raycast.get_collision_point().x
+		#	else: global_position.x = raycast.to_global(raycast.target_position).x
+		#else: 
+			#raycast.target_position.x = potency * direction
+			#raycast.force_raycast_update()
+			#if raycast.is_colliding(): position.x = raycast.get_collision_point().x
+			#else: global_position.x = raycast.to_global(raycast.target_position).x
 		print(potency * direction)
 		print(currentcharge)
 		blinkcooldown.start()
@@ -89,4 +88,3 @@ func blinktime():
 		blinkcooldown.stop()
 	else: currentcharge -= 1
 	print(currentcharge)
-
