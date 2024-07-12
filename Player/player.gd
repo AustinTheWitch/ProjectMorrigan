@@ -1,15 +1,18 @@
 extends CharacterBody2D
 
 #Refs---------------------------------------------------------------------------
-var game: Node
-var player: AnimatedSprite2D
-var direction: float = 1
+@onready var player: AnimatedSprite2D = $AnimSprite
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var raycast: RayCast2D
+@onready var raycast: RayCast2D = $RayCast2D
+@onready var blinkcooldown: Timer = $Blink
+@onready var pov: Camera2D = $Camera2D
+@onready var familiarsprite: AnimatedSprite2D = $FamiliarSprite
+@onready var summon: Timer = $Summon
 #Stats--------------------------------------------------------------------------
 var health: int
 var defense: int
 #Movement-----------------------------------------------------------------------
+var direction: float = 1
 var speed: int = 220
 var movement: bool = false
 #Jump---------------------------------------------------------------------------
@@ -18,26 +21,16 @@ var jumped: bool = false
 #Blink--------------------------------------------------------------------------
 var potency: int = 275
 var blinked: bool = false
-var blinkcooldown: Timer
 var blinkcharges: int = 1
 var currentcharge: int = 0
 #Camera-------------------------------------------------------------------------
-var pov: Camera2D
 var bossroom: bool = false
 #Familiar-----------------------------------------------------------------------
 var familiarname: String
-var familiarsprite: AnimatedSprite2D
+var summoning: bool = false
 
 func _ready():
-	game = get_node("/root/Gamemanager")
-	player = $AnimSprite
-	blinkcooldown = $Blink
-	raycast = $RayCast2D
-	pov = $Camera2D
 	familiarname = "godot"
-	familiarsprite = $FamiliarSprite
-	familiarsprite.position = Vector2(0, 0)
-	print(familiarsprite.position)
 func _process(_delta):
 	selectsummon()
 func _physics_process(delta):
@@ -64,12 +57,14 @@ func setdirection():
 		player.flip_h = false
 		#movement anim track here
 		movement = true
+		summoning = false
 	elif Input.is_action_pressed("Left"):
 		direction = -1
 		velocity.x = direction * speed
 		player.flip_h = true
 		#movement anim track here
 		movement = true
+		summoning = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		movement = false
@@ -103,20 +98,19 @@ func blinktime():
 func playercam():
 	pass
 #familiar system----------------------------------------------------------------
+const GODOT = preload("res://Familiars/Godot.tres")
+const OTHER_GODOT = preload("res://Familiars/OtherGodot.tres")
 func selectsummon():
-	if Input.is_action_just_pressed("DebugEnemy"):
-		familiarname = "godot"
-		summoning()
-	elif Input.is_action_just_pressed("DebugHealth"):
-		familiarname = "othergodot"
-		summoning()
-func summoning():
-	print("Here?")
-	game.selectedfam(familiarname)
-	familiar()
-func familiar():
-	blinkcharges = game.blinkcharges
-	defense = game.newdefense
-	familiarsprite.position = game.familiarpos
-	familiarsprite.sprite_frames = game.familiarsanim
+	if Input.is_action_just_pressed("DebugEnemy") and summoning == false: 
+		summoning = true
+		summon.start()
+	elif Input.is_action_just_pressed("DebugHealth"): 
+		summoning = true
+		summon.start()
+	if summoning == false: summon.stop()
+func summonfamiliar(familiar: Familiar):
+	blinkcharges = familiar.blink_charge_bonus
+	defense = familiar.defense_bonus
+	familiarsprite.position = familiar.position
+	familiarsprite.sprite_frames = familiar.anim_frames
 	print(defense, " and ", blinkcharges)

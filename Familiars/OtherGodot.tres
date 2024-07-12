@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Familiar" load_steps=3 format=3 uid="uid://bb2f7p34lc1nv"]
+
+[ext_resource type="Script" path="res://Familiars/familiar.gd" id="1_svtxr"]
+[ext_resource type="SpriteFrames" uid="uid://c1hohg2essxbv" path="res://Familiars/Godot/TestFamiliar.tres" id="1_wub7j"]
+
+[resource]
+script = ExtResource("1_svtxr")
+defense_bonus = 5
+blink_charge_bonus = 1
+anim_frames = ExtResource("1_wub7j")
+position = Vector2(-16, -19)

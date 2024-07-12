@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="WitchinPinkandBlue"
-run/main_scene="res://Scenes/player.tscn"
+run/main_scene="res://Player/player.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Gamemanager="*res://Scripts/gamemanager.gd"
-BlockoutTest="*res://Scenes/BlockoutTest.tscn"
+BlockoutTest="res://Scenes/BlockoutTest.tscn"
 
 [dotnet]
 

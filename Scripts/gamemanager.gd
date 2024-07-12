@@ -31,19 +31,3 @@ func shockdamage(enemycount: int, damage: int, defense: int):
 	currentdamage = damage * enemycount
 	damageoutput = defense + currentdamage
 #Spell Data---------------------------------------------------------------------
-
-#Familiar System----------------------------------------------------------------
-func selectedfam(name: String):
-	call(name)
-func godot():
-	blinkcharges = 2
-	newdefense = 2
-	familiarpos = Vector2(-16, 19)
-	familiarsanim = load("res://Art/SpriteFrames/TestFamiliar.tres")
-	print("Random Familiar")
-func othergodot():
-	blinkcharges = 1
-	newdefense = 5
-	familiarpos = Vector2(-16, -19)
-	familiarsanim = load("res://Art/SpriteFrames/TestFamiliar.tres")
-	print("Other One")
