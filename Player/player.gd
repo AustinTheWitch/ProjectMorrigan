@@ -2,12 +2,8 @@ extends CharacterBody2D
 
 #Refs---------------------------------------------------------------------------
 @onready var player: AnimatedSprite2D = $AnimSprite
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var raycast: RayCast2D = $RayCast2D
-@onready var blinkcooldown: Timer = $Blink
-@onready var pov: Camera2D = $Camera2D
-@onready var familiarsprite: AnimatedSprite2D = $FamiliarSprite
-@onready var summon: Timer = $Summon
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Stats--------------------------------------------------------------------------
 var health: int
 var defense: int
@@ -19,18 +15,22 @@ var movement: bool = false
 var force: int = -220
 var jumped: bool = false
 #Blink--------------------------------------------------------------------------
+@onready var blinkcooldown: Timer = $Blink
 var potency: int = 275
 var blinked: bool = false
 var blinkcharges: int = 1
 var currentcharge: int = 0
 #Camera-------------------------------------------------------------------------
+@onready var pov: Camera2D = $Camera2D
 var bossroom: bool = false
 #Familiar-----------------------------------------------------------------------
-var familiarname: String
+@onready var familiarsprite: AnimatedSprite2D = $FamiliarSprite
+@onready var familiarincantation: Timer = $FamiliarIncantation
 var summoning: bool = false
+var familarname: Familiar
 
 func _ready():
-	familiarname = "godot"
+	pass
 func _process(_delta):
 	selectsummon()
 func _physics_process(delta):
@@ -101,16 +101,27 @@ func playercam():
 const GODOT = preload("res://Familiars/Godot.tres")
 const OTHER_GODOT = preload("res://Familiars/OtherGodot.tres")
 func selectsummon():
-	if Input.is_action_just_pressed("DebugEnemy") and summoning == false: 
+	if Input.is_action_just_pressed("DebugEnemy"):
 		summoning = true
-		summon.start()
+		familiarincantation.start()
+		familarname = GODOT
+		#set Summoning anim track
 	elif Input.is_action_just_pressed("DebugHealth"): 
 		summoning = true
-		summon.start()
-	if summoning == false: summon.stop()
+		familiarincantation.start()
+		familarname = OTHER_GODOT
+		#set Summoning anim track
+	if summoning == false: 
+		print(familiarincantation.time_left)
+		familiarincantation.stop()
+		#set Previous anim track
 func summonfamiliar(familiar: Familiar):
 	blinkcharges = familiar.blink_charge_bonus
 	defense = familiar.defense_bonus
 	familiarsprite.position = familiar.position
 	familiarsprite.sprite_frames = familiar.anim_frames
 	print(defense, " and ", blinkcharges)
+func _familiarincanting():
+	familiarincantation.stop()
+	summoning = false
+	summonfamiliar(familarname)

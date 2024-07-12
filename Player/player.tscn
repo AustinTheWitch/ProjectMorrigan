@@ -64,7 +64,8 @@ position = Vector2(-16, 19)
 scale = Vector2(0.0817306, 0.0774741)
 sprite_frames = SubResource("SpriteFrames_nuv6a")
 
-[node name="Summon" type="Timer" parent="."]
+[node name="FamiliarIncantation" type="Timer" parent="."]
 wait_time = 4.0
 
 [connection signal="timeout" from="Blink" to="." method="blinktime"]
+[connection signal="timeout" from="FamiliarIncantation" to="." method="_familiarincanting"]

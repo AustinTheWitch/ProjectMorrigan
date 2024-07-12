@@ -3,10 +3,6 @@ extends Node
 var damageoutput: int
 var newhealth: int
 var newdefense: int
-var blinkcharges: int
-var familiarpos: Vector2
-var familiarsanim: SpriteFrames
-
 
 #Damage Functions---------------------------------------------------------------
 func damagetaken(damage: int, defense: int):
