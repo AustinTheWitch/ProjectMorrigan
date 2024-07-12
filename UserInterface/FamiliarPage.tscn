@@ -11,3 +11,20 @@ offset_bottom = -648.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_g7tht")
+
+[node name="Page" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 36.0
+offset_right = 3.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Page"]
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 4

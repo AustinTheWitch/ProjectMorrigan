@@ -107,12 +107,14 @@ func selectsummon():
 		familarname = GODOT
 		#set Summoning anim track
 	elif Input.is_action_just_pressed("DebugHealth"): 
+		var check: bool
 		summoning = true
 		familiarincantation.start()
 		familarname = OTHER_GODOT
 		#set Summoning anim track
+		check
+		FamiliarPage.familiarpage.visible = check
 	if summoning == false: 
-		print(familiarincantation.time_left)
 		familiarincantation.stop()
 		#set Previous anim track
 func summonfamiliar(familiar: Familiar):
