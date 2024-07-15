@@ -34,7 +34,7 @@ var familarname: Familiar
 @onready var attackcharge: Timer = $AttackIncantation
 #Attack Charge Tiers: X = No Charge, Y = Half, Z = Full
 var attackchargelevels: Vector3 = Vector3(3.0, 2.5, 1.0)
-var chargeattackdamage: Vector3 = Vector3(1, 2, 4)
+var chargeattackdamage: Vector3 = Vector3(2, 3, 6)
 var currentattackcharge: float
 var chargingattack: bool = false
 
