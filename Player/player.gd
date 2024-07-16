@@ -33,9 +33,9 @@ var familarname: Familiar
 #Attack-------------------------------------------------------------------------
 @onready var attackcharge: Timer = $AttackIncantation
 #Attack Charge Tiers: X = No Charge, Y = Half, Z = Full
-var attackchargelevels: Vector3 = Vector3(3.0, 2.5, 1.0)
-var chargeattackdamage: Vector3 = Vector3(2, 3, 6)
-var currentattackcharge: float
+var attack_cutoffs: Vector3 = Vector3(4.0, 2.0, 1.0)
+var attack_damage: Vector3 = Vector3(2, 3, 6)
+var attack_release: float
 var chargingattack: bool = false
 #Grimoire-----------------------------------------------------------------------
 var grimiore_open: bool = false
@@ -133,26 +133,12 @@ func playerattack():
 		attackcharge.start()
 		chargingattack = true
 		#set attack anim track
-	if Input.is_action_just_released("Attack") and chargingattack == true:
-		currentattackcharge = attackcharge.time_left
+	if Input.is_action_just_released("Attack") and chargingattack:
+		attack_release = attackcharge.time_left
 		attackcharge.stop()
 		chargingattack = false
-		attacklevel(currentattackcharge, damage)
-func attacklevel(attacktier: float, attackdamage: int):
-	if attacktier >= attackchargelevels.x:
-		#No Charge Damage
-		pass
-	elif attacktier <= attackchargelevels.y and attacktier >= attackchargelevels.z:
-		#Half Charge Damage
-		pass
-	elif attacktier <= attackchargelevels.z:
-		#Full Charge Damage
-		pass
-	print(attackdamage)
-func attacklevelreset():
-	attackcharge.stop()
-	chargingattack = false
-	#set damage to base level
+func attacklevel():
+	pass
 #grimoire system----------------------------------------------------------------
 func open_grimoire():
 	if Input.is_action_just_pressed("DebugEnemy"):

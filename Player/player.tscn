@@ -59,11 +59,11 @@ scale = Vector2(0.0817306, 0.0774741)
 sprite_frames = SubResource("SpriteFrames_nuv6a")
 
 [node name="FamiliarIncantation" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 one_shot = true
 
 [node name="AttackIncantation" type="Timer" parent="."]
 wait_time = 4.0
+one_shot = true
 
 [connection signal="timeout" from="Blink" to="." method="blinktime"]
-[connection signal="timeout" from="AttackIncantation" to="." method="attacklevelreset"]
