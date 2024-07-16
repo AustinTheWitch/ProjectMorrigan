@@ -159,7 +159,6 @@ func _attack():
 	attackcooldown.start()
 	attackready = false
 
-
 func _attackTimeout():
 	attackready = true
 	attackcooldown.stop()

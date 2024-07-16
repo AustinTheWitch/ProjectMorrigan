@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Familiar" load_steps=3 format=3 uid="uid://d0apvu87i3vjv"]
+[gd_resource type="Resource" script_class="Familiar" load_steps=4 format=3 uid="uid://d0apvu87i3vjv"]
 
 [ext_resource type="SpriteFrames" uid="uid://c1hohg2essxbv" path="res://Familiars/Godot/TestFamiliar.tres" id="1_dt6oa"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_pie5g"]
 [ext_resource type="Script" path="res://Familiars/familiar.gd" id="2_r7kon"]
 
 [resource]
@@ -9,3 +10,6 @@ defense_bonus = 2
 blink_charge_bonus = 2
 anim_frames = ExtResource("1_dt6oa")
 position = Vector2(-16, 19)
+familiar_name = "Godot"
+book_sprite = ExtResource("2_pie5g")
+description = "Grants a 2nd Blink Charge"

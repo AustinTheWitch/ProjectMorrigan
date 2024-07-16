@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name player_scene
 #Refs---------------------------------------------------------------------------
 @onready var player: AnimatedSprite2D = $AnimSprite
 @onready var raycast: RayCast2D = $RayCast2D
@@ -37,13 +37,14 @@ var attackchargelevels: Vector3 = Vector3(3.0, 2.5, 1.0)
 var chargeattackdamage: Vector3 = Vector3(2, 3, 6)
 var currentattackcharge: float
 var chargingattack: bool = false
-
+#Grimoire-----------------------------------------------------------------------
+var grimiore_open: bool = false
 
 func _ready():
-	pass
+	Gamemanager.player_ref = self
 func _process(_delta):
-	selectsummon()
 	playerattack()
+	open_grimoire()
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -111,34 +112,21 @@ func blinktime():
 func playercam():
 	pass
 #familiar system----------------------------------------------------------------
-const GODOT = preload("res://Familiars/Godot.tres")
-const OTHER_GODOT = preload("res://Familiars/OtherGodot.tres")
-func selectsummon():
-	if Input.is_action_just_pressed("DebugEnemy"):
-		summoning = true
-		familiarincantation.start()
-		familarname = GODOT
-		#set Summoning anim track
-	elif Input.is_action_just_pressed("DebugHealth"): 
-		var check: bool
-		summoning = true
-		familiarincantation.start()
-		familarname = OTHER_GODOT
-		#set Summoning anim track
-		FamiliarPage.familiarpage.visible = check
-	if summoning == false: 
-		familiarincantation.stop()
-		#set Previous anim track
-func summonfamiliar(familiar: Familiar):
-	blinkcharges = familiar.blink_charge_bonus
-	defense = familiar.defense_bonus
-	familiarsprite.position = familiar.position
-	familiarsprite.sprite_frames = familiar.anim_frames
-	print(defense, " and ", blinkcharges)
-func _familiarincanting():
-	familiarincantation.stop()
-	summoning = false
-	summonfamiliar(familarname)
+func summon_familiar(familiar: Familiar):
+	if summoning: return
+	summoning = true
+	familiarincantation.start()
+	grimiore_open = false
+	Grimoire.visible = grimiore_open
+	await familiarincantation.timeout or !summoning
+	if !summoning: familiarincantation.stop()
+	else:
+		blinkcharges = familiar.blink_charge_bonus
+		defense = familiar.defense_bonus
+		familiarsprite.position = familiar.position
+		familiarsprite.sprite_frames = familiar.anim_frames
+		print(defense, " and ", blinkcharges)
+		summoning = false
 #attack system------------------------------------------------------------------
 func playerattack():
 	if Input.is_action_just_pressed("Attack"):
@@ -165,3 +153,8 @@ func attacklevelreset():
 	attackcharge.stop()
 	chargingattack = false
 	#set damage to base level
+#grimoire system----------------------------------------------------------------
+func open_grimoire():
+	if Input.is_action_just_pressed("DebugEnemy"):
+		grimiore_open = !grimiore_open
+		Grimoire.visible = grimiore_open

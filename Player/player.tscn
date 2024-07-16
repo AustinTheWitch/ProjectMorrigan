@@ -60,10 +60,10 @@ sprite_frames = SubResource("SpriteFrames_nuv6a")
 
 [node name="FamiliarIncantation" type="Timer" parent="."]
 wait_time = 4.0
+one_shot = true
 
 [node name="AttackIncantation" type="Timer" parent="."]
 wait_time = 4.0
 
 [connection signal="timeout" from="Blink" to="." method="blinktime"]
-[connection signal="timeout" from="FamiliarIncantation" to="." method="_familiarincanting"]
 [connection signal="timeout" from="AttackIncantation" to="." method="attacklevelreset"]

@@ -3,6 +3,7 @@ extends Node
 var damageoutput: int
 var newhealth: int
 var newdefense: int
+var player_ref : player_scene
 
 #Damage Functions---------------------------------------------------------------
 func damagetaken(damage: int, defense: int):
@@ -26,4 +27,6 @@ func shockdamage(enemycount: int, damage: int, defense: int):
 	var currentdamage: int
 	currentdamage = damage * enemycount
 	damageoutput = defense + currentdamage
-#Spell Data---------------------------------------------------------------------
+#familiar data------------------------------------------------------------------
+const familarlist: Array[Familiar] = [preload("res://Familiars/Godot.tres"), 
+preload("res://Familiars/OtherGodot.tres")]

@@ -1,12 +1,16 @@
 extends Control
 
-@onready var control: Control = $"."
 @onready var familiarpage: VBoxContainer = $"Page"
-var resolution: Vector2
+var familiar: Familiar
+@onready var name_label: Label = %Name
+@onready var familiar_sprite: TextureRect = %FamiliarSprite
+@onready var about: RichTextLabel = %About
 func _ready():
-	uisetup()
-func uisetup():
-	resolution = get_viewport_rect().size
-	control.size = resolution / 2
-	print(resolution, control.size)
-	pass
+	pagesetup()
+func pagesetup():
+	if not is_instance_valid(familiar): return
+	name_label.text = familiar.familiar_name
+	familiar_sprite.texture = familiar.book_sprite
+	about.text = familiar.description
+func summon_button():
+	Gamemanager.player_ref.summon_familiar(familiar)

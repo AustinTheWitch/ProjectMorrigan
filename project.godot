@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Gamemanager="*res://Scripts/gamemanager.gd"
-FamiliarPage="*res://UserInterface/FamiliarPage.tscn"
+Grimoire="*res://UserInterface/grimoire.tscn"
 BlockoutTest="res://Scenes/BlockoutTest.tscn"
 
 [dotnet]
