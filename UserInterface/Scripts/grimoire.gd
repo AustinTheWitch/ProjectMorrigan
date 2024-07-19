@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const FAMILIAR_PAGE = preload("res://UserInterface/FamiliarPage.tscn")
+const FAMILIAR_PAGE = preload("res://UserInterface/familiarpage.tscn")
 @onready var familar_section: TabContainer = $AspectRatioContainer/Ch_Familiar
 const Familiarpage = preload("res://UserInterface/Scripts/familiarpage.gd")
 func _ready():
