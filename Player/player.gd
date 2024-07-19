@@ -32,10 +32,9 @@ var summoning: bool = false
 var familarname: Familiar
 #Attack-------------------------------------------------------------------------
 @onready var attackcharge: Timer = $AttackIncantation
-#Attack Charge Tiers: X = No Charge, Y = Half, Z = Full
-var attack_cutoffs: Vector3 = Vector3(4.0, 2.0, 1.0)
-var attack_damage: Vector3 = Vector3(2, 3, 6)
-var attack_release: float
+#Attack Charge Tiers: X = Half Charge Cutoff, Y = Full Charge Cutoff
+var attacktiers: Array[float] = [1.0, 2.0]
+var attacklevel: int
 var chargingattack: bool = false
 #Grimoire-----------------------------------------------------------------------
 var grimiore_open: bool = false
@@ -43,8 +42,8 @@ var grimiore_open: bool = false
 func _ready():
 	Gamemanager.player_ref = self
 func _process(_delta):
-	playerattack()
 	open_grimoire()
+	attackinput()
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -128,17 +127,21 @@ func summon_familiar(familiar: Familiar):
 		print(defense, " and ", blinkcharges)
 		summoning = false
 #attack system------------------------------------------------------------------
-func playerattack():
+func attackinput():
 	if Input.is_action_just_pressed("Attack"):
-		attackcharge.start()
-		chargingattack = true
-		#set attack anim track
-	if Input.is_action_just_released("Attack") and chargingattack:
-		attack_release = attackcharge.time_left
-		attackcharge.stop()
-		chargingattack = false
-func attacklevel():
-	pass
+		attackstart()
+	if Input.is_action_just_released("Attack"):
+		attackfinish(false)
+func attackstart():
+	attackcharge.start()
+	chargingattack = true
+	#set anim track
+func attackfinish(timeout: bool):
+	if not chargingattack: return
+	chargingattack = false
+	attacklevel = 1 if timeout else (3 - attacktiers.bsearch(attackcharge.time_left, true))
+	print("Attack Level : ", attacklevel)
+	attackcharge.stop()
 #grimoire system----------------------------------------------------------------
 func open_grimoire():
 	if Input.is_action_just_pressed("DebugEnemy"):

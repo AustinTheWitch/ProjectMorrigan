@@ -67,3 +67,4 @@ wait_time = 4.0
 one_shot = true
 
 [connection signal="timeout" from="Blink" to="." method="blinktime"]
+[connection signal="timeout" from="AttackIncantation" to="." method="attackfinish" binds= [true]]
