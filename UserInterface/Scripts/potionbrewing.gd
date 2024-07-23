@@ -5,5 +5,5 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	pass

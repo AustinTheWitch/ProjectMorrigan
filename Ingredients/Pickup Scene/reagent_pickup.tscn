@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlcmqa4s8yx47"]
+
+[ext_resource type="Script" path="res://Ingredients/Pickup Scene/reagentpickup.gd" id="1_bgein"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bcqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272a1"]
+size = Vector2(51, 49)
+
+[node name="Reagent" type="Area2D"]
+position = Vector2(567, 602)
+collision_layer = 8
+script = ExtResource("1_bgein")
+
+[node name="ReagentSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.390625, 0.390625)
+sprite_frames = SubResource("SpriteFrames_2bcqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_272a1")
+
+[connection signal="body_entered" from="." to="." method="pickedup"]

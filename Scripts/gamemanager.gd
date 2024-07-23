@@ -30,3 +30,8 @@ func shockdamage(enemycount: int, damage: int, defense: int):
 #familiar data------------------------------------------------------------------
 const familarlist: Array[Familiar] = [preload("res://Familiars/Godot.tres"), 
 preload("res://Familiars/OtherGodot.tres")]
+#potionbrewing------------------------------------------------------------------
+var inventory: Dictionary = {"Godot Shade": 0, "Random Reagent": 0
+}
+const reagentlist: Array[Reagent] = [preload("res://Ingredients/GodotShade.tres"), 
+preload("res://Ingredients/RandomReagent.tres")]

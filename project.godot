@@ -91,8 +91,8 @@ Fireball={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Layer 2"
-2d_physics/layer_3="Layer 3"
-2d_physics/layer_4="Layer 4"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Boss"
+2d_physics/layer_4="Pickups"
 2d_physics/layer_9="Floor"
 2d_physics/layer_10="Walls"

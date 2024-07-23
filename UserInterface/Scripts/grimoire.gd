@@ -5,7 +5,7 @@ const FAMILIAR_PAGE = preload("res://UserInterface/familiarpage.tscn")
 const Familiarpage = preload("res://UserInterface/Scripts/familiarpage.gd")
 func _ready():
 	load_familiars()
-func _process(delta: float):
+func _process(_delta: float):
 	pass
 func load_familiars():
 	for familiar : Familiar in Gamemanager.familarlist:

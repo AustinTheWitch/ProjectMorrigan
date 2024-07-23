@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://vneauruurfic"]
+[gd_scene load_steps=10 format=3 uid="uid://vneauruurfic"]
 
 [ext_resource type="Texture2D" uid="uid://ceiq0klp3u2ek" path="res://Art/Textures/FloorTexture.png" id="1_ckray"]
 [ext_resource type="Texture2D" uid="uid://dixhgnm425jgu" path="res://Art/Textures/WallTexture.png" id="2_rxw8h"]
+[ext_resource type="Script" path="res://Scripts/levelsetup.gd" id="3_bcg4u"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_qyimv"]
 tile_data = PackedInt32Array(0, 393218, 2, 1, 1376258, 2, 2, 720898, 1, 3, 1376258, 2, 4, 720898, 1, 5, 1376258, 2, 6, 720898, 1, 7, 1376258, 2, 8, 720898, 1, 9, 1376258, 2, 10, 720898, 1, 11, 1376258, 2, 12, 720898, 1, 13, 1376258, 2, 14, 720898, 1, 15, 1376258, 2, 16, 720898, 1, 17, 1376258, 2, 18, 720898, 1, 19, 1376258, 2, 20, 720898, 1, 21, 1376258, 2, 22, 720898, 1)
@@ -7725,3 +7726,13 @@ layer_0/tile_data = PackedInt32Array(65533, 1376258, 2, 65534, 720898, 1, 65535,
 layer_1/name = "Walls"
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(-327684, 1441795, 3, -262148, 131075, 2, -196612, 1441795, 3, -131076, 131075, 2, -65540, 1441795, 3, -4, 131075, 2, 65532, 393218, 2, -851972, 393218, 2, -786436, 131075, 2, -720900, 1441795, 3, -655364, 131075, 2, -589828, 1441795, 3, -524292, 131075, 2, -458756, 393218, 2, -1114116, 1441795, 3, -1048580, 131075, 2, -983044, 1441795, 3, -917508, 131075, 2, 53, 393218, 2, -393220, 131075, 13)
+script = ExtResource("3_bcg4u")
+
+[node name="IngredientLoc" type="Node2D" parent="."]
+position = Vector2(-9, -304)
+
+[node name="IngredientLoc2" type="Node2D" parent="."]
+position = Vector2(1042, -56)
+
+[node name="IngredientLoc3" type="Node2D" parent="."]
+position = Vector2(1565, -167)
