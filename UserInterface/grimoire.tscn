@@ -16,5 +16,5 @@ ratio = 0.7071
 [node name="Ch_Familiar" type="TabContainer" parent="AspectRatioContainer"]
 layout_mode = 2
 
-[node name="Ch_Potion" type="TabContainer" parent="AspectRatioContainer"]
+[node name="Ch_Reagent" type="TabContainer" parent="AspectRatioContainer"]
 layout_mode = 2

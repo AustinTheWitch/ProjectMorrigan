@@ -30,15 +30,16 @@ stretch_mode = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="Page"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 30
-theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 30
 theme_override_font_sizes/italics_font_size = 25
-theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/bold_italics_font_size = 25
 text = "Unknown Potion ???????"
 
 [node name="ReagentSect" type="HBoxContainer" parent="Page"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
 [node name="Primary" type="Button" parent="Page/ReagentSect"]
 layout_mode = 2
