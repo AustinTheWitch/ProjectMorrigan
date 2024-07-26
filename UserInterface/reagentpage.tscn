@@ -1,24 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6cbd3tv8il74"]
 
-[ext_resource type="Script" path="res://reagentpage.gd" id="1_3nr8q"]
-[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_jf00m"]
+[ext_resource type="Script" path="res://UserInterface/Scripts/reagentpage.gd" id="1_6cywl"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_yfor7"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
+[node name="Control" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3nr8q")
+script = ExtResource("1_6cywl")
 
 [node name="Page" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="Name" type="Label" parent="Page"]
 unique_name_in_owner = true
@@ -38,7 +32,7 @@ size_flags_stretch_ratio = 5.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("2_jf00m")
+texture = ExtResource("2_yfor7")
 
 [node name="TagBox" type="HBoxContainer" parent="Page"]
 layout_mode = 2

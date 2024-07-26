@@ -33,5 +33,6 @@ preload("res://Familiars/OtherGodot.tres")]
 #potionbrewing------------------------------------------------------------------
 var inventory: Dictionary = {"Godot Shade": 0, "Random Reagent": 0
 }
+var reagents_discovered: Dictionary = {"Godot Shade": false, "Random Reagent": false}
 const reagentlist: Array[Reagent] = [preload("res://Ingredients/GodotShade.tres"), 
 preload("res://Ingredients/RandomReagent.tres")]

@@ -1,6 +1,6 @@
 extends Control
 
-@onready var page: VBoxContainer = $Page
+@onready var page: VBoxContainer = $"Page"
 @onready var reagent_name: Label = %Name
 @onready var sprite: TextureRect = %Sprite
 @onready var primary: Label = %Primary
@@ -10,7 +10,10 @@ extends Control
 var reagent: Reagent
 
 func _ready():
-	pass # Replace with function body.
-
-func _process(_delta: float):
-	pass
+	pagesetup()
+func pagesetup():
+	if not is_instance_valid(reagent): return
+	reagent_name.text = reagent.reagent_name
+	sprite.texture = reagent.reagent_book_sprite
+	primary.text = reagent.reagent_tags[0]
+	secondary.text = reagent.reagent_tags[1]
