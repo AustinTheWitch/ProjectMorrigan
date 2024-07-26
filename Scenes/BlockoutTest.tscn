@@ -7732,7 +7732,19 @@ script = ExtResource("3_bcg4u")
 position = Vector2(-9, -304)
 
 [node name="IngredientLoc2" type="Node2D" parent="."]
-position = Vector2(1042, -56)
+position = Vector2(318, -48)
 
 [node name="IngredientLoc3" type="Node2D" parent="."]
-position = Vector2(1565, -167)
+position = Vector2(662, -142)
+
+[node name="IngredientLoc4" type="Node2D" parent="."]
+position = Vector2(1126, -53)
+
+[node name="IngredientLoc5" type="Node2D" parent="."]
+position = Vector2(1629, -258)
+
+[node name="IngredientLoc6" type="Node2D" parent="."]
+position = Vector2(1807, -38)
+
+[node name="IngredientLoc7" type="Node2D" parent="."]
+position = Vector2(2454, -60)

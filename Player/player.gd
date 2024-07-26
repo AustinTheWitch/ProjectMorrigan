@@ -147,3 +147,5 @@ func open_grimoire():
 	if Input.is_action_just_pressed("DebugEnemy"):
 		grimiore_open = !grimiore_open
 		Grimoire.visible = grimiore_open
+	if Input.is_action_just_pressed("DebugHealth"):
+		pass

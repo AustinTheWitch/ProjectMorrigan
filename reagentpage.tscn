@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6cbd3tv8il74"]
+
+[ext_resource type="Script" path="res://reagentpage.gd" id="1_3nr8q"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_jf00m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nr8q")
+
+[node name="BoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 56
+text = "Name"
+
+[node name="ImageBox" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 5.0
+
+[node name="Sprite" type="TextureRect" parent="BoxContainer/ImageBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_jf00m")
+
+[node name="TagBox" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Primary" type="Label" parent="BoxContainer/TagBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Effect 1"
+
+[node name="Secondary" type="Label" parent="BoxContainer/TagBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Effect 2"
+
+[node name="Tertiary" type="Label" parent="BoxContainer/TagBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Effect 3
+"
+
+[node name="Description" type="RichTextLabel" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.14
+text = "Description"
