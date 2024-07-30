@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7h0c6iyejtkl"]
+
+[ext_resource type="Texture2D" uid="uid://67l276vwhonw" path="res://icon.svg" id="1_ypagr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vo3r"]
+content_margin_left = 32.0
+content_margin_top = 24.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(0.8, 0.746667, 0.64, 1)
+border_width_right = 32
+border_color = Color(0.6, 0.48, 0.36, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q3leg"]
+color = Color(0.2, 0.2, 0.2, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u0o2"]
+content_margin_left = 32.0
+content_margin_top = 24.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(0.8, 0.746667, 0.64, 1)
+border_width_left = 32
+border_color = Color(0.6, 0.48, 0.36, 1)
+border_blend = true
+
+[node name="Control" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
+alignment = 1
+
+[node name="LeftPage" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 0.7
+alignment_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LeftPage"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vo3r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPage/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+text = "Familiars : Godot"
+
+[node name="HSeparator" type="HSeparator" parent="LeftPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_q3leg")
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPage/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LeftPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_ypagr")
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="LeftPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Godot"
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="LeftPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "This is a Godot, it's very Godot"
+
+[node name="HSeparator2" type="HSeparator" parent="LeftPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_q3leg")
+
+[node name="Label2" type="Label" parent="LeftPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+text = "01"
+horizontal_alignment = 1
+
+[node name="RightPage" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 0.7
+alignment_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="RightPage"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u0o2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPage/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RightPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+text = "Familiars : Not Godot"
+
+[node name="HSeparator" type="HSeparator" parent="RightPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_q3leg")
+
+[node name="MarginContainer" type="MarginContainer" parent="RightPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPage/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="RightPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_ypagr")
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="RightPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Not Godot"
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="RightPage/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "This is a Not Godot, it's very Godon't"
+
+[node name="HSeparator2" type="HSeparator" parent="RightPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_q3leg")
+
+[node name="Label2" type="Label" parent="RightPage/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+text = "02"
+horizontal_alignment = 1

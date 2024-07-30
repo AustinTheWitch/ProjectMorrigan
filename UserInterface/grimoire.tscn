@@ -5,6 +5,47 @@
 [node name="Grimoire" type="CanvasLayer"]
 script = ExtResource("1_bd2vo")
 
+[node name="Binding" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Left_Page" type="AspectRatioContainer" parent="Binding"]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 0.7
+alignment_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Binding/Left_Page"]
+layout_mode = 2
+color = Color(0.601963, 0.41339, 0.634404, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Binding/Left_Page"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Binding/Left_Page/VBoxContainer"]
+layout_mode = 2
+
+[node name="Right_Page" type="AspectRatioContainer" parent="Binding"]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 0.7
+alignment_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Binding/Right_Page"]
+layout_mode = 2
+color = Color(4.33177e-06, 0.752467, 0.754283, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Binding/Right_Page"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Binding/Right_Page/VBoxContainer"]
+layout_mode = 2
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,15 +54,9 @@ grow_horizontal = 2
 grow_vertical = 2
 ratio = 0.7071
 
-[node name="Binding" type="HBoxContainer" parent="AspectRatioContainer"]
+[node name="Left_Page" type="VBoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
 
-[node name="Ch_Familiar" type="TabContainer" parent="AspectRatioContainer/Binding"]
+[node name="Right_Page" type="VBoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Ch_Reagent" type="TabContainer" parent="AspectRatioContainer/Binding"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+alignment = 2
