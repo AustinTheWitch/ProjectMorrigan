@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmiajuxqcd2up"]
+[gd_scene load_steps=3 format=3 uid="uid://bmiajuxqcd2up"]
 
 [ext_resource type="Script" path="res://UserInterface/Scripts/grimoire.gd" id="1_bd2vo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tc0qi"]
 
 [node name="Grimoire" type="CanvasLayer"]
 script = ExtResource("1_bd2vo")
@@ -20,14 +22,15 @@ size_flags_horizontal = 3
 ratio = 0.7
 alignment_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="Binding/Left_Page"]
+[node name="Texture" type="TextureRect" parent="Binding/Left_Page"]
 layout_mode = 2
-color = Color(0.601963, 0.41339, 0.634404, 1)
+texture = SubResource("CompressedTexture2D_tc0qi")
+expand_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Binding/Left_Page"]
+[node name="Layout" type="VBoxContainer" parent="Binding/Left_Page"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Binding/Left_Page/VBoxContainer"]
+[node name="Content" type="MarginContainer" parent="Binding/Left_Page/Layout"]
 layout_mode = 2
 
 [node name="Right_Page" type="AspectRatioContainer" parent="Binding"]
@@ -36,27 +39,14 @@ size_flags_horizontal = 3
 ratio = 0.7
 alignment_horizontal = 0
 
-[node name="ColorRect" type="ColorRect" parent="Binding/Right_Page"]
+[node name="Texture" type="TextureRect" parent="Binding/Right_Page"]
 layout_mode = 2
-color = Color(4.33177e-06, 0.752467, 0.754283, 1)
+texture = SubResource("CompressedTexture2D_tc0qi")
+expand_mode = 4
+flip_h = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Binding/Right_Page"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Binding/Right_Page/VBoxContainer"]
-layout_mode = 2
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-ratio = 0.7071
-
-[node name="Left_Page" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="Layout" type="VBoxContainer" parent="Binding/Right_Page"]
 layout_mode = 2
 
-[node name="Right_Page" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="Content" type="MarginContainer" parent="Binding/Right_Page/Layout"]
 layout_mode = 2
-alignment = 2

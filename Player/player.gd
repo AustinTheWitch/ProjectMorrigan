@@ -11,14 +11,14 @@ var damage: int = 2
 var spelldamage: int
 #Movement-----------------------------------------------------------------------
 var direction: float = 1
-var speed: int = 220
+var speed: int = 330
 var movement: bool = false
 #Jump---------------------------------------------------------------------------
-var force: int = -220
+var force: int = -300
 var jumped: bool = false
 #Blink--------------------------------------------------------------------------
 @onready var blinkcooldown: Timer = $Blink
-var potency: int = 275
+var potency: int = 475
 var blinked: bool = false
 var blinkcharges: int = 1
 var currentcharge: int = 0
@@ -36,6 +36,9 @@ var familarname: Familiar
 var attacktiers: Array[float] = [1.0, 2.0]
 var attacklevel: int
 var chargingattack: bool = false
+#Camp---------------------------------------------------------------------------
+var at_camp: bool = false
+var resting: bool = false
 #Grimoire-----------------------------------------------------------------------
 var grimiore_open: bool = false
 
@@ -44,6 +47,7 @@ func _ready():
 func _process(_delta):
 	open_grimoire()
 	attackinput()
+	campsystem()
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -81,6 +85,7 @@ func setdirection():
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		movement = false
+		player.play("Idle")
 #set player blink---------------------------------------------------------------
 func blink():
 	if Input.is_action_just_pressed("Blink") and blinked == false:
@@ -142,10 +147,14 @@ func attackfinish(timeout: bool):
 	attacklevel = 1 if timeout else (3 - attacktiers.bsearch(attackcharge.time_left, true))
 	print("Attack Level : ", attacklevel)
 	attackcharge.stop()
+#campfire-----------------------------------------------------------------------
+func campsystem():
+	if Input.is_action_just_pressed("Interact") and at_camp: resting = !resting
+	elif at_camp == false: resting = false
+	if Input.is_action_just_pressed("Debug"):
+		print(resting)
 #grimoire system----------------------------------------------------------------
 func open_grimoire():
-	if Input.is_action_just_pressed("DebugEnemy"):
+	if Input.is_action_just_pressed("Debug"):
 		grimiore_open = !grimiore_open
 		Grimoire.visible = grimiore_open
-	if Input.is_action_just_pressed("DebugHealth"):
-		pass

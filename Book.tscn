@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7h0c6iyejtkl"]
 
-[ext_resource type="Texture2D" uid="uid://67l276vwhonw" path="res://icon.svg" id="1_ypagr"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_ypagr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vo3r"]
 content_margin_left = 32.0
