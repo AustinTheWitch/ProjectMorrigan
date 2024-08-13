@@ -57,7 +57,7 @@ func _physics_process(delta):
 	move_and_slide()
 #set player jumping-------------------------------------------------------------
 func playerjump():
-	if Input.is_action_just_pressed("Up") and jumped == false:
+	if Input.is_action_just_pressed("Up") and !jumped and !resting:
 		jumped = true
 		move_and_collide(Vector2(0, force))
 		#jump anim track here
@@ -66,7 +66,7 @@ func playerjump():
 		raycast.target_position.y = 0
 #set player direction-----------------------------------------------------------
 func setdirection():
-	if Input.is_action_pressed("Right"):
+	if Input.is_action_pressed("Right") and !resting:
 		direction = 1
 		velocity.x = direction * speed
 		player.flip_h = false
@@ -74,7 +74,7 @@ func setdirection():
 		movement = true
 		summoning = false
 		chargingattack = false
-	elif Input.is_action_pressed("Left"):
+	elif Input.is_action_pressed("Left") and !resting:
 		direction = -1
 		velocity.x = direction * speed
 		player.flip_h = true
@@ -133,9 +133,9 @@ func summon_familiar(familiar: Familiar):
 		summoning = false
 #attack system------------------------------------------------------------------
 func attackinput():
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack") and !resting:
 		attackstart()
-	if Input.is_action_just_released("Attack"):
+	if Input.is_action_just_released("Attack") and !resting:
 		attackfinish(false)
 func attackstart():
 	attackcharge.start()

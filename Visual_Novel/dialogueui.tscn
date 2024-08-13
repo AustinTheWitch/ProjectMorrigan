@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://1g6mglub3s2d"]
+
+[ext_resource type="Script" path="res://UserInterface/Scripts/dialogueui.gd" id="1_xueeg"]
+[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Art/Sprites/spongebob.png" id="2_sfdu4"]
+[ext_resource type="Texture2D" uid="uid://bt6p83j2w04o1" path="res://UserInterface/Art/UI_Texture.png" id="3_sbo75"]
+
+[node name="VN" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xueeg")
+
+[node name="Speaking" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Speaker" type="TextureRect" parent="Speaking"]
+custom_minimum_size = Vector2(310, 648)
+layout_mode = 2
+texture = ExtResource("2_sfdu4")
+stretch_mode = 5
+
+[node name="Player" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Player" type="TextureRect" parent="Player"]
+layout_mode = 2
+texture = ExtResource("2_sfdu4")
+stretch_mode = 5
+
+[node name="Content_Here" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+ratio = 5.0
+alignment_vertical = 2
+
+[node name="Panel" type="TextureRect" parent="Content_Here"]
+layout_mode = 2
+texture = ExtResource("3_sbo75")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Content_Box" type="VBoxContainer" parent="Content_Here"]
+layout_mode = 2
+
+[node name="Speaker" type="Label" parent="Content_Here/Content_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Speaker"
+
+[node name="Dialogue" type="RichTextLabel" parent="Content_Here/Content_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.63
+text = "Dialogue"
+
+[node name="Player_Box" type="VBoxContainer" parent="Content_Here"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
