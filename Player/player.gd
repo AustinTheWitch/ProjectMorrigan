@@ -39,6 +39,7 @@ var chargingattack: bool = false
 #Camp---------------------------------------------------------------------------
 var at_camp: bool = false
 var resting: bool = false
+var vn_mode: bool = false
 #Grimoire-----------------------------------------------------------------------
 var grimiore_open: bool = false
 
@@ -48,6 +49,7 @@ func _process(_delta):
 	open_grimoire()
 	attackinput()
 	campsystem()
+	dialogue()
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -151,10 +153,24 @@ func attackfinish(timeout: bool):
 func campsystem():
 	if Input.is_action_just_pressed("Interact") and at_camp: resting = !resting
 	elif at_camp == false: resting = false
+	if resting: vn_mode = true
+	else: vn_mode = false
 	if Input.is_action_just_pressed("Debug"):
-		print(resting)
+		print(vn_mode)
 #grimoire system----------------------------------------------------------------
 func open_grimoire():
 	if Input.is_action_just_pressed("Debug"):
 		grimiore_open = !grimiore_open
 		Grimoire.visible = grimiore_open
+func dialogue():
+	if vn_mode == true:
+		print(pov.get_screen_center_position())
+		pov.global_position = Vector2(731, 495)
+		Dialogueui.visible = true
+		self.visible = false
+		if Input.is_action_just_pressed("Advance Dialogue"):
+			Gamemanager.dialoguekey += 1
+	elif vn_mode == false: 
+		Dialogueui.visible = false
+		self.visible = true
+		pov.position = Vector2.ZERO

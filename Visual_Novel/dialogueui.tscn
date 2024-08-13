@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://1g6mglub3s2d"]
+[gd_scene load_steps=5 format=3 uid="uid://1g6mglub3s2d"]
 
 [ext_resource type="Script" path="res://UserInterface/Scripts/dialogueui.gd" id="1_xueeg"]
+[ext_resource type="Resource" uid="uid://cxjsnrhrpebkf" path="res://Visual_Novel/Test_1.tres" id="2_j4xf2"]
 [ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Art/Sprites/spongebob.png" id="2_sfdu4"]
 [ext_resource type="Texture2D" uid="uid://bt6p83j2w04o1" path="res://UserInterface/Art/UI_Texture.png" id="3_sbo75"]
 
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xueeg")
+scene = ExtResource("2_j4xf2")
 
 [node name="Speaking" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -20,6 +22,7 @@ size_flags_horizontal = 0
 custom_minimum_size = Vector2(310, 648)
 layout_mode = 2
 texture = ExtResource("2_sfdu4")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Player" type="HBoxContainer" parent="."]
@@ -27,8 +30,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="Player" type="TextureRect" parent="Player"]
+custom_minimum_size = Vector2(310, 648)
 layout_mode = 2
 texture = ExtResource("2_sfdu4")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Content_Here" type="AspectRatioContainer" parent="."]

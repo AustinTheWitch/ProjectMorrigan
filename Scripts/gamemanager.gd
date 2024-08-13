@@ -38,4 +38,5 @@ const reagentlist: Array[Reagent] = [preload("res://Ingredients/GodotShade.tres"
 preload("res://Ingredients/RandomReagent.tres")]
 #dialogue scenes----------------------------------------------------------------
 var scenekey: int
-#const dialoguescenes: Array[Dialogue]
+var dialoguekey: int
+const dialoguescenes: Array[Dialogue] = [preload("res://Visual_Novel/Test_1.tres")]

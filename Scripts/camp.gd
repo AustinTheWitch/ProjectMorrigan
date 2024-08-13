@@ -7,3 +7,4 @@ func _atcamp(body: CharacterBody2D):
 func _leftcamp(body: CharacterBody2D):
 	if !body: return
 	body.at_camp = false
+
