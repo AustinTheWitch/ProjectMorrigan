@@ -8,7 +8,6 @@ var campsite = preload("res://Scenes/camp.tscn")
 func _ready():
 	spawnloc()
 	pickupspawn()
-	campplacement()
 func _process(_delta: float):
 	pass
 func spawnloc():
@@ -21,10 +20,3 @@ func pickupspawn():
 		var pickup = reagentpickup.instantiate()
 		add_child(pickup)
 		pickup.position = ingredient_locations[i].position
-func campplacement():
-	for camp_spawns in camp_folder.get_children():
-		if camp_spawns is Node2D:
-			camp_locations.append(camp_spawns)
-			var camps = campsite.instantiate()
-			add_child(camps)
-			camps.position = camp_spawns.position

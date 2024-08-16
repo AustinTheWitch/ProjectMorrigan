@@ -37,19 +37,14 @@ var attacktiers: Array[float] = [1.0, 2.0]
 var attacklevel: int
 var chargingattack: bool = false
 #Camp---------------------------------------------------------------------------
-var at_camp: bool = false
-var resting: bool = false
-var vn_mode: bool = false
-#Grimoire-----------------------------------------------------------------------
-var grimiore_open: bool = false
+var conversation_played: bool
+var current_camp: Camp
 
 func _ready():
 	Gamemanager.player_ref = self
 func _process(_delta):
-	open_grimoire()
 	attackinput()
 	campsystem()
-	dialogue()
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -59,7 +54,7 @@ func _physics_process(delta):
 	move_and_slide()
 #set player jumping-------------------------------------------------------------
 func playerjump():
-	if Input.is_action_just_pressed("Up") and !jumped and !resting:
+	if Input.is_action_just_pressed("Up") and !jumped:
 		jumped = true
 		move_and_collide(Vector2(0, force))
 		#jump anim track here
@@ -68,7 +63,7 @@ func playerjump():
 		raycast.target_position.y = 0
 #set player direction-----------------------------------------------------------
 func setdirection():
-	if Input.is_action_pressed("Right") and !resting:
+	if Input.is_action_pressed("Right"):
 		direction = 1
 		velocity.x = direction * speed
 		player.flip_h = false
@@ -76,7 +71,7 @@ func setdirection():
 		movement = true
 		summoning = false
 		chargingattack = false
-	elif Input.is_action_pressed("Left") and !resting:
+	elif Input.is_action_pressed("Left"):
 		direction = -1
 		velocity.x = direction * speed
 		player.flip_h = true
@@ -118,26 +113,26 @@ func blinktime():
 func playercam():
 	pass
 #familiar system----------------------------------------------------------------
-func summon_familiar(familiar: Familiar):
-	if summoning: return
-	summoning = true
-	familiarincantation.start()
-	grimiore_open = false
-	Grimoire.visible = grimiore_open
-	await familiarincantation.timeout or !summoning
-	if !summoning: familiarincantation.stop()
-	else:
-		blinkcharges = familiar.blink_charge_bonus
-		defense = familiar.defense_bonus
-		familiarsprite.position = familiar.position
-		familiarsprite.sprite_frames = familiar.anim_frames
-		print(defense, " and ", blinkcharges)
-		summoning = false
+#func summon_familiar(familiar: Familiar):
+	#if summoning: return
+	#summoning = true
+	#familiarincantation.start()
+	#grimiore_open = false
+	#Grimoire.visible = grimiore_open
+	#await familiarincantation.timeout or !summoning
+	#if !summoning: familiarincantation.stop()
+	#else:
+		#blinkcharges = familiar.blink_charge_bonus
+		#defense = familiar.defense_bonus
+		#familiarsprite.position = familiar.position
+		#familiarsprite.sprite_frames = familiar.anim_frames
+		#print(defense, " and ", blinkcharges)
+		#summoning = false
 #attack system------------------------------------------------------------------
 func attackinput():
-	if Input.is_action_just_pressed("Attack") and !resting:
+	if Input.is_action_just_pressed("Attack"):
 		attackstart()
-	if Input.is_action_just_released("Attack") and !resting:
+	if Input.is_action_just_released("Attack"):
 		attackfinish(false)
 func attackstart():
 	attackcharge.start()
@@ -149,28 +144,25 @@ func attackfinish(timeout: bool):
 	attacklevel = 1 if timeout else (3 - attacktiers.bsearch(attackcharge.time_left, true))
 	print("Attack Level : ", attacklevel)
 	attackcharge.stop()
-#campfire-----------------------------------------------------------------------
+#camp/bonfire-------------------------------------------------------------------
 func campsystem():
-	if Input.is_action_just_pressed("Interact") and at_camp: resting = !resting
-	elif at_camp == false: resting = false
-	if resting: vn_mode = true
-	else: vn_mode = false
-	if Input.is_action_just_pressed("Debug"):
-		print(vn_mode)
+	if Input.is_action_just_pressed("Interact"):
+		if is_instance_valid(current_camp):
+			Dialogueui.conversation_start(current_camp.camp_dialogue)
 #grimoire system----------------------------------------------------------------
-func open_grimoire():
-	if Input.is_action_just_pressed("Debug"):
-		grimiore_open = !grimiore_open
-		Grimoire.visible = grimiore_open
-func dialogue():
-	if vn_mode == true:
-		print(pov.get_screen_center_position())
-		pov.global_position = Vector2(731, 495)
-		Dialogueui.visible = true
-		self.visible = false
-		if Input.is_action_just_pressed("Advance Dialogue"):
-			Gamemanager.dialoguekey += 1
-	elif vn_mode == false: 
-		Dialogueui.visible = false
-		self.visible = true
-		pov.position = Vector2.ZERO
+#func open_grimoire():
+	#if Input.is_action_just_pressed("Debug"):
+		#grimiore_open = !grimiore_open
+		#Grimoire.visible = grimiore_open
+#func dialogue():
+	#if vn_mode == true and Gamemanager.maxline == false:
+		#print(Gamemanager.dialoguekey)
+		#pov.global_position = Vector2(731, 495)
+		#Dialogueui.visible = true
+		#self.visible = false
+		#if Input.is_action_just_pressed("Advance Dialogue"):
+			#Gamemanager.dialoguekey += 1
+	#elif vn_mode == false: 
+		#Dialogueui.visible = false
+		#self.visible = true
+		#pov.position = Vector2.ZERO

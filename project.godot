@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="WitchCraft"
-run/main_scene="res://Player/player.tscn"
+run/main_scene="res://Scenes/BlockoutTest.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,8 +19,6 @@ config/icon="res://icon.svg"
 
 Gamemanager="*res://Scripts/gamemanager.gd"
 Dialogueui="*res://Visual_Novel/dialogueui.tscn"
-Grimoire="*res://UserInterface/grimoire.tscn"
-BlockoutTest="res://Scenes/BlockoutTest.tscn"
 
 [dotnet]
 

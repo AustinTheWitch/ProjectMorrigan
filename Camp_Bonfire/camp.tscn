@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw3lsco228iil"]
+[gd_scene load_steps=5 format=3 uid="uid://cw3lsco228iil"]
 
-[ext_resource type="Script" path="res://Scripts/camp.gd" id="1_8ji1t"]
-[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_ecop2"]
+[ext_resource type="Script" path="res://Camp_Bonfire/Scripts/camp.gd" id="1_nieav"]
+[ext_resource type="Resource" uid="uid://cxjsnrhrpebkf" path="res://Visual_Novel/Test_1.tres" id="2_bfshv"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="3_l6yfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amq0e"]
 size = Vector2(130, 132)
@@ -10,10 +11,11 @@ size = Vector2(130, 132)
 position = Vector2(534, 569)
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
-script = ExtResource("1_8ji1t")
+script = ExtResource("1_nieav")
+camp_dialogue = ExtResource("2_bfshv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ecop2")
+texture = ExtResource("3_l6yfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_amq0e")
