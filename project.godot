@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="WitchCraft"
-run/main_scene="res://Scenes/BlockoutTest.tscn"
+run/main_scene="res://Levels/BlockoutTest.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Gamemanager="*res://Scripts/gamemanager.gd"
+Gamemanager="*res://Levels/Scripts/gamemanager.gd"
 Dialogueui="*res://Visual_Novel/dialogueui.tscn"
 
 [dotnet]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnfe8trlboxmx"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mnmta"]
-[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Art/Sprites/spongebob.png" id="2_s0on7"]
+[ext_resource type="Script" path="res://Old Scenes/Scripts/enemy.gd" id="1_mnmta"]
+[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Old Scenes/Art/Sprites/spongebob.png" id="2_s0on7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ubs"]
 size = Vector2(86, 115.25)

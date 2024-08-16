@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://vneauruurfic"]
 
-[ext_resource type="Texture2D" uid="uid://ceiq0klp3u2ek" path="res://Art/Textures/FloorTexture.png" id="1_ckray"]
-[ext_resource type="Texture2D" uid="uid://dixhgnm425jgu" path="res://Art/Textures/WallTexture.png" id="2_rxw8h"]
-[ext_resource type="Script" path="res://Scripts/levelsetup.gd" id="3_bcg4u"]
-[ext_resource type="PackedScene" uid="uid://cw3lsco228iil" path="res://Camp_Bonfire/camp.tscn" id="4_1w4rh"]
-[ext_resource type="PackedScene" uid="uid://decjtuvpg0gsx" path="res://Player/player.tscn" id="4_2iwme"]
+[ext_resource type="Texture2D" uid="uid://ceiq0klp3u2ek" path="res://Old Scenes/Art/Textures/FloorTexture.png" id="1_ij76v"]
+[ext_resource type="Texture2D" uid="uid://dixhgnm425jgu" path="res://Old Scenes/Art/Textures/WallTexture.png" id="2_6le1x"]
+[ext_resource type="Script" path="res://Levels/Scripts/levelsetup.gd" id="3_41lym"]
+[ext_resource type="PackedScene" uid="uid://cw3lsco228iil" path="res://Camp_Bonfire/camp.tscn" id="4_ldqof"]
+[ext_resource type="PackedScene" uid="uid://decjtuvpg0gsx" path="res://Player/player.tscn" id="5_rqddt"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_qyimv"]
 tile_data = PackedInt32Array(0, 393218, 2, 1, 1376258, 2, 2, 720898, 1, 3, 1376258, 2, 4, 720898, 1, 5, 1376258, 2, 6, 720898, 1, 7, 1376258, 2, 8, 720898, 1, 9, 1376258, 2, 10, 720898, 1, 11, 1376258, 2, 12, 720898, 1, 13, 1376258, 2, 14, 720898, 1, 15, 1376258, 2, 16, 720898, 1, 17, 1376258, 2, 18, 720898, 1, 19, 1376258, 2, 20, 720898, 1, 21, 1376258, 2, 22, 720898, 1)
@@ -15,7 +15,7 @@ tile_data = PackedInt32Array(0, 1441795, 3, 65536, 131075, 2, 131072, 1441795, 3
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xfqvu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gn7j7"]
-texture = ExtResource("1_ckray")
+texture = ExtResource("1_ij76v")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -3862,7 +3862,7 @@ texture = ExtResource("1_ckray")
 30:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1eg0y"]
-texture = ExtResource("2_rxw8h")
+texture = ExtResource("2_6le1x")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -7728,7 +7728,7 @@ layer_0/tile_data = PackedInt32Array(65533, 1376258, 2, 65534, 720898, 1, 65535,
 layer_1/name = "Walls"
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array(-327684, 1441795, 3, -262148, 131075, 2, -196612, 1441795, 3, -131076, 131075, 2, -65540, 1441795, 3, -4, 131075, 2, 65532, 393218, 2, -851972, 393218, 2, -786436, 131075, 2, -720900, 1441795, 3, -655364, 131075, 2, -589828, 1441795, 3, -524292, 131075, 2, -458756, 393218, 2, -1114116, 1441795, 3, -1048580, 131075, 2, -983044, 1441795, 3, -917508, 131075, 2, 53, 393218, 2, -393220, 131075, 13, -786415, 131075, 2, -720879, 1441795, 3, -655343, 131075, 2, -589807, 393218, 2, -524271, 1441795, 3, -458735, 131075, 2, -393199, 1441795, 3, -327663, 131075, 2, -262127, 1441795, 3, -196591, 131075, 2, -131055, 393218, 2, -786365, 1441795, 3, -720829, 131075, 2, -655293, 1441795, 3, -589757, 131075, 2, -524221, 1441795, 3, -458685, 131075, 2, -393149, 393218, 2, -327613, 1441795, 3, -262077, 131075, 2, -196541, 1441795, 3, -131005, 131075, 2, -1769362, 131075, 2, -1703826, 1441795, 3, -1638290, 131075, 2, -1572754, 1441795, 3, -1507218, 131075, 2, -1441682, 393218, 2, -1376146, 1441795, 3, -1310610, 131075, 2, -1245074, 1441795, 3, -1179538, 131075, 2, -1114002, 1441795, 3, -1048466, 131075, 2, -982930, 393218, 2, -917394, 1441795, 3, -851858, 131075, 2, -786322, 1441795, 3, -720786, 131075, 2, -655250, 1441795, 3, -589714, 131075, 2, -524178, 393218, 2, -458642, 1441795, 3, -393106, 131075, 2, -327570, 1441795, 3, -262034, 131075, 2, -196498, 1441795, 3, -130962, 131075, 2, -65426, 393218, 2, -1310634, 1441795, 3, -1245098, 131075, 2, -1179562, 1441795, 3, -1114026, 131075, 2, -1048490, 393218, 2, -982954, 1441795, 3, -917418, 131075, 2, -851882, 1441795, 3, -786346, 131075, 2, -720810, 1441795, 3, -655274, 131075, 2, -589738, 393218, 2, -524202, 1441795, 3, -458666, 131075, 2, -393130, 1441795, 3, -327594, 131075, 2, -262058, 1441795, 3, -196522, 131075, 2, -130986, 393218, 2)
-script = ExtResource("3_bcg4u")
+script = ExtResource("3_41lym")
 
 [node name="ReagentFolder" type="Node2D" parent="."]
 
@@ -7755,12 +7755,12 @@ position = Vector2(2399, -20)
 
 [node name="CampFolder" type="Node2D" parent="."]
 
-[node name="Camp" parent="CampFolder" instance=ExtResource("4_1w4rh")]
+[node name="Camp" parent="CampFolder" instance=ExtResource("4_ldqof")]
 position = Vector2(659, -50)
 
-[node name="Camp2" parent="CampFolder" instance=ExtResource("4_1w4rh")]
+[node name="Camp2" parent="CampFolder" instance=ExtResource("4_ldqof")]
 position = Vector2(2307, -32)
 camp_dialogue = null
 
-[node name="Player" parent="." instance=ExtResource("4_2iwme")]
+[node name="Player" parent="." instance=ExtResource("5_rqddt")]
 position = Vector2(21.0001, -90)

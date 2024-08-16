@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1tbusosvbrxd"
-path="res://.godot/imported/MockAoE.png-40e8563aa5ce351ca0833c623ece056f.ctex"
+path="res://.godot/imported/MockAoE.png-4117fca0f688ab79ae1099d9c30d5030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/MockAoE.png"
-dest_files=["res://.godot/imported/MockAoE.png-40e8563aa5ce351ca0833c623ece056f.ctex"]
+source_file="res://Old Scenes/Art/Sprites/MockAoE.png"
+dest_files=["res://.godot/imported/MockAoE.png-4117fca0f688ab79ae1099d9c30d5030.ctex"]
 
 [params]
 

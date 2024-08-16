@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dipsncy3g367v"]
 
-[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_02f3x"]
-[ext_resource type="Texture2D" uid="uid://c1tbusosvbrxd" path="res://Art/Sprites/MockAoE.png" id="2_n0r1a"]
-[ext_resource type="Texture2D" uid="uid://dgq2hqd7k7ane" path="res://Art/Sprites/MockProjectile.png" id="2_w33sn"]
+[ext_resource type="Script" path="res://Old Scenes/Scripts/projectile.gd" id="1_02f3x"]
+[ext_resource type="Texture2D" uid="uid://c1tbusosvbrxd" path="res://Old Scenes/Art/Sprites/MockAoE.png" id="2_n0r1a"]
+[ext_resource type="Texture2D" uid="uid://d1mm623yc4nw3" path="res://Old Scenes/Art/Sprites/MockProjectile.png" id="2_w33sn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_acnco"]
 animations = [{

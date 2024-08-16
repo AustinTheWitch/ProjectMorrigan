@@ -2,15 +2,48 @@
 
 [node name="Camp_UI" type="CanvasLayer"]
 
-[node name="CUI" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Content_Box" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.449
+anchor_top = 0.431
+anchor_right = 0.541
+anchor_bottom = 0.627
+offset_left = 6.75195
+offset_top = -0.288025
+offset_right = -6.23199
+offset_bottom = -0.296021
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="BonfireMenu" type="VBoxContainer" parent="CUI"]
+[node name="Menu" type="VBoxContainer" parent="Content_Box"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
+
+[node name="Rest_Button" type="Button" parent="Content_Box/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/font_size = 10
+text = "Rest At Bonfire"
+
+[node name="Spells_Button" type="Button" parent="Content_Box/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/font_size = 10
+text = "Learn Spells"
+
+[node name="Familiars_Button" type="Button" parent="Content_Box/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/font_size = 10
+text = "Begin Summmoning"
+
+[node name="Converse_Button" type="Button" parent="Content_Box/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/font_size = 10
+text = "Converse with XXXX"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixhgnm425jgu"
-path="res://.godot/imported/WallTexture.png-c1e0e00c658757db9ed58d1a5abc8831.ctex"
+uid="uid://dvhl1benyd4bg"
+path="res://.godot/imported/spongebob.png-372ccbff0c731d321b3aa40751f36452.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Textures/WallTexture.png"
-dest_files=["res://.godot/imported/WallTexture.png-c1e0e00c658757db9ed58d1a5abc8831.ctex"]
+source_file="res://Old Scenes/Art/Sprites/spongebob.png"
+dest_files=["res://.godot/imported/spongebob.png-372ccbff0c731d321b3aa40751f36452.ctex"]
 
 [params]
 

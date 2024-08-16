@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blkr6bt6jd1k2"]
 
-[ext_resource type="Script" path="res://Scripts/grimoireui.gd" id="1_egs0i"]
+[ext_resource type="Script" path="res://Old Scenes/Scripts/grimoireui.gd" id="1_egs0i"]
 
 [node name="GrimioreUI" type="TabContainer"]
 anchors_preset = 15
