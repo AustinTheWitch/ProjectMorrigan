@@ -4,7 +4,7 @@ extends TileMap
 var reagentpickup = preload("res://Ingredients/Pickup Scene/reagent_pickup.tscn")
 @onready var camp_folder: Node2D = $CampFolder
 @onready var camp_locations: Array[Node2D]
-var campsite = preload("res://Scenes/camp.tscn")
+var campsite = preload("res://Camp_Bonfire/camp.tscn")
 func _ready():
 	spawnloc()
 	pickupspawn()

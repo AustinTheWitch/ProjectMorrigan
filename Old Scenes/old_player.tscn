@@ -1,13 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfyjvk1j2vfnh"]
+[gd_scene load_steps=5 format=3 uid="uid://cfyjvk1j2vfnh"]
 
 [ext_resource type="Script" path="res://Old Scenes/Scripts/old_player.gd" id="1_k7jwy"]
-[ext_resource type="Texture2D" path="res://Art/Sprites/PlayerSprite.png" id="2_1jtsu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d38rd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1jtsu")
+"texture": null
 }],
 "loop": true,
 "name": &"Idle",

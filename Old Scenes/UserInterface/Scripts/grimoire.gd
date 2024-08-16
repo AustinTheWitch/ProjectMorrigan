@@ -1,12 +1,12 @@
 extends CanvasLayer
 
-const FAMILIAR_PAGE = preload("res://UserInterface/familiarpage.tscn")
+const FAMILIAR_PAGE = preload("res://Old Scenes/UserInterface/familiarpage.tscn")
 #@onready var familiar_section: TabContainer = $Background/Ch_Familiar
-const Familiarpage = preload("res://UserInterface/Scripts/familiarpage.gd")
+const Familiarpage = preload("res://Old Scenes/UserInterface/Scripts/familiarpage.gd")
 
-const REAGENT_PAGE = preload("res://UserInterface/reagentpage.tscn")
+const REAGENT_PAGE = preload("res://Old Scenes/UserInterface/reagentpage.tscn")
 #@onready var reagent_section: TabContainer = $Background/Ch_Reagent
-const Reagentpage = preload("res://UserInterface/Scripts/reagentpage.gd")
+const Reagentpage = preload("res://Old Scenes/UserInterface/Scripts/reagentpage.gd")
 
 func _ready():
 	#load_familiars()

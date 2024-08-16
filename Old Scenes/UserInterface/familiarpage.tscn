@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsy4e0ciy0r4u"]
 
-[ext_resource type="Script" path="res://UserInterface/Scripts/familiarpage.gd" id="1_g7tht"]
+[ext_resource type="Script" path="res://Old Scenes/UserInterface/Scripts/familiarpage.gd" id="1_g7tht"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_8s7ss"]
 
 [node name="Control" type="MarginContainer"]

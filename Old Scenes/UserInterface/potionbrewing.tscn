@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsr76uxbyj78w"]
 
-[ext_resource type="Script" path="res://UserInterface/Scripts/potionbrewing.gd" id="1_23xhj"]
+[ext_resource type="Script" path="res://Old Scenes/UserInterface/Scripts/potionbrewing.gd" id="1_23xhj"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_ev5jy"]
 
 [node name="Control" type="MarginContainer"]

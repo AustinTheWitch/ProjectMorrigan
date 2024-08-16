@@ -54,7 +54,7 @@ func _ready():
 	spellrange = $SpellRange
 	incantation = $Incantation
 	fireballcooldown = $FireballCooldown
-	energyblast = preload("res://Scenes/projectile.tscn")
+	energyblast = preload("res://Old Scenes/Art/Sprites/MockProjectile.png")
 	
 	grimoire = get_node("/root/Grimoire")
 	blinkready = true

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://1g6mglub3s2d"]
 
-[ext_resource type="Script" path="res://UserInterface/Scripts/dialogueui.gd" id="1_xueeg"]
-[ext_resource type="Shader" path="res://Visual_Novel/Blur.gdshader" id="2_7vnu1"]
+[ext_resource type="Script" path="res://Visual_Novel/Script/dialogueui.gd" id="1_xueeg"]
+[ext_resource type="Shader" path="res://Visual_Novel/Art/Shaders/Blur.gdshader" id="2_7vnu1"]
 [ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Old Scenes/Art/Sprites/spongebob.png" id="2_sfdu4"]
-[ext_resource type="Texture2D" uid="uid://bt6p83j2w04o1" path="res://UserInterface/Art/UI_Texture.png" id="3_sbo75"]
+[ext_resource type="Texture2D" uid="uid://bt6p83j2w04o1" path="res://Old Scenes/UserInterface/Art/UI_Texture.png" id="3_sbo75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8oow"]
 shader = ExtResource("2_7vnu1")

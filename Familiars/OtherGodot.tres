@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Familiar" load_steps=4 format=3 uid="uid://bb2f7p34lc1nv"]
 
-[ext_resource type="Script" path="res://Familiars/familiar.gd" id="1_svtxr"]
+[ext_resource type="Script" path="res://Familiars/Scripts/familiar.gd" id="1_svtxr"]
 [ext_resource type="SpriteFrames" uid="uid://c1hohg2essxbv" path="res://Familiars/Godot/TestFamiliar.tres" id="1_wub7j"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_tjt66"]
 

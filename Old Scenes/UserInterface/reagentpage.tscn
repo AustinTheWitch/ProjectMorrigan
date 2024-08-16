@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6cbd3tv8il74"]
 
-[ext_resource type="Script" path="res://UserInterface/Scripts/reagentpage.gd" id="1_6cywl"]
+[ext_resource type="Script" path="res://Old Scenes/UserInterface/Scripts/reagentpage.gd" id="1_6cywl"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_yfor7"]
 
 [node name="Control" type="MarginContainer"]
