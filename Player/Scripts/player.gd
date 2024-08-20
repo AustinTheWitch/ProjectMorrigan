@@ -5,6 +5,7 @@ class_name player_scene
 @onready var raycast: RayCast2D = $RayCast2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Stats--------------------------------------------------------------------------
+var maxhealth: int = 10
 var health: int = 10
 var defense: int = -2
 var damage: int = 2
@@ -38,13 +39,17 @@ var attacklevel: int
 var chargingattack: bool = false
 #Camp---------------------------------------------------------------------------
 var conversation_played: bool
-var current_camp: Camp
-
+@export var current_camp: Camp
+#Player UI=---------------------------------------------------------------------
+@onready var player_ui: CanvasLayer = $player_ui
+var healthbar = ProgressBar
 func _ready():
-	Gamemanager.player_ref = self
+	playerhealth()
 func _process(_delta):
 	attackinput()
-	campsystem()
+	if Input.is_action_just_pressed("Interact"): campsystem()
+	if is_instance_valid(current_camp): player_ui.visible = !current_camp.camp_ui.visible
+	else: player_ui.visible
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -112,6 +117,11 @@ func blinktime():
 #set camera---------------------------------------------------------------------
 func playercam():
 	pass
+func playerhealth():
+	healthbar = player_ui.find_child("Health_Bar")
+	healthbar.value = health
+	healthbar.max_value = maxhealth
+	print(healthbar.max_value)
 #familiar system----------------------------------------------------------------
 #func summon_familiar(familiar: Familiar):
 	#if summoning: return
@@ -146,9 +156,9 @@ func attackfinish(timeout: bool):
 	attackcharge.stop()
 #camp/bonfire-------------------------------------------------------------------
 func campsystem():
-	if Input.is_action_just_pressed("Interact"):
-		if is_instance_valid(current_camp):
-			Dialogueui.conversation_start(current_camp.camp_dialogue)
+	if is_instance_valid(current_camp):
+		current_camp.camp_ui.visible = !current_camp.camp_ui.visible
+		current_camp.campui()
 #grimoire system----------------------------------------------------------------
 #func open_grimoire():
 	#if Input.is_action_just_pressed("Debug"):

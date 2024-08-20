@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://decjtuvpg0gsx"]
+[gd_scene load_steps=8 format=3 uid="uid://decjtuvpg0gsx"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_txsuy"]
 [ext_resource type="Texture2D" uid="uid://b2rn0s1reg5rd" path="res://Player/Idle Track 1/frame0000.png" id="2_oa81u"]
 [ext_resource type="Texture2D" uid="uid://cyq0k5hduyb02" path="res://Player/Idle Track 1/frame0001.png" id="3_4frss"]
+[ext_resource type="PackedScene" uid="uid://coc3kn0ilbeca" path="res://Player/playerui.tscn" id="4_gfhcl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2mht1"]
 animations = [{
@@ -75,5 +76,6 @@ one_shot = true
 wait_time = 4.0
 one_shot = true
 
+[node name="player_ui" parent="." instance=ExtResource("4_gfhcl")]
+
 [connection signal="timeout" from="Blink" to="." method="blinktime"]
-[connection signal="timeout" from="AttackIncantation" to="." method="attackfinish" binds= [true]]

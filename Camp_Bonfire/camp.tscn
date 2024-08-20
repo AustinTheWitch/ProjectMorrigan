@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw3lsco228iil"]
+[gd_scene load_steps=6 format=3 uid="uid://cw3lsco228iil"]
 
 [ext_resource type="Script" path="res://Camp_Bonfire/Scripts/camp.gd" id="1_nieav"]
 [ext_resource type="Resource" uid="uid://cxjsnrhrpebkf" path="res://Visual_Novel/Test_1.tres" id="2_bfshv"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="3_l6yfu"]
+[ext_resource type="PackedScene" uid="uid://ctk3lywf0nx6p" path="res://Camp_Bonfire/campui.tscn" id="4_mi7eb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amq0e"]
 size = Vector2(130, 132)
@@ -19,6 +20,10 @@ texture = ExtResource("3_l6yfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_amq0e")
+
+[node name="Camp_UI" parent="." node_paths=PackedStringArray("camp") instance=ExtResource("4_mi7eb")]
+visible = false
+camp = NodePath("..")
 
 [connection signal="body_entered" from="." to="." method="_atcamp"]
 [connection signal="body_exited" from="." to="." method="_leftcamp"]

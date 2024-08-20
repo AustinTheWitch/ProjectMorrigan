@@ -7,10 +7,14 @@ extends CanvasLayer
 var current_dialogue: Dialogue
 var current_line: int
 var on_last_line: bool
-func _ready() -> void: visible = false
+var visualnovel: bool
+
+func _ready() -> void:
+	visible = false
 func conversation_start(conversation: Dialogue) -> void:
 	if not is_instance_valid(conversation): return
 	get_tree().paused = true
+	visualnovel = true
 	current_dialogue = conversation
 	current_line = -1
 	visible = true
@@ -35,6 +39,7 @@ func on_dialogue_option_clicked(id: int) -> void:
 	pass
 func converstation_end() -> void:
 	visible = false
+	visualnovel = false
 	get_tree().paused = false
 	for button in player_box.get_children():
 		button.queue_free()
@@ -45,6 +50,6 @@ func dialogue_options():
 		dialogue_option.text = current_dialogue.player_input[i]
 		dialogue_option.pressed.connect(on_dialogue_option_clicked.bind(i))
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Advance Dialogue"):
+	if event.is_action_pressed("Advance Dialogue") and visualnovel == true:
 		get_viewport().set_input_as_handled()
 		conversation_advance()

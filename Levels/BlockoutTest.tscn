@@ -7757,6 +7757,7 @@ position = Vector2(2399, -20)
 
 [node name="Camp" parent="CampFolder" instance=ExtResource("4_ldqof")]
 position = Vector2(659, -50)
+converse_target = "Spongebob"
 
 [node name="Camp2" parent="CampFolder" instance=ExtResource("4_ldqof")]
 position = Vector2(2307, -32)
