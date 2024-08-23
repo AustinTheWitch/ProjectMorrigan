@@ -7,20 +7,24 @@ extends CanvasLayer
 var current_dialogue: Dialogue
 var current_line: int
 var on_last_line: bool
-var visualnovel: bool
+var next_scene: Array
 
 func _ready() -> void:
 	visible = false
+func _process(delta: float) -> void: 
+	pass 
 func conversation_start(conversation: Dialogue) -> void:
 	if not is_instance_valid(conversation): return
 	get_tree().paused = true
-	visualnovel = true
 	current_dialogue = conversation
 	current_line = -1
 	visible = true
 	on_last_line = false
 	for button in player_box.get_children():
 		button.queue_free()
+	if !current_dialogue.scene_direction.is_empty():
+		next_scene = current_dialogue.scene_direction.keys()
+	else: pass
 	conversation_advance()
 func conversation_advance() -> void:
 	if on_last_line: return
@@ -34,12 +38,15 @@ func conversation_advance() -> void:
 	dialogue.text = current_dialogue.dialogue[current_line]
 	pass
 func on_dialogue_option_clicked(id: int) -> void:
-	print("conversation ended")
+	print("Conversation ended")
 	converstation_end()
-	pass
+func on_dialogue_option_advancement(id: int) -> void:
+	conversation_start(current_dialogue.scene_direction.get(next_scene[0]))
+	next_scene = []
+	for button in player_box.get_children():
+		button.queue_free()
 func converstation_end() -> void:
 	visible = false
-	visualnovel = false
 	get_tree().paused = false
 	for button in player_box.get_children():
 		button.queue_free()
@@ -48,8 +55,11 @@ func dialogue_options():
 		var dialogue_option: Button = Button.new()
 		player_box.add_child(dialogue_option)
 		dialogue_option.text = current_dialogue.player_input[i]
-		dialogue_option.pressed.connect(on_dialogue_option_clicked.bind(i))
+		if !next_scene.is_empty() and dialogue_option.text == next_scene[0]:
+			dialogue_option.pressed.connect(on_dialogue_option_advancement.bind(i))
+			pass
+		else: dialogue_option.pressed.connect(on_dialogue_option_clicked.bind(i))
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Advance Dialogue") and visualnovel == true:
+	if event.is_action_pressed("Advance Dialogue") and visible == true:
 		get_viewport().set_input_as_handled()
 		conversation_advance()

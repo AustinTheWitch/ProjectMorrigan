@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://bwmng2x8friyd"]
+
+[ext_resource type="Texture2D" uid="uid://yvnnaus5bbp7" path="res://Player/Art/PlayerSprite.png" id="1_eqlee"]
+[ext_resource type="Script" path="res://Visual_Novel/Script/dialogue.gd" id="2_2ysxv"]
+[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Old Scenes/Art/Sprites/spongebob.png" id="3_7cwek"]
+
+[resource]
+script = ExtResource("2_2ysxv")
+dialogue = Array[String](["What are you testing?", "Is it working?"])
+speaking = Array[String](["Spongebob", "Spongebob"])
+player = ExtResource("1_eqlee")
+speaker = ExtResource("3_7cwek")
+player_input = Array[String](["Possibly"])
+scene_direction = {}

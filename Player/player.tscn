@@ -41,7 +41,7 @@ scale = Vector2(0.0247685, 0.0247685)
 sprite_frames = SubResource("SpriteFrames_2mht1")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.858637
+frame_progress = 0.0589166
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visibility_layer = 768

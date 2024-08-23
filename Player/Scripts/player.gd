@@ -48,8 +48,9 @@ func _ready():
 func _process(_delta):
 	attackinput()
 	if Input.is_action_just_pressed("Interact"): campsystem()
-	if is_instance_valid(current_camp): player_ui.visible = !current_camp.camp_ui.visible
-	else: player_ui.visible
+	if is_instance_valid(current_camp): 
+		player_ui.visible = !current_camp.camp_ui.visible
+	else: player_ui.visible = true
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
