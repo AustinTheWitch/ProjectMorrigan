@@ -8,3 +8,5 @@ class_name Dialogue
 @export var speaker: Texture2D
 @export var player_input: Array[String]
 @export var scene_direction: Dictionary
+@export var conversing_character: String
+@export var affinity_amount: int

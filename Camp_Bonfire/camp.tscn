@@ -17,6 +17,8 @@ player_input = Array[String](["Nothing", "Testing something"])
 scene_direction = {
 "No": null
 }
+conversing_character = ""
+affinity_amount = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amq0e"]
 size = Vector2(130, 132)

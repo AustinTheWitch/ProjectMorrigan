@@ -12,3 +12,5 @@ player = ExtResource("1_irtsn")
 speaker = ExtResource("3_r5df8")
 player_input = Array[String](["No", "Possibly"])
 scene_direction = {}
+conversing_character = "Spongebob"
+affinity_amount = 1

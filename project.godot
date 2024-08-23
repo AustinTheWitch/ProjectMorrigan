@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Gamemanager="*res://Levels/Scripts/gamemanager.gd"
 Dialogueui="*res://Visual_Novel/dialogueui.tscn"
+Affinitysystem="*res://Visual_Novel/Script/affinitysystem.gd"
 
 [dotnet]
 

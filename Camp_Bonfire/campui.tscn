@@ -29,7 +29,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 10
-text = "Rest At Bonfire"
+text = "Rest"
 
 [node name="Spells_Button" type="Button" parent="Content_Box/Menu"]
 layout_mode = 2
@@ -41,7 +41,13 @@ text = "Learn Spells"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 10
-text = "Begin Summoning"
+text = "Summon"
+
+[node name="Potion_Brewing" type="Button" parent="Content_Box/Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 10
+text = "Potion-Brewing"
 
 [node name="Converse_Button" type="Button" parent="Content_Box/Menu"]
 layout_mode = 2

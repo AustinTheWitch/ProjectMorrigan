@@ -158,7 +158,6 @@ func attackfinish(timeout: bool):
 #camp/bonfire-------------------------------------------------------------------
 func campsystem():
 	if is_instance_valid(current_camp):
-		current_camp.camp_ui.visible = !current_camp.camp_ui.visible
 		current_camp.campui()
 #grimoire system----------------------------------------------------------------
 #func open_grimoire():

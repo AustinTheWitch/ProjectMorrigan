@@ -15,3 +15,5 @@ player_input = Array[String](["Nothing", "Testing something"])
 scene_direction = {
 "Testing something": ExtResource("2_gu87k")
 }
+conversing_character = "Spongebob"
+affinity_amount = 2

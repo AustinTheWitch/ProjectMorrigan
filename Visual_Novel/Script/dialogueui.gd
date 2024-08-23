@@ -20,11 +20,10 @@ func conversation_start(conversation: Dialogue) -> void:
 	current_line = -1
 	visible = true
 	on_last_line = false
+	Affinitysystem.character_affinity[current_dialogue.conversing_character] += current_dialogue.affinity_amount
 	for button in player_box.get_children():
 		button.queue_free()
-	if !current_dialogue.scene_direction.is_empty():
-		next_scene = current_dialogue.scene_direction.keys()
-	else: pass
+	next_scene = current_dialogue.scene_direction.keys()
 	conversation_advance()
 func conversation_advance() -> void:
 	if on_last_line: return
@@ -45,9 +44,10 @@ func on_dialogue_option_advancement(id: int) -> void:
 	next_scene = []
 	for button in player_box.get_children():
 		button.queue_free()
-func converstation_end() -> void:
+func converstation_end():
 	visible = false
 	get_tree().paused = false
+	print(Affinitysystem.character_affinity[current_dialogue.conversing_character])
 	for button in player_box.get_children():
 		button.queue_free()
 func dialogue_options():
