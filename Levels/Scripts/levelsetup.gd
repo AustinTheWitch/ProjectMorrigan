@@ -1,4 +1,4 @@
-extends TileMap
+extends Node2D
 @onready var reagent_folder: Node = $ReagentFolder
 @onready var ingredient_locations: Array[Node2D]
 var reagentpickup = preload("res://Ingredients/Pickup Scene/reagent_pickup.tscn")

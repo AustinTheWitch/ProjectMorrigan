@@ -7,6 +7,7 @@ func _atcamp(body: CharacterBody2D):
 func _leftcamp(body: CharacterBody2D):
 	if !body is player_scene: return
 	body.current_camp = null
+	camp_ui.visible = false
 
 @onready var camp_ui: CanvasLayer = $Camp_UI
 @export var camp_dialogue: Dialogue

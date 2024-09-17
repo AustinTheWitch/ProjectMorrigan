@@ -48,14 +48,11 @@ visibility_layer = 768
 position = Vector2(0.666672, -1)
 shape = SubResource("RectangleShape2D_oloeh")
 
-[node name="Blink" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Blink_Cooldown" type="Timer" parent="."]
+wait_time = 0.3
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-target_position = Vector2(0, 0)
-collision_mask = 65280
-collide_with_areas = true
+[node name="Blink_Recharge" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_horizontal_enabled = true
@@ -78,4 +75,4 @@ one_shot = true
 
 [node name="player_ui" parent="." instance=ExtResource("4_gfhcl")]
 
-[connection signal="timeout" from="Blink" to="." method="blinktime"]
+[connection signal="timeout" from="Blink_Recharge" to="." method="blinktime"]

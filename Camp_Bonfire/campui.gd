@@ -8,4 +8,3 @@ func _on_converse() -> void:
 	Dialogueui.conversation_start(camp.camp_dialogue)
 	visible = !visible
 	camp.converse_button.visible = false
-	

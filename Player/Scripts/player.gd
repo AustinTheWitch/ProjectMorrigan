@@ -15,11 +15,12 @@ var direction: float = 1
 var speed: int = 330
 var movement: bool = false
 #Jump---------------------------------------------------------------------------
-var force: int = -300
+var force: int = 575
 var jumped: bool = false
 #Blink--------------------------------------------------------------------------
-@onready var blinkcooldown: Timer = $Blink
-var potency: int = 475
+@onready var blink_cooldown: Timer = $Blink_Cooldown
+@onready var blink_recharge: Timer = $Blink_Recharge
+var potency: int = 3500
 var blinked: bool = false
 var blinkcharges: int = 1
 var currentcharge: int = 0
@@ -62,57 +63,44 @@ func _physics_process(delta):
 func playerjump():
 	if Input.is_action_just_pressed("Up") and !jumped:
 		jumped = true
-		move_and_collide(Vector2(0, force))
+		velocity.y = -1 * force
 		#jump anim track here
 	elif is_on_floor():
 		jumped = false
-		raycast.target_position.y = 0
+		velocity.y = 0
 #set player direction-----------------------------------------------------------
 func setdirection():
-	if Input.is_action_pressed("Right"):
+	if Input.is_action_pressed("Right") and !blinked:
 		direction = 1
 		velocity.x = direction * speed
 		player.flip_h = false
 		#movement anim track here
 		movement = true
-		summoning = false
-		chargingattack = false
-	elif Input.is_action_pressed("Left"):
+	elif Input.is_action_pressed("Left") and !blinked:
 		direction = -1
 		velocity.x = direction * speed
 		player.flip_h = true
 		#movement anim track here
 		movement = true
-		summoning = false
-		chargingattack = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		movement = false
 		player.play("Idle")
 #set player blink---------------------------------------------------------------
 func blink():
-	if Input.is_action_just_pressed("Blink") and blinked == false:
+	if Input.is_action_just_pressed("Blink") and currentcharge != blinkcharges:
 		currentcharge += 1
-		if currentcharge >= blinkcharges: blinked = true
+		blinked = true
+		if currentcharge >= blinkcharges: blink_recharge.start()
 		var blink_direction = direction if movement or jumped else -direction
-		move_and_collide(Vector2(potency * blink_direction, 0))
-		#if movement == false:
-		#	raycast.target_position.x = potency * direction * -1
-		#	raycast.force_raycast_update()
-		#	if raycast.is_colliding(): position.x = raycast.get_collision_point().x
-		#	else: global_position.x = raycast.to_global(raycast.target_position).x
-		#else: 
-			#raycast.target_position.x = potency * direction
-			#raycast.force_raycast_update()
-			#if raycast.is_colliding(): position.x = raycast.get_collision_point().x
-			#else: global_position.x = raycast.to_global(raycast.target_position).x
-		print(potency * direction)
-		print(currentcharge)
-		blinkcooldown.start()
+		velocity.x = blink_direction * potency
+		blink_cooldown.start(0.3)
+		await blink_cooldown.timeout
+		blinked = false
+		blink_cooldown.stop()
 func blinktime():
-	blinked = false
 	if currentcharge <= 0:
-		blinkcooldown.stop()
+		blink_recharge.stop()
 	else: currentcharge -= 1
 	print(currentcharge)
 #set camera---------------------------------------------------------------------
@@ -141,10 +129,8 @@ func playerhealth():
 		#summoning = false
 #attack system------------------------------------------------------------------
 func attackinput():
-	if Input.is_action_just_pressed("Attack"):
-		attackstart()
-	if Input.is_action_just_released("Attack"):
-		attackfinish(false)
+	if Input.is_action_just_pressed("Attack"): attackstart()
+	if Input.is_action_just_released("Attack") or movement: attackfinish(false)
 func attackstart():
 	attackcharge.start()
 	chargingattack = true
