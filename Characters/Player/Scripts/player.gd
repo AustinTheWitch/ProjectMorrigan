@@ -35,7 +35,6 @@ var familarname: Familiar
 #Attack-------------------------------------------------------------------------
 @onready var attackcharge: Timer = $AttackIncantation
 @onready var shoot_point: Node2D = $Shoot_Point
-@onready var attackspell = preload("res://Spells/baseattack.tscn")
 #Attack Charge Tiers: X = Half Charge Cutoff, Y = Full Charge Cutoff
 var attacktiers: Array[float] = [1.0, 2.0]
 var attacklevel: int
