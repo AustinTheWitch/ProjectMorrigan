@@ -3,7 +3,6 @@ extends Node
 var damageoutput: int
 var newhealth: int
 var newdefense: int
-var player_ref : player_scene
 
 #Damage Functions---------------------------------------------------------------
 func damagetaken(damage: int, defense: int):

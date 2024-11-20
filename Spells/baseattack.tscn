@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cytkbn5q0nl0e"]
+
+[ext_resource type="Script" path="res://Spells/spellbase.gd" id="1_rwy5r"]
+[ext_resource type="SpriteFrames" uid="uid://bncb7cqdr2djf" path="res://Spells/spells.tres" id="2_038mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ht87"]
+size = Vector2(14, 8)
+
+[node name="Basic Attack" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_rwy5r")
+
+[node name="AttackType" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0859375, 0.046875)
+sprite_frames = ExtResource("2_038mf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ht87")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

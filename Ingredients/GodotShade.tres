@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Reagent" load_steps=4 format=3 uid="uid://ymf2r8v854qb"]
 
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_hp3h1"]
-[ext_resource type="SpriteFrames" uid="uid://c1hohg2essxbv" path="res://Familiars/Godot/TestFamiliar.tres" id="2_jdq8r"]
+[ext_resource type="SpriteFrames" uid="uid://c1hohg2essxbv" path="res://Characters/Familiars/Godot/TestFamiliar.tres" id="2_jdq8r"]
 [ext_resource type="Script" path="res://Ingredients/reagent.gd" id="2_qe6d7"]
 
 [resource]

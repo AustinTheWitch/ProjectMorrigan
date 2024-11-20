@@ -30,6 +30,10 @@ window/size/viewport_height=900
 
 project/assembly_name="WitchinPinkandBlue"
 
+[global_group]
+
+Enemy="Enemy Sprites"
+
 [input]
 
 Up={

@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfyjvk1j2vfnh"]
+
+[ext_resource type="Script" path="res://Deprecated/Scripts/old_player.gd" id="1_k7jwy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d38rd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ubs"]
+size = Vector2(87, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wro6h"]
+size = Vector2(60, 85)
+
+[node name="Player" type="Area2D" groups=["player"]]
+position = Vector2(48, 586)
+collision_mask = 6
+script = ExtResource("1_k7jwy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.279, 0.3)
+sprite_frames = SubResource("SpriteFrames_d38rd")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 6
+shape = SubResource("RectangleShape2D_l0ubs")
+
+[node name="Blink" type="Timer" parent="."]
+
+[node name="BlinkReach" type="RayCast2D" parent="."]
+target_position = Vector2(42, 0)
+collision_mask = 6
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DeflectCooldown" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="DeflectArea" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectArea"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_wro6h")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="HexCountdown" type="Timer" parent="."]
+
+[node name="SpellRange" type="RayCast2D" parent="."]
+target_position = Vector2(350, 0)
+collision_mask = 6
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Incantation" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="FireballCooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Blink" to="." method="_blinkTimeout"]
+[connection signal="timeout" from="DeflectCooldown" to="." method="_deflectTimeout"]
+[connection signal="area_entered" from="DeflectArea" to="." method="_deflectInRange"]
+[connection signal="area_exited" from="DeflectArea" to="." method="_deflectOutRange"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_attackTimeout"]
+[connection signal="timeout" from="HexCountdown" to="." method="_hextimedout"]
+[connection signal="timeout" from="Incantation" to="." method="_incantationtimedout"]
+[connection signal="timeout" from="FireballCooldown" to="." method="_fireout"]

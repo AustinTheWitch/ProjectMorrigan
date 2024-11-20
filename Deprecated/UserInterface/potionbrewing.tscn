@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsr76uxbyj78w"]
+
+[ext_resource type="Script" path="res://Deprecated/UserInterface/Scripts/potionbrewing.gd" id="1_23xhj"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_ev5jy"]
+
+[node name="Control" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_23xhj")
+
+[node name="Page" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Page"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Undiscovered"
+horizontal_alignment = 1
+
+[node name="PotionImage" type="TextureRect" parent="Page"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("2_ev5jy")
+stretch_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Page"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/italics_font_size = 25
+theme_override_font_sizes/bold_italics_font_size = 25
+text = "Unknown Potion ???????"
+
+[node name="ReagentSect" type="HBoxContainer" parent="Page"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Primary" type="Button" parent="Page/ReagentSect"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Ingredient 1"
+
+[node name="Secondary" type="Button" parent="Page/ReagentSect"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Ingredient 2"
+
+[node name="Tertiary" type="Button" parent="Page/ReagentSect"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Ingredient 3"
