@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://vneauruurfic"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/levelsetup.gd" id="3_41lym"]
-[ext_resource type="PackedScene" uid="uid://cf6iiho8ws3xv" path="res://Characters/Player/player.tscn" id="4_2dgmg"]
+[ext_resource type="PackedScene" uid="uid://cf6iiho8ws3xv" path="res://Characters/Player/player_v2.tscn" id="4_2dgmg"]
 [ext_resource type="PackedScene" uid="uid://cw3lsco228iil" path="res://Camp_Bonfire/camp.tscn" id="4_ldqof"]
 [ext_resource type="Resource" uid="uid://cxjsnrhrpebkf" path="res://Visual_Novel/Test_1.tres" id="5_6rp7g"]
 [ext_resource type="TileSet" uid="uid://ixjofqyw6yal" path="res://Levels/Blockout/BO_Floor.tres" id="6_qs6te"]

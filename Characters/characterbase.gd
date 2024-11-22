@@ -1,21 +1,24 @@
 extends CharacterBody2D
 class_name character_base
-#base stats
+#character velocity
 var speed: int
+var force: int
 var direction: Vector2
+#character armor
 var current_armor: int
-var current_health: int
 var max_armor: int
+#character health
+var current_health: int
 var max_health: int
+#character damage output
 var damage: int
-
+#character sprite frames
+var sprite_frames: SpriteFrames
 #references
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var burning: Timer = $Burning
-@onready var cursed: Timer = $Cursed
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _physics_process(delta: float) -> void:
+	if not is_on_floor(): velocity.y += gravity * delta
 #status effects
 var statuseffects: Array[status_base]
 
@@ -28,17 +31,3 @@ func apply_damage(alt_damage: int) -> void:
 	for status in statuseffects:
 		total_damage = status.modify_damage(total_damage)
 	current_health = current_health - (current_armor + total_damage)
-
-#gravity
-func set_gravity(new_gravity: float) -> float:
-	new_gravity = gravity
-	velocity.y = new_gravity * get_process_delta_time()
-	return velocity.y
-
-func enemy_movement() -> void:
-	pass
-
-#sprite frames and anims
-func set_sprites(sprite: SpriteFrames) -> SpriteFrames:
-	animated_sprite_2d.sprite_frames = sprite
-	return sprite

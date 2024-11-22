@@ -27,8 +27,8 @@ func shockdamage(enemycount: int, damage: int, defense: int):
 	currentdamage = damage * enemycount
 	damageoutput = defense + currentdamage
 #familiar data------------------------------------------------------------------
-const familarlist: Array[Familiar] = [preload("res://Familiars/Godot.tres"), 
-preload("res://Familiars/OtherGodot.tres")]
+#const familarlist: Array[Familiar] = [preload("res://Familiars/Godot.tres"), 
+#preload("res://Familiars/OtherGodot.tres")]
 #potionbrewing------------------------------------------------------------------
 var inventory: Dictionary = {"Godot Shade": 0, "Random Reagent": 0
 }

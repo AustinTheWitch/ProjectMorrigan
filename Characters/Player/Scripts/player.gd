@@ -1,139 +1,100 @@
-extends CharacterBody2D
-class_name player_scene
-#Refs---------------------------------------------------------------------------
-@onready var player: AnimatedSprite2D = $AnimSprite
-@onready var level: Node2D = self.get_parent()
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#Stats--------------------------------------------------------------------------
-var maxhealth: int = 10
-var health: int = 10
-var defense: int = -2
-var damage: int = 2
-var spelldamage: int
-#Movement-----------------------------------------------------------------------
-var direction: float = 1
-var speed: int = 330
-var movement: bool = false
-#Jump---------------------------------------------------------------------------
-var force: int = 575
+extends character_base
+
+#movement
+var moving: bool = false
+#jump
 var jumped: bool = false
-#Blink--------------------------------------------------------------------------
-@onready var blink_cooldown: Timer = $Blink_Cooldown
-@onready var blink_recharge: Timer = $Blink_Recharge
-var potency: int = 3500
+#blink
+@onready var blink_recharge: Timer = $"Blink Recharge"
 var blinked: bool = false
-var blinkcharges: int = 1
-var currentcharge: int = 0
-#Camera-------------------------------------------------------------------------
-@onready var pov: Camera2D = $Camera2D
-var bossroom: bool = false
-#Familiar-----------------------------------------------------------------------
-@onready var familiarsprite: AnimatedSprite2D = $FamiliarSprite
-@onready var familiarincantation: Timer = $FamiliarIncantation
-var summoning: bool = false
-var familarname: Familiar
-#Attack-------------------------------------------------------------------------
-@onready var attackcharge: Timer = $AttackIncantation
-@onready var shoot_point: Node2D = $Shoot_Point
-#Attack Charge Tiers: X = Half Charge Cutoff, Y = Full Charge Cutoff
-var attacktiers: Array[float] = [1.0, 2.0]
-var attacklevel: int
-var chargingattack: bool = false
-#Camp---------------------------------------------------------------------------
-var conversation_played: bool
-@export var current_camp: Camp
-#Player UI=---------------------------------------------------------------------
-@onready var player_ui: CanvasLayer = $player_ui
-var healthbar = ProgressBar
-func _ready():
-	playerhealth()
-	print(level)
-func _process(_delta):
-	attackinput()
-	if Input.is_action_just_pressed("Interact"): campsystem()
-	if is_instance_valid(current_camp): 
-		player_ui.visible = !current_camp.camp_ui.visible
-	else: player_ui.visible = true
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	playerjump()
-	setdirection()
-	blink()
+var blink_charge: int = 0
+var blink_limit: int = 1
+var blink_strength: int
+#base attacks
+@onready var incantation: Timer = $Incantation
+var incanting: bool
+var incant_stages: Array [float]
+var attack_combo: int
+var combo_damage: Array[Vector3]
+#spells
+var spell_damage: int
+var spellcasting: bool
+
+func _ready() -> void:
+	speed = 335
+	force = 575
+	blink_charge = 0
+	blink_limit = 1
+	blink_strength = 5000
+	incanting = false
+	incant_stages = [1.0, 3.0]
+	combo_damage = [Vector3(2, 3, 5), Vector3(3, 4, 5), Vector3(2, 4, 8)]
+	
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	player_movement()
 	move_and_slide()
-#set player jumping-------------------------------------------------------------
-func playerjump():
-	if Input.is_action_just_pressed("Up") and !jumped:
+	player_combat()
+
+#movement
+func player_movement():
+	#basic movement
+	if Input.is_action_pressed("Left"): 
+		direction.x = -1
+		moving = true
+	elif Input.is_action_pressed("Right"):
+		direction.x = 1
+		moving = true
+	else: moving = false
+	if moving: 
+		velocity.x = direction.x * speed
+	else: velocity.x = 0
+	#jump movement
+	if Input.is_action_just_pressed("Jump") and !jumped: 
 		jumped = true
-		velocity.y = -1 * force
-		#jump anim track here
-	elif is_on_floor():
+		velocity.y = force * -1
+	elif is_on_floor(): 
 		jumped = false
 		velocity.y = 0
-#set player direction-----------------------------------------------------------
-func setdirection():
-	if Input.is_action_pressed("Right") and !blinked:
-		direction = 1
-		velocity.x = direction * speed
-		player.flip_h = false
-		#movement anim track here
-		movement = true
-	elif Input.is_action_pressed("Left") and !blinked:
-		direction = -1
-		velocity.x = direction * speed
-		player.flip_h = true
-		#movement anim track here
-		movement = true
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		movement = false
-		player.play("Idle")
-#set player blink---------------------------------------------------------------
-func blink():
-	if Input.is_action_just_pressed("Blink") and currentcharge != blinkcharges:
-		currentcharge += 1
-		blinked = true
-		if currentcharge >= blinkcharges: blink_recharge.start()
-		var blink_direction = direction if movement or jumped else -direction
-		velocity.x = blink_direction * potency
-		blink_cooldown.start(0.3)
-		await blink_cooldown.timeout
+	#blink
+	if Input.is_action_just_pressed("Blink") and !blinked:
+		blink_charge += 1
+		if blink_charge >= blink_limit: 
+			blinked = true
+			blink_recharge.start()
+		var blink_direction = direction.x if jumped or moving else -direction.x
+		velocity.x = blink_direction * blink_strength
+func _on_blink_recharge_timeout() -> void:
+	blink_charge -= 1
+	if blink_charge <= 0: 
 		blinked = false
-		blink_cooldown.stop()
-func blinktime():
-	if currentcharge <= 0:
+		print("blink ready")
 		blink_recharge.stop()
-	else: currentcharge -= 1
-	print(currentcharge)
-#set camera---------------------------------------------------------------------
-func playercam():
-	pass
-func playerhealth():
-	healthbar = player_ui.find_child("Health_Bar")
-	healthbar.value = health
-	healthbar.max_value = maxhealth
-	print(healthbar.max_value)
-#attack system------------------------------------------------------------------
-func attackinput():
-	if Input.is_action_just_pressed("Attack"): attackstart()
-	if Input.is_action_just_released("Attack") or movement: attackfinish(false)
-func attackstart():
-	attackcharge.start()
-	chargingattack = true
-	#set anim track
-func attackfinish(timeout: bool):
-	if not chargingattack: return
-	chargingattack = false
-	attacklevel = 1 if timeout else (3 - attacktiers.bsearch(attackcharge.time_left, true))
-	print("Attack Level : ", attacklevel)
-	attackcharge.stop()
-	var spell = attackspell.instantiate()
-	shoot_point.position *= direction
-	spell.spawn(direction, shoot_point.global_position)
-	level.add_child(spell)
-func _attacktimeout() -> void:
-	attackfinish(true)
-#camp/bonfire----------------------------------------------------------------++---
-func campsystem():
-	if is_instance_valid(current_camp):
-		current_camp.campui()
+
+func player_combat() -> void:
+	if Input.is_action_just_pressed("Attack"): attack_start()
+	if Input.is_action_just_released("Attack") or moving: attack_finish(false, attack_combo)
+	if attack_combo > 2 or moving: attack_combo = 0
+
+func attack_start() -> void:
+	incanting = true
+	incantation.start()
+	if attack_combo == 0: print("first")
+	elif attack_combo == 1: print("second")
+	elif attack_combo >= 2: print("final")
+func attack_finish(timedout: bool, combo: int) -> int:
+	if not incanting: return 0
+	incanting = false
+	incantation.stop()
+	attack_combo += 1
+	if incantation.time_left <= incant_stages[0]: 
+		damage = combo_damage[combo].x
+	elif incantation.time_left > incant_stages[0] and incantation.time_left < incant_stages[1]:
+		damage = combo_damage[combo].y
+	elif incantation.time_left > incant_stages[1] or timedout:
+		damage = combo_damage[combo].z
+	print(damage)
+	return damage
+
+func _on_incantation_timeout() -> void:
+	attack_finish(true, attack_combo)
