@@ -2,8 +2,6 @@ extends Area2D
 class_name spell_base
 
 #base stats
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 var damage: int
 var speed: int = 10
 var direction: float

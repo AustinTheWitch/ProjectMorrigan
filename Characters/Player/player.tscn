@@ -27,7 +27,10 @@ drag_vertical_offset = -1.0
 wait_time = 3.0
 
 [node name="Incantation" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
+
+[node name="Spell Origin" type="Node2D" parent="."]
+position = Vector2(70, 0)
 
 [connection signal="timeout" from="Blink Recharge" to="." method="_on_blink_recharge_timeout"]
 [connection signal="timeout" from="Incantation" to="." method="_on_incantation_timeout"]

@@ -11,14 +11,16 @@ var blink_charge: int = 0
 var blink_limit: int = 1
 var blink_strength: int
 #base attacks
+@onready var spell_origin: Node2D = $"Spell Origin"
 @onready var incantation: Timer = $Incantation
 var incanting: bool
 var incant_stages: Array [float]
 var attack_combo: int
 var combo_damage: Array[Vector3]
-#spells
-var spell_damage: int
-var spellcasting: bool
+var incant_time: float
+var spell: PackedScene
+#world
+var level: Node2D
 
 func _ready() -> void:
 	speed = 335
@@ -27,15 +29,14 @@ func _ready() -> void:
 	blink_limit = 1
 	blink_strength = 5000
 	incanting = false
-	incant_stages = [1.0, 3.0]
+	incant_stages = [2.0, 4.0]
 	combo_damage = [Vector3(2, 3, 5), Vector3(3, 4, 5), Vector3(2, 4, 8)]
-	
+	level = get_parent()
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	player_movement()
 	move_and_slide()
 	player_combat()
-
 #movement
 func player_movement():
 	#basic movement
@@ -75,26 +76,33 @@ func player_combat() -> void:
 	if Input.is_action_just_pressed("Attack"): attack_start()
 	if Input.is_action_just_released("Attack") or moving: attack_finish(false, attack_combo)
 	if attack_combo > 2 or moving: attack_combo = 0
+	if incanting: rotation += incant_time * get_process_delta_time()
 
 func attack_start() -> void:
 	incanting = true
 	incantation.start()
-	if attack_combo == 0: print("first")
-	elif attack_combo == 1: print("second")
-	elif attack_combo >= 2: print("final")
-func attack_finish(timedout: bool, combo: int) -> int:
-	if not incanting: return 0
+	spell = preload("res://Spells/impact_spell.tscn")
+	if attack_combo == 0: incant_time = 1.0
+	elif attack_combo == 1:incant_time = -1.0
+	elif attack_combo >= 2: incant_time = 1.0
+func attack_finish(timedout: bool, combo: int) -> void:
+	if not incanting: return
+	var incanting_stop: float = incantation.time_left
+	rotation = 0
 	incanting = false
 	incantation.stop()
 	attack_combo += 1
-	if incantation.time_left <= incant_stages[0]: 
-		damage = combo_damage[combo].x
-	elif incantation.time_left > incant_stages[0] and incantation.time_left < incant_stages[1]:
-		damage = combo_damage[combo].y
-	elif incantation.time_left > incant_stages[1] or timedout:
+	if incanting_stop <= incant_stages[0]:
 		damage = combo_damage[combo].z
-	print(damage)
-	return damage
-
+		print("full")
+	elif incanting_stop > incant_stages[0] and incanting_stop < incant_stages[1]:
+		damage = combo_damage[combo].y
+		print("mid")
+	elif incanting_stop > incant_stages[1] or timedout:
+		damage = combo_damage[combo].x
+		print("light")
+	var spell_casted = spell.instantiate()
+	spell_casted.spawn(direction.x, spell_origin.global_position)
+	level.add_child(spell_casted)
 func _on_incantation_timeout() -> void:
 	attack_finish(true, attack_combo)
