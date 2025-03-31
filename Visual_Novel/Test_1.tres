@@ -1,16 +1,18 @@
 [gd_resource type="Resource" script_class="Dialogue" load_steps=5 format=3 uid="uid://cxjsnrhrpebkf"]
 
-[ext_resource type="Script" path="res://Visual_Novel/Script/dialogue.gd" id="1_grb5x"]
-[ext_resource type="Texture2D" uid="uid://yvnnaus5bbp7" path="res://Characters/Player/Art/PlayerSprite.png" id="1_mu8ii"]
+[ext_resource type="Script" uid="uid://bw3g23o70t33u" path="res://Visual_Novel/Script/dialogue.gd" id="1_grb5x"]
+[ext_resource type="Texture2D" uid="uid://yvnnaus5bbp7" path="res://Deprecated/Characters/Player/Art/PlayerSprite.png" id="1_mu8ii"]
 [ext_resource type="Resource" uid="uid://bwmng2x8friyd" path="res://Visual_Novel/Test_2.tres" id="2_gu87k"]
-[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Deprecated/Art/Sprites/spongebob.png" id="4_mvo12"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dguw3"]
+load_path = "res://.godot/imported/spongebob.png-14b280270a2db216e0d3b8c94428ffaf.ctex"
 
 [resource]
 script = ExtResource("1_grb5x")
 dialogue = Array[String](["Hi", "Hey", "What's up"])
 speaking = Array[String](["Spongebob", "Player", "Spongebob"])
 player = ExtResource("1_mu8ii")
-speaker = ExtResource("4_mvo12")
+speaker = SubResource("CompressedTexture2D_dguw3")
 player_input = Array[String](["Nothing", "Testing something"])
 scene_direction = {
 "Testing something": ExtResource("2_gu87k")

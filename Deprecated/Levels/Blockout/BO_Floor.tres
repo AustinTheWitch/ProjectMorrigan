@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ixjofqyw6yal"]
+
+[ext_resource type="Texture2D" uid="uid://c4puekksc2pqq" path="res://Deprecated/Levels/Blockout/Textures/Pixal Surface.png" id="1_pi424"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvpuq"]
+texture = ExtResource("1_pi424")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 256
+physics_layer_0/collision_mask = 7
+sources/10 = SubResource("TileSetAtlasSource_bvpuq")

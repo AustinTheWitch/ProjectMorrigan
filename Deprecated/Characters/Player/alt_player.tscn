@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://decjtuvpg0gsx"]
+
+[ext_resource type="Script" uid="uid://b4imk8cab6n8a" path="res://Deprecated/Characters/Player/Scripts/alt_player.gd" id="1_txsuy"]
+[ext_resource type="SpriteFrames" uid="uid://4eo4mm0uy6u0" path="res://Deprecated/Characters/Player/playerframes.tres" id="2_epymy"]
+[ext_resource type="PackedScene" uid="uid://coc3kn0ilbeca" path="res://Deprecated/Characters/Player/playerui.tscn" id="4_gfhcl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oloeh"]
+size = Vector2(49, 105)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nuv6a"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 65534
+script = ExtResource("1_txsuy")
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.390625, 0.835938)
+sprite_frames = ExtResource("2_epymy")
+animation = &"Idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+visibility_layer = 768
+shape = SubResource("RectangleShape2D_oloeh")
+
+[node name="Blink_Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Blink_Recharge" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
+drag_vertical_offset = -1.0
+
+[node name="FamiliarSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 19)
+scale = Vector2(0.0817306, 0.0774741)
+sprite_frames = SubResource("SpriteFrames_nuv6a")
+
+[node name="FamiliarIncantation" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AttackIncantation" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="player_ui" parent="." instance=ExtResource("4_gfhcl")]
+
+[node name="Shoot_Point" type="Node2D" parent="."]
+position = Vector2(15, 0)
+
+[connection signal="timeout" from="Blink_Recharge" to="." method="blinktime"]
+[connection signal="timeout" from="AttackIncantation" to="." method="_attacktimeout"]

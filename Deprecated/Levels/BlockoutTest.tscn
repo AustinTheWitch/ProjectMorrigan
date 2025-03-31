@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=4 uid="uid://vneauruurfic"]
+
+[ext_resource type="Script" uid="uid://drmq7et47vyr1" path="res://Deprecated/Levels/Scripts/levelsetup.gd" id="3_41lym"]
+[ext_resource type="PackedScene" uid="uid://cf6iiho8ws3xv" path="res://Deprecated/Characters/Player/player.tscn" id="4_2dgmg"]
+[ext_resource type="PackedScene" uid="uid://cw3lsco228iil" path="res://Deprecated/Camp_Bonfire/camp.tscn" id="4_ldqof"]
+[ext_resource type="Resource" uid="uid://cxjsnrhrpebkf" path="res://Visual_Novel/Test_1.tres" id="5_6rp7g"]
+[ext_resource type="TileSet" uid="uid://ixjofqyw6yal" path="res://Deprecated/Levels/Blockout/BO_Floor.tres" id="6_qs6te"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_eavfw"]
+vertices = PackedVector2Array(1485.08, -99.0234, 1485.91, 2.04688, -2.07031, 9.9375, -2.92188, -102.969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-13, -113, -12, 20, 1496, 12, 1495, -109)])
+
+[node name="TileMap" type="Node2D"]
+light_mask = 768
+visibility_layer = 1023
+script = ExtResource("3_41lym")
+
+[node name="ReagentFolder" type="Node2D" parent="."]
+
+[node name="IngredientLoc" type="Node2D" parent="ReagentFolder"]
+position = Vector2(65, -168)
+
+[node name="IngredientLoc2" type="Node2D" parent="ReagentFolder"]
+position = Vector2(420, -8)
+
+[node name="IngredientLoc3" type="Node2D" parent="ReagentFolder"]
+position = Vector2(921, -6)
+
+[node name="CampFolder" type="Node2D" parent="."]
+
+[node name="Camp" parent="CampFolder" instance=ExtResource("4_ldqof")]
+position = Vector2(825, -29)
+camp_dialogue = ExtResource("5_6rp7g")
+converse_target = "Spongebob"
+
+[node name="Floor" type="TileMapLayer" parent="."]
+position = Vector2(2, 4)
+tile_map_data = PackedByteArray("AAAAAAAACgAAAAAAAAABAAAACgAAAAAAAAACAAAACgAAAAAAAAADAAAACgAAAAAAAAAEAAAACgAAAAAAAAAFAAAACgAAAAAAAAAGAAAACgAAAAAAAAAHAAAACgAAAAAAAAAIAAAACgAAAAAAAAAJAAAACgAAAAAAAAAKAAAACgAAAAAAAAALAAAACgAAAAAAAAAQAAAACgAAAAAAAAARAAAACgAAAAAAAAASAAAACgAAAAAAAAAMAAAACgAAAAAAAAANAAAACgAAAAAAAAAOAAAACgAAAAAAAAAPAAAACgAAAAAAAAATAAAACgAAAAAAAAAUAAAACgAAAAAAAAAVAAAACgAAAAAAAAAWAAAACgAAAAAAAAAXAAAACgAAAAAAAAAYAAAACgAAAAAAAAAZAAAACgAAAAAAAAAaAAAACgAAAAAAAAAbAAAACgAAAAAAAAAcAAAACgAAAAAAAAAdAAAACgAAAAAAAAAAAPv/CgAAAAAAAAABAPv/CgAAAAAAAAACAPv/CgAAAAAAAAADAPv/CgAAAAAAAAAEAPv/CgAAAAAAAAAFAPv/CgAAAAAAAAAGAPv/CgAAAAAAAAAeAAAACgAAAAAAAAAfAAAACgAAAAAAAAAgAAAACgAAAAAAAAAhAAAACgAAAAAAAAAiAAAACgAAAAAAAAAjAAAACgAAAAAAAAAkAAAACgAAAAAAAAAlAAAACgAAAAAAAAAmAAAACgAAAAAAAAAnAAAACgAAAAAAAAAoAAAACgAAAAAAAAApAAAACgAAAAAAAAAqAAAACgAAAAAAAAArAAAACgAAAAAAAAAsAAAACgAAAAAAAAAtAAAACgAAAAAAAAAuAAAACgAAAAAAAAAHAPf/CgAAAAAAAAAPAPP/CgAAAAAAAAAQAPP/CgAAAAAAAAARAPP/CgAAAAAAAAASAPP/CgAAAAAAAAATAPP/CgAAAAAAAAAUAPP/CgAAAAAAAAAVAPP/CgAAAAAAAAAIAPf/CgAAAAAAAAAJAPf/CgAAAAAAAAAKAPf/CgAAAAAAAAALAPf/CgAAAAAAAAAMAPf/CgAAAAAAAAANAPf/CgAAAAAAAAA=")
+tile_set = ExtResource("6_qs6te")
+
+[node name="Player V2" parent="." instance=ExtResource("4_2dgmg")]
+position = Vector2(339, -71)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_eavfw")
