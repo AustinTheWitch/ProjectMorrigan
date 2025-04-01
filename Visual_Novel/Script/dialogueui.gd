@@ -1,9 +1,9 @@
 extends CanvasLayer
-@onready var speaker: TextureRect = $VN/Speaking/Speaker
-@onready var player: TextureRect = $VN/Player/Player
-@onready var speaking: Label = $VN/Content_Here/Content_Box/Speaker
-@onready var dialogue: RichTextLabel = $VN/Content_Here/Content_Box/Dialogue
-@onready var player_box: VBoxContainer = $VN/Content_Here/Player_Box
+@onready var speaker: TextureRect = $"VN/NPC Sprite [Right]/Sprite"
+@onready var player: TextureRect = $"VN/Player Sprite [Left]/Sprite"
+@onready var speaking: Label = $VN/Dialogue_Here/Content_Box/Speaker
+@onready var dialogue: RichTextLabel = $VN/Dialogue_Here/Content_Box/Dialogue
+@onready var player_box: VBoxContainer = $"VN/Dialogue_Here/Decision Box [Keep Empty]"
 var current_dialogue: Dialogue
 var current_line: int
 var on_last_line: bool

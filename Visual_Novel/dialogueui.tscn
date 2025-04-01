@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1g6mglub3s2d"]
+[gd_scene load_steps=4 format=3 uid="uid://1g6mglub3s2d"]
 
 [ext_resource type="Script" uid="uid://deoq3xf2flv47" path="res://Visual_Novel/Script/dialogueui.gd" id="1_xueeg"]
 [ext_resource type="Shader" uid="uid://3fkgqyr5r4l1" path="res://Visual_Novel/Art/Shaders/Blur.gdshader" id="2_7vnu1"]
-[ext_resource type="Texture2D" uid="uid://dvhl1benyd4bg" path="res://Deprecated/Art/Sprites/spongebob.png" id="2_sfdu4"]
-[ext_resource type="Texture2D" uid="uid://bt6p83j2w04o1" path="res://Deprecated/UserInterface/Art/UI_Texture.png" id="3_sbo75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8oow"]
 shader = ExtResource("2_7vnu1")
@@ -30,62 +28,58 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Speaking" type="HBoxContainer" parent="VN"]
+[node name="Player Sprite [Left]" type="HBoxContainer" parent="VN"]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 
-[node name="Speaker" type="TextureRect" parent="VN/Speaking"]
+[node name="Sprite" type="TextureRect" parent="VN/Player Sprite [Left]"]
 custom_minimum_size = Vector2(310, 648)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_sfdu4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Player" type="HBoxContainer" parent="VN"]
+[node name="NPC Sprite [Right]" type="HBoxContainer" parent="VN"]
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 2
 
-[node name="Player" type="TextureRect" parent="VN/Player"]
+[node name="Sprite" type="TextureRect" parent="VN/NPC Sprite [Right]"]
 custom_minimum_size = Vector2(310, 648)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_sfdu4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Content_Here" type="AspectRatioContainer" parent="VN"]
+[node name="Dialogue_Here" type="AspectRatioContainer" parent="VN"]
 layout_mode = 2
 mouse_filter = 2
 ratio = 5.0
 alignment_vertical = 2
 
-[node name="Panel" type="TextureRect" parent="VN/Content_Here"]
+[node name="Panel" type="ColorRect" parent="VN/Dialogue_Here"]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("3_sbo75")
-expand_mode = 2
-stretch_mode = 6
+color = Color(0, 0, 0, 0.529412)
 
-[node name="Content_Box" type="VBoxContainer" parent="VN/Content_Here"]
+[node name="Content_Box" type="VBoxContainer" parent="VN/Dialogue_Here"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Speaker" type="Label" parent="VN/Content_Here/Content_Box"]
+[node name="Speaker" type="Label" parent="VN/Dialogue_Here/Content_Box"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Speaker"
 
-[node name="Dialogue" type="RichTextLabel" parent="VN/Content_Here/Content_Box"]
+[node name="Dialogue" type="RichTextLabel" parent="VN/Dialogue_Here/Content_Box"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.63
 mouse_filter = 2
 text = "Dialogue"
 
-[node name="Player_Box" type="VBoxContainer" parent="VN/Content_Here"]
+[node name="Decision Box [Keep Empty]" type="VBoxContainer" parent="VN/Dialogue_Here"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8

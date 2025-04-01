@@ -11,15 +11,9 @@ config_version=5
 [application]
 
 config/name="WitchCraft"
-run/main_scene="res://Deprecated/Levels/BlockoutTest.tscn"
+run/main_scene="uid://dam360b65qaul"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Gamemanager="*res://Deprecated/Levels/Scripts/gamemanager.gd"
-Dialogueui="*res://Visual_Novel/dialogueui.tscn"
-Affinitysystem="*res://Visual_Novel/Script/affinitysystem.gd"
 
 [display]
 
@@ -96,8 +90,8 @@ Attack={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemy"
-2d_physics/layer_3="Boss"
+2d_physics/layer_2="Floor"
+2d_physics/layer_3="Wall"
 2d_physics/layer_4="Pickups"
 2d_physics/layer_5="Camp"
 2d_physics/layer_9="Floor"

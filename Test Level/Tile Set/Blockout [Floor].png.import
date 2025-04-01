@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca1fgxkiag7ck"
-path="res://.godot/imported/Blockout Floor Sheet.png-0bdce3106dc93c1a6d9006cf3bd317ac.ctex"
+uid="uid://md2sjh43x821"
+path="res://.godot/imported/Blockout [Floor].png-eced2bdbe060c81d844a097fc1e0a56e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Deprecated/Levels/Blockout/Blockout Floor Sheet.png"
-dest_files=["res://.godot/imported/Blockout Floor Sheet.png-0bdce3106dc93c1a6d9006cf3bd317ac.ctex"]
+source_file="res://Test Level/Tile Set/Blockout [Floor].png"
+dest_files=["res://.godot/imported/Blockout [Floor].png-eced2bdbe060c81d844a097fc1e0a56e.ctex"]
 
 [params]
 
