@@ -1,19 +1,34 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4afmkxu4ioj7"]
 
-[ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://yvnnaus5bbp7" path="res://Deprecated/Characters/Player/Art/PlayerSprite.png" id="2_4ntmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(120, 121)
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d")]
 collision_mask = 6
+platform_floor_layers = 4294901762
+platform_wall_layers = 4
 script = ExtResource("1_4ntmi")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_l8h54")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ntmi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_horizontal_offset = -0.3
+drag_vertical_offset = -0.9
+
+[node name="Blink" type="Timer" parent="."]
+
+[connection signal="timeout" from="Blink" to="." method="_on_blink_timeout"]
