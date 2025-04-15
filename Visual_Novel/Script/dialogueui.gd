@@ -1,10 +1,12 @@
-extends CanvasLayer
+extends user_interface
+#onready nodes
 @onready var speaker: TextureRect = $"VN/NPC Sprite [Right]/Sprite"
 @onready var player: TextureRect = $"VN/Player Sprite [Left]/Sprite"
 @onready var speaking: Label = $VN/Dialogue_Here/Content_Box/Speaker
 @onready var dialogue: RichTextLabel = $VN/Dialogue_Here/Content_Box/Dialogue
 @onready var player_box: VBoxContainer = $"VN/Dialogue_Here/Decision Box [Keep Empty]"
-var current_dialogue: Dialogue
+#dialogue variables
+var current_dialogue: vn_dialogue
 var current_line: int
 var on_last_line: bool
 var next_scene: Array
@@ -13,14 +15,13 @@ func _ready() -> void:
 	visible = false
 func _process(delta: float) -> void: 
 	pass 
-func conversation_start(conversation: Dialogue) -> void:
+func conversation_start(conversation: vn_dialogue) -> void:
 	if not is_instance_valid(conversation): return
 	get_tree().paused = true
 	current_dialogue = conversation
 	current_line = -1
 	visible = true
 	on_last_line = false
-	#Affinitysystem.character_affinity[current_dialogue.conversing_character] += current_dialogue.affinity_amount
 	for button in player_box.get_children():
 		button.queue_free()
 	next_scene = current_dialogue.scene_direction.keys()
@@ -47,7 +48,6 @@ func on_dialogue_option_advancement(id: int) -> void:
 func converstation_end():
 	visible = false
 	get_tree().paused = false
-	#print(Affinitysystem.character_affinity[current_dialogue.conversing_character])
 	for button in player_box.get_children():
 		button.queue_free()
 func dialogue_options():

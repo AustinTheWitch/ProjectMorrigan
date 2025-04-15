@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://1g6mglub3s2d"]
+[gd_scene load_steps=3 format=3 uid="uid://1g6mglub3s2d"]
 
-[ext_resource type="Script" uid="uid://deoq3xf2flv47" path="res://Visual_Novel/Script/dialogueui.gd" id="1_xueeg"]
 [ext_resource type="Shader" uid="uid://3fkgqyr5r4l1" path="res://Visual_Novel/Art/Shaders/Blur.gdshader" id="2_7vnu1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8oow"]
@@ -8,7 +7,6 @@ shader = ExtResource("2_7vnu1")
 
 [node name="Visual_Novel" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_xueeg")
 
 [node name="Depth" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_y8oow")

@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://yvnnaus5bbp7" path="res://Deprecated/Characters/Player/Art/PlayerSprite.png" id="2_4ntmi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l8h54"]
+load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fbe98f.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(120, 121)
@@ -16,7 +18,7 @@ collision_shape_2d = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_4ntmi")
+texture = SubResource("CompressedTexture2D_l8h54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ntmi")
