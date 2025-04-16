@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ku5uesydkp5"]
-
-[ext_resource type="Script" uid="uid://bckp3jqxtsog8" path="res://Debug/Projectile Test/projectile_debug.gd" id="1_yntjg"]
-
-[node name="Projectile Debug" type="Node2D"]
-script = ExtResource("1_yntjg")

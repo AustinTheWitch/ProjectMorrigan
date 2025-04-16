@@ -3,22 +3,18 @@ extends character
 #movement
 var direction: float
 var blink_distance: float = 150.0
-const GRAVITY: float = 980.0
 #blink
 @onready var blink: Timer = $Blink
 var blink_cooldown: float = 1.0
 var current_blink: int = 0
 var max_blink: int = 1
-#ward
-@onready var ward: Timer = $Ward
-var ward_up: bool
-var perfect_ward: bool
 
 func _ready() -> void:
 	speed = 170
 	health = 10
 func _physics_process(delta: float) -> void:
 	movement_system(delta)
+	gravity(delta)
 	move_and_slide()
 	warding()
 	if Input.is_action_just_pressed("ward"): perfect_warding()
@@ -38,7 +34,6 @@ func movement_system(delta: float)-> void:
 	#setting velocity
 	velocity.x = Input.get_axis("ui_left", "ui_right")
 	velocity = velocity.normalized() * speed
-	if not is_on_floor(): velocity.y += GRAVITY * delta
 	#setting blink
 	if Input.is_action_just_pressed("blink") and current_blink < max_blink:
 		if velocity.x == 0.0: velocity.x = blink_distance * (-direction * blink_distance)

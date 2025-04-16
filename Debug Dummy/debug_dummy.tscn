@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ku5uesydkp5"]
+
+[ext_resource type="Script" uid="uid://bckp3jqxtsog8" path="res://Debug Dummy/debug_dummy.gd" id="1_yntjg"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_lppdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7yo5"]
+size = Vector2(115, 117)
+
+[node name="debug_dummy" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d")]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_yntjg")
+animated_sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://ky2x88w01ehf"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lppdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y7yo5")

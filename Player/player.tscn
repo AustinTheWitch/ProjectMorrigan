@@ -8,13 +8,14 @@ load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fb
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(120, 121)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d", "ward")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
 script = ExtResource("1_4ntmi")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 collision_shape_2d = NodePath("CollisionShape2D")
+ward = NodePath("Ward")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)

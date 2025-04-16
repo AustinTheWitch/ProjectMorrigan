@@ -8,4 +8,10 @@ class_name character
 #stats
 var speed: float
 var health: int
-var damage: int
+#gravity
+const GRAVITY: float = 980.0
+func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY * delta
+#ward
+@export var ward: Timer
+var ward_up: bool
+var perfect_ward: bool

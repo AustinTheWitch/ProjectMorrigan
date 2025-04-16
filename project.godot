@@ -28,10 +28,6 @@ window/size/viewport_height=900
 
 project/assembly_name="WitchinPinkandBlue"
 
-[global_group]
-
-Enemy="Enemy Sprites"
-
 [input]
 
 ui_left={
@@ -93,6 +89,6 @@ ward={
 2d_physics/layer_2="Floor"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Projectile"
-2d_physics/layer_5="Layer 5"
+2d_physics/layer_5="Enemy"
 2d_physics/layer_9="Layer 9"
 2d_physics/layer_10="Layer 10"
