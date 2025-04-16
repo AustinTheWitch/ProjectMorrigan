@@ -33,4 +33,8 @@ drag_vertical_offset = -0.9
 
 [node name="Blink" type="Timer" parent="."]
 
+[node name="Ward" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Blink" to="." method="_on_blink_timeout"]
+[connection signal="timeout" from="Ward" to="." method="_on_ward_timeout"]

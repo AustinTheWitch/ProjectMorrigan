@@ -1,28 +1,32 @@
 extends RigidBody2D
 class_name projectile
 
-@export var player_ref: character
-
+#damage
 var damage: int
+#physics
 var direction: Vector2
 var falloff: float
 var force: float
+#ward
+var can_be_warded: bool
 
-func _ready() -> void: 
-	damage = 1
-	force = 100
-	falloff = 0.0
-	direction = Vector2(-1000, 0)
+func _process(delta: float) -> void: apply_central_force(direction)
+func initial_setup() -> void:
+	direction *= force
 	gravity_scale = falloff
-	pass
-
-func _process(delta: float) -> void: pro_motion()
-func pro_motion() -> void: apply_central_force(direction)
-
 func apply_damage(body) -> void:
-	body.health -= damage
+	if !can_be_warded: body.health = body.health - damage
+	else:
+		var incoming_damage
+		if body.perfect_ward: 
+			incoming_damage = 0
+			direction = -direction
+			return
+		elif body.ward_up: incoming_damage = damage / 2
+		else: incoming_damage = damage
+		body.health = body.health - incoming_damage
+		print(incoming_damage)
 	queue_free()
-
 func _on_body_entered(body: Node) -> void:
 	print(body)
 	if body is character: apply_damage(body)

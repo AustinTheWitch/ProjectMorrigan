@@ -18,6 +18,6 @@ tile_map_data = PackedByteArray("AAD+//7/AgAAAAAAAAD+////AgAAAAEAAAD///7/AgABAAA
 tile_set = ExtResource("2_npaiv")
 
 [node name="Projectile Debug" parent="." node_paths=PackedStringArray("level_base", "player_ref") instance=ExtResource("3_npaiv")]
-position = Vector2(585, -55)
+position = Vector2(808, -55)
 level_base = NodePath("..")
 player_ref = NodePath("../Player")
