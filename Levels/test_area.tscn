@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://dam360b65qaul"]
 
 [ext_resource type="PackedScene" uid="uid://b4afmkxu4ioj7" path="res://Player/player.tscn" id="1_k14yu"]
-[ext_resource type="TileSet" uid="uid://bd7e7aarsg0yl" path="res://Test Level/Tile Set/test_level.tres" id="2_npaiv"]
-[ext_resource type="PackedScene" uid="uid://c5ku5uesydkp5" path="res://Debug Dummy/debug_dummy.tscn" id="3_npaiv"]
+[ext_resource type="TileSet" uid="uid://bd7e7aarsg0yl" path="res://Levels/Tile Set/test_level.tres" id="2_npaiv"]
+[ext_resource type="PackedScene" uid="uid://c5ku5uesydkp5" path="res://Dummy/debug_dummy.tscn" id="3_npaiv"]
 
 [node name="Test Area" type="Node2D"]
 

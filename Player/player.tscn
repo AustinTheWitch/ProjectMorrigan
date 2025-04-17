@@ -40,7 +40,8 @@ drag_vertical_offset = -0.9
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
+position = Vector2(0, -0.725)
+target_position = Vector2(75, 0)
 collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true

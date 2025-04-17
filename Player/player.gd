@@ -64,6 +64,7 @@ func perfect_warding() -> void:
 	perfect_ward = true
 	ward.start(0.5)
 func _on_ward_timeout() -> void: perfect_ward = false
+
 func attack_startup() -> void:
 	melee = ray_cast_2d.is_colliding()
 	heavy = false
@@ -78,4 +79,3 @@ func attack_end() -> void:
 	else: print(str(melee) + " light attack" + str(current_combo))
 func _on_combo_timeout() -> void: 
 	current_combo = 0
-	
