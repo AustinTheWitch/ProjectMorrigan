@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name projectile
 
 #damage
-var damage: int
+var damage: float
 #physics
 var direction: Vector2
 var falloff: float
@@ -22,7 +22,7 @@ func apply_damage(body) -> void:
 			incoming_damage = 0
 			direction = -direction
 			return
-		elif body.ward_up: incoming_damage = damage / 2
+		elif body.ward_up: incoming_damage = damage / 2.0
 		else: incoming_damage = damage
 		body.health = body.health - incoming_damage
 		print(incoming_damage)
