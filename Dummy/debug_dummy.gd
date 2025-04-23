@@ -8,7 +8,7 @@ var direction: Vector2
 func _ready() -> void:
 	health = 10
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Debug"): spawn_projectile()
+	if Input.is_action_just_pressed("Debug"): pass #spawn_projectile()
 func spawn_projectile() -> void:
 	#direction
 	direction = position.direction_to(player_ref.position)

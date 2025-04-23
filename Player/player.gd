@@ -10,7 +10,7 @@ var blink_cooldown: float = 1.0
 var current_blink: int = 0
 var max_blink: int = 1
 #weapon attack
-@onready var weapon_base: weapon = $Weapon
+@onready var weapon_base: Node2D = $"Weapon Base"
 
 
 func _ready() -> void:

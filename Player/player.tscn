@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=6 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Testing/weapon.tscn" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://b80wixupaqu2f" path="res://Testing/player_weapon.gd" id="3_btcbx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l8h54"]
 load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fbe98f.ctex"
@@ -39,6 +40,7 @@ drag_vertical_offset = -0.9
 one_shot = true
 
 [node name="Weapon Base" parent="." instance=ExtResource("2_4ntmi")]
+script = ExtResource("3_btcbx")
 
 [connection signal="timeout" from="Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Ward" to="." method="_on_ward_timeout"]
