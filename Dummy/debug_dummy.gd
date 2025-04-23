@@ -1,5 +1,5 @@
 extends character
-@onready var p =  preload("res://Projectile/test_one/test_one.tscn")
+@onready var p =  preload("res://Projectile/projectile.tscn")
 @export var level_base: Node2D
 @export var player_ref: character
 var direction: Vector2

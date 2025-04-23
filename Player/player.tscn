@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=5 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Testing/weapon.tscn" id="2_4ntmi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l8h54"]
 load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fbe98f.ctex"
@@ -8,7 +9,7 @@ load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fb
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(120, 121)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d", "ward", "ray_cast_2d", "windup")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d", "ward")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
@@ -16,8 +17,6 @@ script = ExtResource("1_4ntmi")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 collision_shape_2d = NodePath("CollisionShape2D")
 ward = NodePath("Ward")
-ray_cast_2d = NodePath("RayCast2D")
-windup = NodePath("Windup")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
@@ -39,20 +38,7 @@ drag_vertical_offset = -0.9
 [node name="Ward" type="Timer" parent="."]
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -0.725)
-target_position = Vector2(75, 0)
-collision_mask = 16
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="Windup" type="Timer" parent="."]
-one_shot = true
-
-[node name="Combo" type="Timer" parent="."]
-one_shot = true
+[node name="Weapon Base" parent="." instance=ExtResource("2_4ntmi")]
 
 [connection signal="timeout" from="Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Ward" to="." method="_on_ward_timeout"]
-[connection signal="timeout" from="Windup" to="." method="_on_attack_timeout"]
-[connection signal="timeout" from="Combo" to="." method="_on_combo_timeout"]

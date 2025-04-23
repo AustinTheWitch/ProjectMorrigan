@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4ifi4jmomryx"]
+[gd_scene load_steps=3 format=3 uid="uid://c4ifi4jmomryx"]
 
-[ext_resource type="Script" uid="uid://dxdtuhdwo21m6" path="res://Projectile/test_one/test_one.gd" id="1_ne7lw"]
-[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_nk2vx"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_08sw2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
 
@@ -11,13 +10,14 @@ collision_mask = 7
 contact_monitor = true
 max_contacts_reported = 1
 constant_force = Vector2(0.335, 0)
-script = ExtResource("1_ne7lw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.167969, 0.166016)
-texture = ExtResource("2_nk2vx")
+texture = ExtResource("1_08sw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qxf0c")
+
+[node name="Projectile Type" type="Node" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
