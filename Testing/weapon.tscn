@@ -4,19 +4,19 @@
 
 [node name="Weapon Base" type="Node2D"]
 
-[node name="Weapon_Type" type="Node" parent="."]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vf64v")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
+target_position = Vector2(-78, 0)
 collision_mask = 16
 hit_from_inside = true
 
 [node name="Combo" type="Timer" parent="."]
 
 [node name="Windup" type="Timer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Combo" to="." method="_on_combo_timeout"]
 [connection signal="timeout" from="Windup" to="." method="_on_windup_timeout"]

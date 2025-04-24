@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4ifi4jmomryx"]
+[gd_scene load_steps=4 format=3 uid="uid://c4ifi4jmomryx"]
 
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_08sw2"]
+[ext_resource type="Script" uid="uid://dxdtuhdwo21m6" path="res://Projectile/Type/test_one.gd" id="1_tm405"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
 
 [node name="Projectile" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 6
 contact_monitor = true
 max_contacts_reported = 1
 constant_force = Vector2(0.335, 0)
+script = ExtResource("1_tm405")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.167969, 0.166016)

@@ -17,6 +17,10 @@ var cur_combo: int = -1
 var combo_limit: int = 4
 #animated sprite
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+#range attack
+@onready var node_2d: Node2D = $Node2D
+@onready var p =  preload("res://Projectile/projectile.tscn")
+
 
 func attack_startup() -> void:
 	melee = ray_cast_2d.is_colliding()
@@ -51,3 +55,19 @@ func attack_finish(atk_id: String) -> void:
 		print("ATTACK MISS")
 		cur_combo = 0
 func _on_combo_timeout() -> void: cur_combo = -1
+func range_attack() -> void: 
+	#direction
+	var direction = position.direction_to(ray_cast_2d.target_position)
+	#instantiate
+	var new_p = p.instantiate()
+	new_p.direction = direction.normalized()
+	new_p.position = ray_cast_2d.target_position
+	add_child(new_p) #change this after testing to spawn on level
+	print(new_p.direction)
+func set_mask() -> int:
+	if get_parent() is player: 
+		print("player?")
+		return 5
+	else: 
+		print("enemy?")
+		return 1

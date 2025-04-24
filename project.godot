@@ -15,10 +15,6 @@ run/main_scene="uid://dam360b65qaul"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Character="*res://Systems/character.gd"
-
 [display]
 
 window/size/viewport_width=1600

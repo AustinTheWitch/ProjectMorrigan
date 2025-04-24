@@ -15,9 +15,3 @@ func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY 
 @export var ward: Timer
 var ward_up: bool
 var perfect_ward: bool
-#raycast
-@export var ray_cast_2d: RayCast2D
-#melee / attack
-var melee_range: float
-@export var windup: Timer
-var heavy: bool

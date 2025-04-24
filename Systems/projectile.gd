@@ -21,6 +21,8 @@ func apply_damage(body) -> void:
 		if body.perfect_ward: 
 			incoming_damage = 0
 			direction = -direction
+			set_collision_mask_value(1, true)
+			set_collision_mask_value(5, true)
 			return
 		elif body.ward_up: incoming_damage = damage / 2.0
 		else: incoming_damage = damage
