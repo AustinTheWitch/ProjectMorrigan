@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WEAPON" load_steps=3 format=3 uid="uid://cgjs7uej7uh71"]
 
-[ext_resource type="Script" uid="uid://r2setaumny8f" path="res://Testing/weapon_resource.gd" id="1_t6ahh"]
+[ext_resource type="Script" uid="uid://r2setaumny8f" path="res://Systems/weapon_resource.gd" id="1_t6ahh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6ahh"]
 

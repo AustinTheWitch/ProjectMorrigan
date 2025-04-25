@@ -1,9 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4ifi4jmomryx"]
+[gd_scene load_steps=5 format=3 uid="uid://c4ifi4jmomryx"]
 
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_08sw2"]
-[ext_resource type="Script" uid="uid://dxdtuhdwo21m6" path="res://Projectile/Type/test_one.gd" id="1_tm405"]
+[ext_resource type="Script" uid="uid://c5k1wrrm2hh1i" path="res://Systems/projectile.gd" id="1_tm405"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_08sw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_08sw2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tm405"]
 
 [node name="Projectile" type="RigidBody2D"]
 collision_layer = 8
@@ -12,14 +23,22 @@ contact_monitor = true
 max_contacts_reported = 1
 constant_force = Vector2(0.335, 0)
 script = ExtResource("1_tm405")
+metadata/_custom_type_script = "uid://c5k1wrrm2hh1i"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.167969, 0.166016)
-texture = ExtResource("1_08sw2")
+sprite_frames = SubResource("SpriteFrames_08sw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qxf0c")
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_tm405")
 
 [node name="Projectile Type" type="Node" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
