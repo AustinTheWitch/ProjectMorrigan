@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd7pvxebqq15t"]
+
+[ext_resource type="Script" uid="uid://n6mhial5tlno" path="res://Testing/ui_game.gd" id="1_2cg7b"]
+
+[node name="Game UI" type="CanvasLayer"]
+script = ExtResource("1_2cg7b")
+
+[node name="Health" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.00125
+anchor_top = 0.955556
+anchor_right = 0.1225
+anchor_bottom = 0.997778
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Health"]
+layout_mode = 2
+size_flags_vertical = 3
+show_percentage = false

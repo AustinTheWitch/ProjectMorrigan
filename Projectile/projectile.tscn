@@ -30,7 +30,6 @@ scale = Vector2(0.167969, 0.166016)
 sprite_frames = SubResource("SpriteFrames_08sw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_tm405")
 
 [node name="Projectile Type" type="Node" parent="."]

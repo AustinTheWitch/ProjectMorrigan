@@ -12,10 +12,10 @@ var max_blink: int = 1
 #weapon attack
 @onready var weapon_base: Node2D = $"Weapon Base"
 
-
 func _ready() -> void:
-	speed = 170
-	health = 10
+	signal_connections()
+	player_stats()
+	damage_taken.emit(current_health, max_health)
 func _physics_process(delta: float) -> void:
 	movement_system(delta)
 	gravity(delta)
@@ -53,3 +53,7 @@ func perfect_warding() -> void:
 	perfect_ward = true
 	ward.start(0.5)
 func _on_ward_timeout() -> void: perfect_ward = false
+func player_stats() -> void:
+	speed = 170
+	current_health = 10
+	max_health = 10

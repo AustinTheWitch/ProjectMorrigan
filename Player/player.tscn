@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=7 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Weapon/weapon.tscn" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://b80wixupaqu2f" path="res://Player/Scripts/player_weapon.gd" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://Testing/Game_UI.tscn" id="4_gwnis"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l8h54"]
 load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fbe98f.ctex"
@@ -10,7 +11,7 @@ load_path = "res://.godot/imported/PlayerSprite.png-31e2375daedc9f78e55a7ffc07fb
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ntmi"]
 size = Vector2(120, 121)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d", "ward")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collision_shape_2d", "ward", "ui")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
@@ -18,6 +19,7 @@ script = ExtResource("1_4ntmi")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 collision_shape_2d = NodePath("CollisionShape2D")
 ward = NodePath("Ward")
+ui = NodePath("Game UI")
 metadata/_custom_type_script = "uid://bf2vyimpd3nff"
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
@@ -42,6 +44,9 @@ one_shot = true
 
 [node name="Weapon Base" parent="." instance=ExtResource("2_4ntmi")]
 script = ExtResource("3_btcbx")
+
+[node name="Game UI" parent="." node_paths=PackedStringArray("character_scene") instance=ExtResource("4_gwnis")]
+character_scene = NodePath("..")
 
 [connection signal="timeout" from="Blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="Ward" to="." method="_on_ward_timeout"]

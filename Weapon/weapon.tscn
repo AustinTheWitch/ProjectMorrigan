@@ -4,6 +4,8 @@
 
 [node name="Weapon Base" type="Node2D"]
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vf64v")
 
@@ -17,8 +19,6 @@ one_shot = true
 
 [node name="Windup" type="Timer" parent="."]
 one_shot = true
-
-[node name="Node2D" type="Node2D" parent="."]
 
 [node name="Debug" type="Timer" parent="."]
 one_shot = true

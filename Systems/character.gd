@@ -7,7 +7,8 @@ class_name character
 
 #stats
 var speed: float
-var health: int
+var current_health: int
+var max_health: int
 #gravity
 const GRAVITY: float = 980.0
 func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY * delta
@@ -15,3 +16,9 @@ func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY 
 @export var ward: Timer
 var ward_up: bool
 var perfect_ward: bool
+#damage taken signal
+signal damage_taken
+#base ui
+@export var ui: base_ui
+func signal_connections() -> void: 
+	damage_taken.connect(ui.update_healthbar)

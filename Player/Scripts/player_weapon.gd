@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("weapon"): 
 		if melee: attack_finish(attack_string(heavy_atk, weapn_atk))
 		else: ranged_attack()
-
 func active_wpn() -> void:
 	if cur_weapon == 0: return
 	elif cur_weapon == 1:
