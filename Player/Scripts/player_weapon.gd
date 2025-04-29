@@ -1,27 +1,21 @@
 extends weapon_base
-
-var staff_weapon: WEAPON
-var cur_weapon = 0
-var debug_toggle: bool
+#preload section
+var staff_weapon: WEAPON = preload("res://Weapon/Types/staff.tres")
+#weapon selection / loadout
+var current_wpn = 0
+var weapon_loadout: Array[WEAPON] = [staff_weapon, staff_weapon, staff_weapon]
 func _ready() -> void: 
 	ray_cast_2d.set_collision_mask_value(set_mask(), true)
+	set_weapon(weapon_loadout.get(current_wpn))
 func _process(delta: float) -> void:
-	ray_cast_2d.target_position.x = get_parent().direction * reach
-	node_2d.position.x *= get_parent().direction
-	if Input.is_action_just_pressed("Debug"): 
-		debug_toggle = !debug_toggle
-		cur_weapon = int(debug_toggle)
-		active_wpn()
+	ray_cast_2d.target_position.x = get_parent().direction * weapn_reach
 	if Input.is_action_just_pressed("weapon"): attack_startup()
 	if Input.is_action_just_released("weapon"): 
-		if melee: attack_finish(attack_string(heavy_atk, weapn_atk))
-		else: ranged_attack()
-func active_wpn() -> void:
-	if cur_weapon == 0: return
-	elif cur_weapon == 1:
-		print("weapon found")
-		staff_weapon = preload("res://Weapon/Types/staff.tres")
-		damage = staff_weapon.wpn_damage
-		reach = staff_weapon.wpn_reach
-		animated_sprite_2d.sprite_frames = staff_weapon.wpn_spriteframes
-		weapn_atk = staff_weapon.wpn_id
+		if melee: attack_finish(attack_string(heavy_atk, weapn_name))
+		else: pass #ranged_attack()
+	weapon_swap()
+func weapon_swap(): 
+	if Input.is_action_just_pressed("Debug"): 
+		if current_wpn >= 2: current_wpn = 0
+		else: current_wpn += 1
+		set_weapon(weapon_loadout.get(current_wpn))

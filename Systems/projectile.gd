@@ -14,7 +14,6 @@ var attack_id: String
 #despawn time
 @onready var timer: Timer = $Timer
 #load resource
-@export var projectile_type: PROJECTILE
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
@@ -44,10 +43,4 @@ func _on_body_entered(body: Node) -> void:
 	if body is character: apply_damage(body)
 	else: queue_free()
 func _on_timer_timeout() -> void: queue_free()
-func setup_projectile() -> void:
-	attack_id = projectile_type.projectile_id
-	sprite_2d.sprite_frames = projectile_type.projectile_frames
-	damage = projectile_type.projectile_damage.get(attack_id)
-	force = projectile_type.projectile_force
-	falloff = projectile_type.projectile_falloff
-	can_be_warded = projectile_type.ward_check
+func setup_projectile(prt_type: PROJECTILE) -> void: pass

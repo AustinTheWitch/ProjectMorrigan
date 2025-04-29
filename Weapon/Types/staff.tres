@@ -8,10 +8,13 @@
 script = ExtResource("1_t6ahh")
 wpn_id = "staff"
 wpn_spriteframes = SubResource("SpriteFrames_t6ahh")
-wpn_damage = Dictionary[String, float]({
-"heavystaff0": 20.0,
-"lightstaff0": 10.0,
-"lightstaff1": 12.0
+damage_dict = Dictionary[String, float]({
+"falselightstaff1": 1.0,
+"falselightstaff2": 1.0,
+"falselightstaff3": 2.0,
+"falselightstaff4": 2.0,
+"truelightstaff1": 2.0
 })
 wpn_reach = 75.0
+wpn_speed = 0.5
 metadata/_custom_type_script = "uid://r2setaumny8f"
