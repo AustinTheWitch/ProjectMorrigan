@@ -1,82 +1,114 @@
 extends Node2D
 class_name weapon_base
 
-#damage values per attack
-var damage: Dictionary[String, float]
-#range detection
+#exports
+@export var wpn_holder: character
+@export var wpn_resource: WEAPON
+#on ready variables
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-var melee: bool
+@onready var area_2d: Area2D = $Sprite2D/Area2D
+#weapon data
+var damage: Dictionary[String, float]
 var weapn_reach: float
-#weapon and attack type
+var weapn_speed: float
+var projectile_resource: PROJECTILE
+var can_be_warded: bool
+#boolean to state if weapon is melee or ranged | player determines this by proximity to enemy automatically
+var melee_weapon: bool
+#heavy attack
 @onready var windup: Timer = $Windup
 var heavy_atk: bool
-var weapn_name: String
-#combo
-@onready var debug: Timer = $Debug
-@onready var combo: Timer = $Combo
-var cur_combo: int = -1
-var combo_limit: int = 4
-var weapn_speed: float
-#animated sprite
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-#range attack
-#@onready var p =  preload("res://Projectile/projectile.tscn")
-#var p_type: PROJECTILE
-
+#attack string
+@onready var attack_reset: Timer = $"Attack Reset"
+var attack_string: int = 0
+var attack_limit: int = 3
+func _ready() -> void:
+	ray_cast_2d.set_collision_mask_value(set_mask(), true)
+	set_weapon(wpn_resource)
 #detection function
 func set_mask() -> int:
 	if get_parent() is player: return 5
-	else: return 1
+	elif get_parent() is enemy: return 1
+	else: return 0
 func set_weapon(wpn_resource: WEAPON):
-	weapn_name = wpn_resource.wpn_id
-	animated_sprite_2d.sprite_frames = wpn_resource.wpn_spriteframes
+	#animated_sprite_2d.sprite_frames = wpn_resource.wpn_spriteframes
 	weapn_speed = wpn_resource.wpn_speed
 	weapn_reach = wpn_resource.wpn_reach
 	damage = wpn_resource.damage_dict
-func attack_startup() -> void:
-	melee = ray_cast_2d.is_colliding()
-	heavy_atk = false
-	windup.start(0.4)
-	if cur_combo >= combo_limit: cur_combo = 0
-	else: cur_combo += 1
-	debug.start(weapn_speed)
-func _on_windup_timeout() -> void: heavy_atk = true
-func attack_string(heavy_check: bool, wpn_id: String) -> String: 
-	#check attack type
-	var atk_type: String
-	if heavy_check: atk_type = "heavy"
-	else: atk_type = "light"
-	#set attack string | melee prefix = true / ranged prefix = false
-	#example - truelightstaff2 = melee attack, light attack, staff wpn, second attack in combo
-	var attack = str(melee) + atk_type + wpn_id + str(cur_combo)
-	return attack
-func melee_attack(atk_id) -> float:
-	if damage.has(atk_id): 
-		print(atk_id + " does " + str(damage.get(atk_id)) + " damage")
-		return damage.get(atk_id)
-	else:
-		print("ATTACK DOES NOT EXIST" + " " + atk_id)
-		return 0.0
-#func ranged_attack() -> void:
-	##direction
-	#var direction = position.direction_to(ray_cast_2d.target_position)
-	##instantiate
-	#var new_p = p.instantiate()
-	#new_p.position = ray_cast_2d.target_position
-	#new_p.direction = direction.normalized()
-	#new_p.set_collision_mask_value(set_mask(), true)
-	#add_child(new_p) #change this after testing to spawn on level
-func attack_finish(atk_id: String) -> void: 
-	#input attack string
-	#play attack string anim
-	if !animated_sprite_2d.sprite_frames.has_animation(atk_id): print("NO ANIM FOUND")
-	else: animated_sprite_2d.play(atk_id)
-	#apply attack string damage on anim signal
-	if animated_sprite_2d.animation_finished and ray_cast_2d.is_colliding(): 
-		print("ATTACK HIT")
-		combo.start(1.0)
-		melee_attack(atk_id)
-	else:
-		print("ATTACK MISS")
-		cur_combo = 0
-func _on_combo_timeout() -> void: cur_combo = 0
+	projectile_resource = wpn_resource.projectile_resource
+	if wpn_holder is not player: melee_weapon = wpn_resource.wpn_type
+	can_be_warded = wpn_resource.can_be_warded
+func attack_id(atk_type: bool, atk_weight: bool, atk_number: int) -> String:
+	var atk_id: String
+	#check type
+	if atk_type: atk_id += "melee"
+	else: atk_id += "ranged"
+	#check weight
+	if atk_weight: atk_id += "heavy"
+	else: atk_id += "light"
+	#pull number in atk string
+	#atk_id += str(atk_number)
+	print(atk_id)
+	return atk_id
+func attack_startup(atk_id: String) -> float:
+	#emit attacking signal and start attack anim
+	#wpn_holder.emit("attacking")
+	#if !wpn_holder.animation_player.get_animation_list().has(atk_id): print("NO ATTACK ANIM FOUND")
+	#else: wpn_holder.animation_player.play(atk_id)
+	#set damage for attack
+	var atk_damage: float
+	if damage.has(atk_id): atk_damage = damage.get(atk_id)
+	else: atk_damage = 0.0
+	return atk_damage
+func attack_finish(atk_type: bool, atk_damage: float) -> void:
+	if atk_type: melee(atk_damage)
+	else: ranged(atk_damage)
+func melee(atk_damage: float) -> void:
+	area_2d.set_collision_mask_value(set_mask(), true)
+	await wpn_holder.animation_player.animation_finished
+	area_2d.set_collision_mask_value(set_mask(), false)
+	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is character: pass
+
+func ranged(atk_damage: float): pass
+
+#func attack_startup() -> void:
+	#melee = ray_cast_2d.is_colliding()
+	#heavy_atk = false
+	#windup.start(0.4)
+	#if cur_combo >= combo_limit: cur_combo = 0
+	#else: cur_combo += 1
+	#debug.start(weapn_speed)
+#func _on_windup_timeout() -> void: heavy_atk = true
+#func _on_combo_timeout() -> void: cur_combo = 0
+#func attack_string(atk_weight: bool, atk_type: bool, hit_num: int) -> String: 
+	#var atk_string: String
+	##check attack weight
+	#if !atk_weight: atk_string += "light"
+	#else: atk_string += "heavy"
+	##check attack type
+	#if atk_type: atk_string += "melee"
+	#else: atk_string += "ranged"
+	##atk_string += wpn_id + str(hit_num)
+	#return atk_string #attack id for anims and damage checks
+	#print(atk_string)
+#func attack_intermission(atk_id: String) -> void:
+	##checking atk string
+	##wpn_holder.emit("attacking")
+	#if atk_id.contains("melee"): melee_finish(atk_id)
+	#else: print("ranged attack") #spawn weapon's projectile
+#func melee_finish(atk_id) -> void:
+	##play attack string anim
+	#if !animated_sprite_2d.sprite_frames.has_animation(atk_id): print("NO ANIM FOUND")
+	#else: animated_sprite_2d.play(atk_id)
+	##await animated_sprite_2d.animation_finished
+	#var atk_damage: float
+	#if damage.has(atk_id): atk_damage = damage.get(atk_id)
+	#else: 
+		#atk_damage = 0.0
+		#print("ATTACK DOES NOT EXIST")
+	#apply_damage(atk_damage)
+#func apply_damage(atk_damage: float) -> void: 
+	#if ray_cast_2d.is_colliding(): print("ATTACK HIT: " + str(atk_damage) + " damage")
+	#else: print("ATTACK MISSED: 0.0 damage")

@@ -9,8 +9,6 @@ var blink_distance: float = 150.0
 var blink_cooldown: float = 1.0
 var current_blink: int = 0
 var max_blink: int = 1
-#weapon attack
-@onready var weapon_base: Node2D = $"Weapon Base"
 
 func _ready() -> void:
 	signal_connections()
@@ -31,10 +29,8 @@ func movement_system(delta: float)-> void:
 	#setting direction
 	if Input.is_action_just_pressed("ui_right"):
 		direction = 1
-		animated_sprite_2d.flip_h = false
 	elif Input.is_action_just_pressed("ui_left"):
 		direction = -1
-		animated_sprite_2d.flip_h = true
 	#setting velocity
 	velocity.x = Input.get_axis("ui_left", "ui_right")
 	velocity = velocity.normalized() * speed

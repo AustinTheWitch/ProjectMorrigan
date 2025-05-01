@@ -1,25 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyowlte22ay3a"]
+[gd_scene load_steps=3 format=3 uid="uid://dyowlte22ay3a"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vf64v"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_lfpbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4447s"]
+size = Vector2(139.636, 92.2993)
 
 [node name="Weapon Base" type="Node2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vf64v")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-78, 0)
 collision_mask = 16
 hit_from_inside = true
 
-[node name="Combo" type="Timer" parent="."]
+[node name="Attack Reset" type="Timer" parent="."]
 one_shot = true
 
 [node name="Windup" type="Timer" parent="."]
 one_shot = true
 
-[node name="Debug" type="Timer" parent="."]
-one_shot = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0859375, 0.574219)
+texture = ExtResource("1_lfpbp")
 
-[connection signal="timeout" from="Combo" to="." method="_on_combo_timeout"]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, -18.2857)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_4447s")
+
+[connection signal="timeout" from="Attack Reset" to="." method="_on_combo_timeout"]
 [connection signal="timeout" from="Windup" to="." method="_on_windup_timeout"]
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

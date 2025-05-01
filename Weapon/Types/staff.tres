@@ -6,7 +6,6 @@
 
 [resource]
 script = ExtResource("1_t6ahh")
-wpn_id = "staff"
 wpn_spriteframes = SubResource("SpriteFrames_t6ahh")
 damage_dict = Dictionary[String, float]({
 "falselightstaff1": 1.0,
@@ -17,4 +16,6 @@ damage_dict = Dictionary[String, float]({
 })
 wpn_reach = 75.0
 wpn_speed = 0.5
+wpn_type = false
+can_be_warded = false
 metadata/_custom_type_script = "uid://r2setaumny8f"

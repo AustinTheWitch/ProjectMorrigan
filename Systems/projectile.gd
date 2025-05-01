@@ -16,7 +16,8 @@ var attack_id: String
 #load resource
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+@export var projectile_data: PROJECTILE
+func _ready() -> void: setup_projectile(projectile_data)
 func _process(delta: float) -> void: apply_central_force(direction)
 func initial_setup() -> void:
 	direction *= force
@@ -43,4 +44,5 @@ func _on_body_entered(body: Node) -> void:
 	if body is character: apply_damage(body)
 	else: queue_free()
 func _on_timer_timeout() -> void: queue_free()
-func setup_projectile(prt_type: PROJECTILE) -> void: pass
+func setup_projectile(prt_type: PROJECTILE) -> void:
+	falloff = prt_type.falloff

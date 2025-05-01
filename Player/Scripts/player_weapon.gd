@@ -9,10 +9,9 @@ func _ready() -> void:
 	set_weapon(weapon_loadout.get(current_wpn))
 func _process(delta: float) -> void:
 	ray_cast_2d.target_position.x = get_parent().direction * weapn_reach
-	if Input.is_action_just_pressed("weapon"): attack_startup()
-	if Input.is_action_just_released("weapon"): 
-		if melee: attack_finish(attack_string(heavy_atk, weapn_name))
-		else: pass #ranged_attack()
+	melee_weapon = ray_cast_2d.is_colliding()
+	if Input.is_action_just_pressed("weapon"): attack_startup(attack_id(melee_weapon, heavy_atk, attack_string)) 
+	if Input.is_action_just_released("weapon"): pass
 	weapon_swap()
 func weapon_swap(): 
 	if Input.is_action_just_pressed("Debug"): 
