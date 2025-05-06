@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Weapon/weapon.tscn" id="2_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
+[ext_resource type="Script" uid="uid://dauedfmijod0i" path="res://Player/Scripts/player_states.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://b80wixupaqu2f" path="res://Player/Scripts/player_weapon.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Player/Scripts/States/player_idle.gd" id="4_00tjw"]
-[ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://Player/UI/Game_UI.tscn" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://Testing/Game_UI.tscn" id="4_gwnis"]
 [ext_resource type="Resource" uid="uid://cgjs7uej7uh71" path="res://Weapon/Types/staff.tres" id="4_k53q1"]
 [ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Player/Scripts/States/player_run.gd" id="4_x3vf3"]
-[ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Player/Scripts/States/player_fall.gd" id="5_x3vf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(350, 867)
@@ -128,6 +128,9 @@ metadata/_custom_type_script = "uid://bf2vyimpd3nff"
 script = ExtResource("2_x3vf3")
 start_state = NodePath("idle")
 
+[node name="state" type="Node" parent="state_machine"]
+script = ExtResource("3_apopc")
+
 [node name="idle" type="Node" parent="state_machine"]
 script = ExtResource("4_00tjw")
 
@@ -135,7 +138,6 @@ script = ExtResource("4_00tjw")
 script = ExtResource("4_x3vf3")
 
 [node name="fall" type="Node" parent="state_machine"]
-script = ExtResource("5_x3vf3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24.8, -20.5)

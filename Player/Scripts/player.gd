@@ -15,36 +15,32 @@ func _ready() -> void:
 	player_stats()
 	damage_taken.emit(current_health, max_health)
 func _physics_process(delta: float) -> void:
-	movement_system(delta)
 	gravity(delta)
-	move_and_slide()
-	warding()
-	if Input.is_action_just_pressed("ward"): perfect_warding()
-	if Input.is_action_just_pressed("Debug"): pass
-func movement_system(delta: float)-> void:
-	#ward prevents movement? if so, place before this
-	if ward_up: 
-		velocity.x = 0.0
-		return
 	#setting direction
 	if Input.is_action_just_pressed("ui_right"):
 		direction = 1
 	elif Input.is_action_just_pressed("ui_left"):
 		direction = -1
-	#setting velocity
-	velocity.x = Input.get_axis("ui_left", "ui_right")
-	velocity = velocity.normalized() * speed
-	#setting blink
-	if Input.is_action_just_pressed("blink") and current_blink < max_blink:
-		if velocity.x == 0.0: velocity.x = blink_distance * (-direction * blink_distance)
-		else: velocity.x = blink_distance * velocity.x
-		current_blink += 1
-		blink.start(blink_cooldown)
+	move_and_slide()
+
+#func movement_system(delta: float)-> void:
+	##setting velocity
+	#velocity.x = Input.get_axis("ui_left", "ui_right")
+	#velocity = velocity.normalized() * speed
+	#animation_player.play("walking")
+	##setting blink
+	#if Input.is_action_just_pressed("blink") and current_blink < max_blink:
+		#if velocity.x == 0.0: velocity.x = blink_distance * (-direction * blink_distance)
+		#else: velocity.x = blink_distance * velocity.x
+		#current_blink += 1
+		#blink.start(blink_cooldown)
 func _on_blink_timeout() -> void:
 	current_blink -= 1
 	blink.stop()
-func warding() -> void: 
+func warding() -> bool: 
 	ward_up = Input.is_action_pressed("ward")
+	animation_player.play("idle")
+	return ward_up
 func perfect_warding() -> void: 
 	perfect_ward = true
 	ward.start(0.5)

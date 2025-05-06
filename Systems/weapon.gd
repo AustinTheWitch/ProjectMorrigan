@@ -31,7 +31,6 @@ func set_mask() -> int:
 	elif get_parent() is enemy: return 1
 	else: return 0
 func set_weapon(wpn_resource: WEAPON):
-	#animated_sprite_2d.sprite_frames = wpn_resource.wpn_spriteframes
 	weapn_speed = wpn_resource.wpn_speed
 	weapn_reach = wpn_resource.wpn_reach
 	damage = wpn_resource.damage_dict
@@ -40,12 +39,12 @@ func set_weapon(wpn_resource: WEAPON):
 	can_be_warded = wpn_resource.can_be_warded
 func attack_id(atk_type: bool, atk_weight: bool, atk_number: int) -> String:
 	var atk_id: String
-	#check type
-	if atk_type: atk_id += "melee"
-	else: atk_id += "ranged"
 	#check weight
 	if atk_weight: atk_id += "heavy"
 	else: atk_id += "light"
+		#check type
+	if atk_type: atk_id += "melee"
+	else: atk_id += "ranged"
 	#pull number in atk string
 	#atk_id += str(atk_number)
 	print(atk_id)
@@ -53,8 +52,8 @@ func attack_id(atk_type: bool, atk_weight: bool, atk_number: int) -> String:
 func attack_startup(atk_id: String) -> float:
 	#emit attacking signal and start attack anim
 	#wpn_holder.emit("attacking")
-	#if !wpn_holder.animation_player.get_animation_list().has(atk_id): print("NO ATTACK ANIM FOUND")
-	#else: wpn_holder.animation_player.play(atk_id)
+	if !wpn_holder.animation_player.get_animation_list().has(atk_id): print("NO ATTACK ANIM FOUND")
+	else: wpn_holder.animation_player.play(atk_id)
 	#set damage for attack
 	var atk_damage: float
 	if damage.has(atk_id): atk_damage = damage.get(atk_id)
@@ -67,10 +66,8 @@ func melee(atk_damage: float) -> void:
 	area_2d.set_collision_mask_value(set_mask(), true)
 	await wpn_holder.animation_player.animation_finished
 	area_2d.set_collision_mask_value(set_mask(), false)
-	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is character: pass
-
+	if body is character: print("hit enemy")
 func ranged(atk_damage: float): pass
 
 #func attack_startup() -> void:

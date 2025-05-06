@@ -8,11 +8,10 @@
 script = ExtResource("1_t6ahh")
 wpn_spriteframes = SubResource("SpriteFrames_t6ahh")
 damage_dict = Dictionary[String, float]({
-"falselightstaff1": 1.0,
-"falselightstaff2": 1.0,
-"falselightstaff3": 2.0,
-"falselightstaff4": 2.0,
-"truelightstaff1": 2.0
+"heavymelee": 5.0,
+"heavyranged": 4.0,
+"lightmelee": 2.0,
+"lightranged": 1.0
 })
 wpn_reach = 75.0
 wpn_speed = 0.5
