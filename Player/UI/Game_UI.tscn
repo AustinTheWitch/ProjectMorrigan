@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n6mhial5tlno" path="res://Player/UI/ui_game.gd" id="1_2cg7b"]
 
-[node name="Game UI" type="CanvasLayer"]
+[node name="game_ui" type="CanvasLayer"]
 script = ExtResource("1_2cg7b")
 
 [node name="Health" type="VBoxContainer" parent="."]

@@ -1,10 +1,20 @@
 extends player_states
 class_name player_run
-
+func enter() -> void: print("running")
 func physics_update(delta: float) -> void:
+	#setting animation tracks
+	pc.animation_player.play("walking")
 	#setting velocity
-	player_character.velocity.x = Input.get_axis("ui_left", "ui_right")
-	player_character.velocity = player_character.velocity.normalized() * player_character.speed
-	player_character.animation_player.play("walking")
-	player_character.move_and_slide()
-	if player_character.velocity == Vector2.ZERO: state_change.emit(self, "idle")
+	pc.velocity.x = Input.get_axis("ui_left", "ui_right")
+	pc.velocity = pc.velocity.normalized() * pc.speed
+	pc.move_and_slide()
+	#state changes
+	if Input.is_action_just_pressed("blink") and pc.blink_charges < pc.max_charges:
+		state_change.emit(self, "blink")
+	if !pc.is_on_floor(): 
+		var temp_vel: Vector2 = pc.velocity.normalized()
+		blink_direction = temp_vel.x
+		state_change.emit(self, "fall")
+	if pc.velocity == Vector2.ZERO: 
+		blink_direction = -blink_direction
+		state_change.emit(self, "idle")

@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5ku5uesydkp5"]
+[gd_scene load_steps=4 format=3 uid="uid://c5ku5uesydkp5"]
 
 [ext_resource type="Script" uid="uid://bckp3jqxtsog8" path="res://Dummy/debug_dummy.gd" id="1_yntjg"]
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_lppdj"]
-[ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Weapon/weapon.tscn" id="3_qhfqf"]
-[ext_resource type="Script" uid="uid://dy1sc67lcs83k" path="res://Dummy/dummy_weapon.gd" id="4_bopoy"]
-[ext_resource type="Resource" uid="uid://cgjs7uej7uh71" path="res://Weapon/Types/staff.tres" id="5_bopoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7yo5"]
 size = Vector2(115, 117)
@@ -14,7 +11,7 @@ collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_yntjg")
 collision_shape_2d = NodePath("CollisionShape2D")
-equipped_weapon = NodePath("Weapon Base")
+equipped_weapon = NodePath("")
 metadata/_custom_type_script = "uid://ky2x88w01ehf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,9 +19,3 @@ texture = ExtResource("2_lppdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y7yo5")
-
-[node name="Weapon Base" parent="." node_paths=PackedStringArray("wpn_holder") instance=ExtResource("3_qhfqf")]
-position = Vector2(-48, -33)
-script = ExtResource("4_bopoy")
-wpn_holder = NodePath("..")
-wpn_resource = ExtResource("5_bopoy")

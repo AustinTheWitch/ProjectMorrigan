@@ -1,6 +1,8 @@
 extends character_state
 class_name player_states
-@onready var player_character: player = get_parent().get_parent()
+@onready var pc: player = get_parent().get_parent()
+#blink
+static var blink_direction: float
 
 func enter() -> void: pass
 func exit() -> void: pass

@@ -8,7 +8,7 @@ func _ready() -> void:
 	ray_cast_2d.set_collision_mask_value(set_mask(), true)
 	set_weapon(weapon_loadout.get(current_wpn))
 func _process(delta: float) -> void:
-	ray_cast_2d.target_position.x = get_parent().direction * weapn_reach
+	#ray_cast_2d.target_position.x = get_parent().direction * weapn_reach
 	melee_weapon = ray_cast_2d.is_colliding()
 	if Input.is_action_just_pressed("weapon"): attack_startup(attack_id(melee_weapon, heavy_atk, attack_string)) 
 	if Input.is_action_just_released("weapon"): pass

@@ -17,9 +17,15 @@ var max_health: int
 const GRAVITY: float = 980.0
 func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY * delta
 #ward
-@export var ward: Timer
 var ward_up: bool
 var perfect_ward: bool
+#blink
+@export var blink_timer: Timer
+var blink_distance: float = 150.0
+var blink_cooldown: float = 1.7
+var blink_charges: int = 0
+var max_charges: int = 1
+
 func signal_connections() -> void: 
 	damage_taken.connect(ui.update_healthbar)
 	

@@ -1,50 +1,20 @@
 extends character
 class_name player
 
-#movement
-var direction: float
-var blink_distance: float = 150.0
-#blink
-@onready var blink: Timer = $Blink
-var blink_cooldown: float = 1.0
-var current_blink: int = 0
-var max_blink: int = 1
-
 func _ready() -> void:
 	signal_connections()
 	player_stats()
 	damage_taken.emit(current_health, max_health)
 func _physics_process(delta: float) -> void:
 	gravity(delta)
-	#setting direction
-	if Input.is_action_just_pressed("ui_right"):
-		direction = 1
-	elif Input.is_action_just_pressed("ui_left"):
-		direction = -1
 	move_and_slide()
-
-#func movement_system(delta: float)-> void:
-	##setting velocity
-	#velocity.x = Input.get_axis("ui_left", "ui_right")
-	#velocity = velocity.normalized() * speed
-	#animation_player.play("walking")
-	##setting blink
-	#if Input.is_action_just_pressed("blink") and current_blink < max_blink:
-		#if velocity.x == 0.0: velocity.x = blink_distance * (-direction * blink_distance)
-		#else: velocity.x = blink_distance * velocity.x
-		#current_blink += 1
-		#blink.start(blink_cooldown)
+func blink_system()-> void:
+	blink_charges += 1
+	blink_timer.start(blink_cooldown)
+	print("blink on cooldown")
 func _on_blink_timeout() -> void:
-	current_blink -= 1
-	blink.stop()
-func warding() -> bool: 
-	ward_up = Input.is_action_pressed("ward")
-	animation_player.play("idle")
-	return ward_up
-func perfect_warding() -> void: 
-	perfect_ward = true
-	ward.start(0.5)
-func _on_ward_timeout() -> void: perfect_ward = false
+	blink_charges -= 1
+	print("off cooldown")
 func player_stats() -> void:
 	speed = 170
 	current_health = 10
