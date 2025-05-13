@@ -18,7 +18,7 @@ var attack_id: String
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @export var projectile_data: PROJECTILE
 func _ready() -> void: setup_projectile(projectile_data)
-func _process(delta: float) -> void: apply_central_force(direction)
+func _process(_delta: float) -> void: apply_central_force(direction)
 func initial_setup() -> void:
 	direction *= force
 	gravity_scale = falloff

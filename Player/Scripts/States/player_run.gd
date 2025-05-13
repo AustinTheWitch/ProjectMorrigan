@@ -1,9 +1,11 @@
 extends player_states
 class_name player_run
 func enter() -> void: print("running")
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	#setting animation tracks
-	pc.animation_player.play("walking")
+	if !pc.animation_player.has_animation("run"): print("NO RUN ANIM")
+	else: pc.animation_player.play("run")
+
 	#setting velocity
 	pc.velocity.x = Input.get_axis("ui_left", "ui_right")
 	pc.velocity = pc.velocity.normalized() * pc.speed

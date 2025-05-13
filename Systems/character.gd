@@ -7,6 +7,7 @@ class_name character
 @export var equipped_weapon: weapon_base
 @export var animation_player: AnimationPlayer
 @export var ui: base_ui
+@export var ray_cast_2d: RayCast2D
 #signals
 signal damage_taken
 #stats
@@ -28,4 +29,3 @@ var max_charges: int = 1
 
 func signal_connections() -> void: 
 	damage_taken.connect(ui.update_healthbar)
-	

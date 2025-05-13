@@ -1,222 +1,36 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=14 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
-[ext_resource type="PackedScene" uid="uid://dyowlte22ay3a" path="res://Weapon/weapon.tscn" id="2_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
-[ext_resource type="Script" uid="uid://b80wixupaqu2f" path="res://Player/Scripts/player_weapon.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Player/Scripts/States/player_idle.gd" id="4_00tjw"]
 [ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://Player/UI/game_ui.tscn" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Player/Scripts/States/player_run.gd" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Player/Scripts/States/player_fall.gd" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Player/Scripts/States/player_blink.gd" id="6_apopc"]
 [ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Player/Scripts/States/player_ward.gd" id="7_apopc"]
+[ext_resource type="PackedScene" uid="uid://dh2makgj1qib0" path="res://Testing/weapon.tscn" id="9_apopc"]
+[ext_resource type="AnimationLibrary" uid="uid://cwiybddf5jxlj" path="res://Player/player_library.tres" id="11_5htga"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(350, 867)
 
-[sub_resource type="Animation" id="Animation_od3ui"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.523599]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite/Skeleton2D/root/chest/right arm:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sprite/Skeleton2D/root/chest/left arm:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_apopc"]
-resource_name = "blink"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.3, 1.46667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.62141, -1.62141, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.3, 1.46667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.41895, -1.41895, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_fhl08"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.433333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.433333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_00tjw"]
-resource_name = "meleelight"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right arm:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.666667, 0.933333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -2.76111, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_vtle1"]
-resource_name = "walking"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.966667, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.523599, -0.523599]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.966667, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.523599, 0.523599]
-}
-
-[sub_resource type="Animation" id="Animation_5htga"]
-resource_name = "ward"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right arm:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.7174]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/left arm:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -2.10487]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3vf3"]
-_data = {
-&"RESET": SubResource("Animation_od3ui"),
-&"blink": SubResource("Animation_apopc"),
-&"idle": SubResource("Animation_fhl08"),
-&"lightmelee": SubResource("Animation_00tjw"),
-&"walking": SubResource("Animation_vtle1"),
-&"ward": SubResource("Animation_5htga")
-}
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("skeleton_2D", "collision_shape_2d", "equipped_weapon", "animation_player", "ui", "blink_timer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("skeleton_2D", "collision_shape_2d", "animation_player", "ui", "ray_cast_2d", "blink_timer")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
 script = ExtResource("1_4ntmi")
 skeleton_2D = NodePath("sprite/Skeleton2D")
 collision_shape_2d = NodePath("collisionshape2D")
-equipped_weapon = NodePath("weapon")
 animation_player = NodePath("AnimationPlayer")
 ui = NodePath("game_ui")
+ray_cast_2d = NodePath("RayCast2D")
 blink_timer = NodePath("timers/blink_cooldown")
 metadata/_custom_type_script = "uid://bf2vyimpd3nff"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_x3vf3")
@@ -248,7 +62,7 @@ scale = Vector2(0.2, 0.2)
 [node name="Polygons" type="Node2D" parent="sprite"]
 
 [node name="Left Arm" type="Polygon2D" parent="sprite/Polygons"]
-position = Vector2(-49.8469, -217.058)
+position = Vector2(-40.8469, -202.058)
 texture = ExtResource("2_fhl08")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(182.509, 37.9633, 227.854, 34.7996, 272.145, 48.5087, 272.145, 103.345, 245.781, 187.709, 274.254, 260.472, 297.454, 310.036, 272.145, 352.218, 216.254, 360.654, 180.4, 284.727, 180.4, 105.454)
@@ -334,7 +148,7 @@ bone_angle = 0.0
 [node name="right arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(-73, -123)
 scale = Vector2(0.99996, 0.99996)
-rest = Transform2D(1, 0, 0, 1, -73, -123)
+rest = Transform2D(0.99996, 0, 0, 0.99996, -73, -123)
 
 [node name="right hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/right arm"]
 position = Vector2(-23, 110)
@@ -346,7 +160,7 @@ bone_angle = 80.0
 [node name="right leg" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(-54, 54)
 scale = Vector2(0.999842, 0.999842)
-rest = Transform2D(1, 0, 0, 1, -54, 54)
+rest = Transform2D(0.999842, 0, 0, 0.999842, -54, 54)
 
 [node name="right calf" type="Bone2D" parent="sprite/Skeleton2D/root/chest/right leg"]
 position = Vector2(-32, 117)
@@ -365,7 +179,7 @@ bone_angle = 0.0
 [node name="left arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(69, -130)
 scale = Vector2(0.999999, 0.999999)
-rest = Transform2D(1, 0, 0, 1, 69, -130)
+rest = Transform2D(0.999999, 0, 0, 0.999999, 69, -130)
 
 [node name="left hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left arm"]
 position = Vector2(-13, 112)
@@ -376,9 +190,8 @@ bone_angle = 80.0
 
 [node name="left leg" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(34, 54)
-rotation = -0.523599
 scale = Vector2(0.999837, 0.999837)
-rest = Transform2D(1, 0, 0, 1, 34, 54)
+rest = Transform2D(0.999837, 0, 0, 0.999837, 34, 54)
 
 [node name="left calf" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left leg"]
 position = Vector2(-36, 103)
@@ -394,20 +207,17 @@ auto_calculate_length_and_angle = false
 length = 100.0
 bone_angle = 0.0
 
+[node name="weapon" parent="." node_paths=PackedStringArray("wpn_user") instance=ExtResource("9_apopc")]
+wpn_user = NodePath("..")
+
 [node name="collisionshape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24.8, -20.5)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_fhl08")
 
-[node name="weapon" parent="." node_paths=PackedStringArray("wpn_holder") instance=ExtResource("2_4ntmi")]
-position = Vector2(51, 9)
-rotation = 0.900598
-script = ExtResource("3_btcbx")
-wpn_holder = NodePath("..")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_x3vf3")
+&"": ExtResource("11_5htga")
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
