@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ifi4jmomryx"]
+[gd_scene load_steps=6 format=3 uid="uid://c4ifi4jmomryx"]
 
 [ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="1_08sw2"]
 [ext_resource type="Script" uid="uid://c5k1wrrm2hh1i" path="res://Systems/projectile.gd" id="1_tm405"]
@@ -15,9 +15,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tm405"]
+radius = 10.0499
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qb6b"]
 
 [node name="Projectile" type="RigidBody2D"]
-collision_layer = 8
+collision_layer = 16
 collision_mask = 6
 contact_monitor = true
 max_contacts_reported = 1
@@ -25,14 +28,23 @@ constant_force = Vector2(0.335, 0)
 script = ExtResource("1_tm405")
 metadata/_custom_type_script = "uid://c5k1wrrm2hh1i"
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.167969, 0.166016)
 sprite_frames = SubResource("SpriteFrames_08sw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tm405")
 
-[node name="Projectile Type" type="Node" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+scale = Vector2(5, 5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6qb6b")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

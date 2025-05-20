@@ -3,11 +3,9 @@ class_name character
 
 #nodes
 @export var skeleton_2D: Skeleton2D
-@export var collision_shape_2d: CollisionShape2D
 @export var equipped_weapon: weapon_base
 @export var animation_player: AnimationPlayer
 @export var ui: base_ui
-@export var ray_cast_2d: RayCast2D
 #signals
 signal damage_taken
 #stats

@@ -11,10 +11,11 @@ func enter() -> void:
 func exit() -> void: pass
 func update(_delta: float) -> void: pass
 func physics_update(_delta: float) -> void:
-	if Input.is_action_just_pressed("blink") and pc.blink_charges < pc.max_charges: 
+	if Input.is_action_just_pressed("blink") and pc.blink_charges < pc.max_charges:
 		state_change.emit(self, "blink")
-	if Input.get_axis("ui_left", "ui_right"):
+	if Input.get_axis("ui_left", "ui_right"): 
 		blink_direction = Input.get_axis("ui_left", "ui_right")
 		state_change.emit(self, "run")
 	if !pc.is_on_floor(): state_change.emit(self, "fall")
 	if Input.is_action_just_pressed("ward"): state_change.emit(self, "ward")
+	
