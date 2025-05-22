@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=20 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://dxdepd7o8lhyu" path="res://Testing/weapon_resource.gd" id="2_dkpta"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="3_lfmf2"]
 [ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Player/Scripts/States/player_idle.gd" id="4_00tjw"]
 [ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://Player/UI/game_ui.tscn" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Player/Scripts/States/player_run.gd" id="4_x3vf3"]
@@ -11,24 +13,111 @@
 [ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Player/Scripts/States/player_ward.gd" id="7_apopc"]
 [ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Player/Scripts/States/player_attack.gd" id="8_5htga"]
 [ext_resource type="PackedScene" uid="uid://dh2makgj1qib0" path="res://Testing/weapon.tscn" id="9_apopc"]
-[ext_resource type="Script" uid="uid://ct43hvy6v8oas" path="res://Systems/weapon.gd" id="11_gu6f8"]
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Player/sword.res" id="11_p5o4e"]
+
+[sub_resource type="Resource" id="Resource_pisgm"]
+script = ExtResource("2_dkpta")
+weapon_name = "sword"
+weapon_damage = Dictionary[String, float]({
+"heavy0": 3.0,
+"heavy1": 5.0,
+"heavy2": 3.0,
+"heavy3": 7.0,
+"light0": 1.0,
+"light1": 3.0,
+"light2": 2.0,
+"light3": 4.0
+})
+unblockable = false
+weapon_texture = ExtResource("3_lfmf2")
+metadata/_custom_type_script = "uid://dxdepd7o8lhyu"
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(350, 867)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("skeleton_2D", "equipped_weapon", "animation_player", "ui", "blink_timer")]
+[sub_resource type="Animation" id="Animation_gu6f8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right arm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-75, -123)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/left arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62.5, -135.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(86, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkpta"]
+_data = {
+&"RESET": SubResource("Animation_gu6f8")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon", "animation_player", "ui", "blink_timer", "attack_windup", "combo_reset")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
 script = ExtResource("1_4ntmi")
-skeleton_2D = NodePath("sprite/Skeleton2D")
-equipped_weapon = NodePath("weapon")
+sprite = NodePath("sprite")
+weapon = NodePath("weapon")
 animation_player = NodePath("AnimationPlayer")
 ui = NodePath("game_ui")
 blink_timer = NodePath("timers/blink_cooldown")
+weapon_loadout = Array[ExtResource("2_dkpta")]([SubResource("Resource_pisgm")])
+attack_windup = NodePath("timers/attack_windup")
+combo_reset = NodePath("timers/combo_reset")
 metadata/_custom_type_script = "uid://bf2vyimpd3nff"
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
@@ -53,11 +142,15 @@ script = ExtResource("7_apopc")
 [node name="attack" type="Node" parent="state_machine"]
 script = ExtResource("8_5htga")
 
-[node name="spellcasting" type="Node" parent="state_machine"]
-
 [node name="timers" type="Node" parent="."]
 
 [node name="blink_cooldown" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="combo_reset" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="attack_windup" type="Timer" parent="timers"]
 one_shot = true
 
 [node name="sprite" type="Node2D" parent="."]
@@ -163,12 +256,11 @@ bone_angle = 80.0
 
 [node name="right leg" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(-50, 52)
-scale = Vector2(0.999843, 0.999843)
+scale = Vector2(0.999838, 0.999838)
 rest = Transform2D(0.999842, 0, 0, 0.999842, -54, 54)
 
 [node name="right calf" type="Bone2D" parent="sprite/Skeleton2D/root/chest/right leg"]
 position = Vector2(-32, 117)
-scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -32, 117)
 auto_calculate_length_and_angle = false
 length = 120.266
@@ -182,7 +274,8 @@ length = 100.0
 bone_angle = 0.0
 
 [node name="left arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
-position = Vector2(69, -130)
+position = Vector2(62.5, -135.5)
+rotation = 0.307178
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.999999, 0, 0, 0.999999, 69, -130)
 
@@ -195,7 +288,7 @@ bone_angle = 80.0
 
 [node name="left leg" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(34, 54)
-scale = Vector2(0.999839, 0.999839)
+scale = Vector2(0.999838, 0.999838)
 rest = Transform2D(0.999837, 0, 0, 0.999837, 34, 54)
 
 [node name="left calf" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left leg"]
@@ -212,11 +305,9 @@ auto_calculate_length_and_angle = false
 length = 100.0
 bone_angle = 0.0
 
-[node name="weapon" parent="." instance=ExtResource("9_apopc")]
-position = Vector2(-12, 81)
-rotation = 2.15374
-scale = Vector2(0.4, 0.4)
-script = ExtResource("11_gu6f8")
+[node name="weapon" parent="." node_paths=PackedStringArray("wpn_user") instance=ExtResource("9_apopc")]
+position = Vector2(86, 1)
+wpn_user = NodePath("..")
 
 [node name="projectile" type="Node2D" parent="."]
 position = Vector2(74, 0)
@@ -227,6 +318,7 @@ shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+&"": SubResource("AnimationLibrary_dkpta"),
 &"sword": ExtResource("11_p5o4e")
 }
 
@@ -242,3 +334,5 @@ drag_left_margin = 0.55
 [node name="game_ui" parent="." instance=ExtResource("4_gwnis")]
 
 [connection signal="timeout" from="timers/blink_cooldown" to="." method="_on_blink_timeout"]
+[connection signal="timeout" from="timers/combo_reset" to="." method="_on_combo_reset_timeout"]
+[connection signal="timeout" from="timers/attack_windup" to="." method="_on_attack_windup_timeout"]

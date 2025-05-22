@@ -1,17 +1,17 @@
 extends player_states
 class_name player_blink
 
+static var blink_direction: float
 func enter() -> void: 
-	pc.blink_system()
-	blinking = true
+	#blink_direction = -player_direction
+	character_id.blink_system()
 	#set animation
-	if !pc.animation_player.has_animation("blink"): print("NO BLINK ANIM FOUND")
-	else: pc.animation_player.play("blink")
-	await pc.animation_player.animation_finished
-	blinking = false
+	create_animation_id(character_id.weapon.wpn_name, "blink")
+	await character_id.animation_player.animation_finished
 	state_change.emit(self, "idle")
 func physics_update(_delta: float) -> void:
 	#set velocity
-	pc.set_collision_layer_value(1, blinking)
-	pc.velocity.x = pc.blink_distance * blink_direction
-	pc.move_and_slide()
+	character_id.velocity.x = character_id.blink_distance * blink_direction
+	character_id.move_and_slide()
+func exit() -> void:
+	character_id.velocity = Vector2.ZERO

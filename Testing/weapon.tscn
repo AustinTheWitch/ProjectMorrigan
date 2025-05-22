@@ -1,13 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh2makgj1qib0"]
+[gd_scene load_steps=3 format=3 uid="uid://dh2makgj1qib0"]
+
+[ext_resource type="Script" uid="uid://ct43hvy6v8oas" path="res://Systems/weapon.gd" id="1_k32a0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k32a0"]
-size = Vector2(14, 59)
+size = Vector2(30, 29.5)
 
 [node name="weapon" type="Node2D"]
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="combo reset" type="Timer" parent="Timers"]
+script = ExtResource("1_k32a0")
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -18,7 +17,6 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
-position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_k32a0")
 
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_area_2d_body_entered"]

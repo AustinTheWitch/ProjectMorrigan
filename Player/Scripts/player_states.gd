@@ -1,13 +1,18 @@
 extends character_state
 class_name player_states
-@onready var pc: player = get_parent().get_parent()
-var player_direction: float
-#blink
-static var blink_direction: float
-static var blinking: bool
-static var winding_up: bool
 
+static var player_direction: float
 func enter() -> void: pass
 func exit() -> void: pass
 func update(_delta: float) -> void: pass
 func physics_update(_delta: float) -> void: pass
+#state swap functions
+func idle() -> void: state_change.emit(self, "idle")
+
+func run() -> void:
+	player_direction = Input.get_axis("ui_left", "ui_right")
+	state_change.emit(self, "run")
+
+func ward() -> void: state_change.emit(self, "ward")
+
+func attack() -> void: state_change.emit(self, "attack")

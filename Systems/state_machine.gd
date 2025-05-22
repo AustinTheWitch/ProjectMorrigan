@@ -6,11 +6,11 @@ var character_states: Dictionary[String, character_state]
 var current_state: character_state
 
 func _ready() -> void:
-	for states in get_children():
-		if states is character_state:
-			character_states[states.name.to_lower()] = states
-			states.state_change.connect(state_changed)
-		if start_state:
+	for state in get_children():
+		if state is character_state:
+			character_states[state.name.to_lower()] = state
+			state.state_change.connect(state_changed)
+		if state == start_state:
 			start_state.enter()
 			current_state = start_state
 func _process(delta: float) -> void: if current_state: current_state.update(delta)
