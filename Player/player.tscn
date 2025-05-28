@@ -99,6 +99,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(86, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite/Skeleton2D/root/chest/left arm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.307178]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sprite/Skeleton2D/root/chest/right arm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dkpta"]
 _data = {
@@ -151,6 +175,9 @@ one_shot = true
 one_shot = true
 
 [node name="attack_windup" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="attack_cooldown" type="Timer" parent="timers"]
 one_shot = true
 
 [node name="sprite" type="Node2D" parent="."]
@@ -244,7 +271,7 @@ bone_angle = 0.0
 
 [node name="right arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(-75, -123)
-scale = Vector2(0.999949, 0.999949)
+scale = Vector2(0.999948, 0.999948)
 rest = Transform2D(0.99996, 0, 0, 0.99996, -73, -123)
 
 [node name="right hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/right arm"]
@@ -276,7 +303,7 @@ bone_angle = 0.0
 [node name="left arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(62.5, -135.5)
 rotation = 0.307178
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.999999, 0, 0, 0.999999, 69, -130)
 
 [node name="left hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left arm"]
@@ -336,3 +363,4 @@ drag_left_margin = 0.55
 [connection signal="timeout" from="timers/blink_cooldown" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="timers/combo_reset" to="." method="_on_combo_reset_timeout"]
 [connection signal="timeout" from="timers/attack_windup" to="." method="_on_attack_windup_timeout"]
+[connection signal="timeout" from="timers/attack_cooldown" to="state_machine/attack" method="_on_attack_cooldown_timeout"]

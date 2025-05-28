@@ -3,7 +3,8 @@ class_name player_blink
 
 static var blink_direction: float
 func enter() -> void: 
-	#blink_direction = -player_direction
+	if player_previous_state == "run": blink_direction = player_direction * 1.5
+	else: blink_direction = -player_direction * 1
 	character_id.blink_system()
 	#set animation
 	create_animation_id(character_id.weapon.wpn_name, "blink")
@@ -15,3 +16,4 @@ func physics_update(_delta: float) -> void:
 	character_id.move_and_slide()
 func exit() -> void:
 	character_id.velocity = Vector2.ZERO
+	player_previous_state = "blink"
