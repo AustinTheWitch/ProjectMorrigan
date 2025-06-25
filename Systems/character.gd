@@ -13,14 +13,14 @@ var speed: float
 var current_health: int
 var max_health: int
 #gravity
-const GRAVITY: float = 980.0
+const GRAVITY: float = 175.0 #Default Value - 980.0
 func gravity(delta: float) -> void: if not is_on_floor(): velocity.y += GRAVITY * delta
 #ward
 var ward_up: bool
 var perfect_ward: bool
 #blink
 @export var blink_timer: Timer
-var blink_distance: float = 150.0
+var blink_distance: float = 250.0
 var blink_cooldown: float = 1.7
 var blink_charges: int = 0
 var max_charges: int = 1
@@ -28,7 +28,7 @@ var max_charges: int = 1
 @export var weapon_loadout: Array[WEAPON]
 var equipped_weapon: int = 0
 var atk_weight: bool
-var atk_number: int
+var atk_number: int = 0
 #combat
 @export var attack_windup: Timer
 @export var combo_reset: Timer

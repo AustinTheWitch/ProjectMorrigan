@@ -10,8 +10,7 @@ func update(_delta: float) -> void:
 	#set ward variable
 	character_id.ward_up = Input.is_action_pressed("ward")
 	#perfect ward timeout
-	if character_id.animation_player.animation_finished: 
-		character_id.perfect_ward = false
+	if character_id.animation_player.animation_finished: character_id.perfect_ward = false
 	#idle
 	if !character_id.ward_up: state_change.emit(self, "idle")
 	#run 

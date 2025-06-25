@@ -2,22 +2,27 @@ extends player_states
 class_name player_attack
 
 func enter() -> void:
-	character_id.atk_weight = false
-	character_id.attack_windup.start(0.7)
-func update(_delta: float) -> void:
-	if Input.is_action_just_released("weapon"): pass
-	elif Input.is_action_just_pressed("weapon"): pass
-	elif Input.is_action_just_pressed("blink"): blink()
-	elif Input.is_action_just_pressed("ward"): state_change.emit(self, "ward")
+	#play attack
+	character_id.atk_ready = false
+	animation_string = character_id.weapon.wpn_name + "/" + attack_id()
+	character_id.animation_player.play(animation_string)
+	print(animation_string)
+	await character_id.animation_player.animation_finished
+	character_id.atk_number += 1
+	print(character_id.atk_number)
+	if character_id.atk_number >= 4: character_id.atk_number = 0
+	state_change.emit(self, "idle")
+func update(_delta: float) -> void: pass
 func physics_update(_delta: float) -> void:
-	if Input.get_axis("ui_left", "ui_right"): state_change.emit(self, "run")
-	fall()
+	if !character_id.is_on_floor(): state_change.emit(self, "fall")
 func exit() -> void:
-	if character_id.atk_number > 3: character_id.atk_number = 0
-	else: character_id.atk_number += 1
+	character_id.animation_player.stop()
+	character_id.atk_ready = true
 	character_id.atk_weight = false
 	player_previous_state = "attack"
-	print("attack state left")
+	#combo start
+	character_id.combo_reset.start(2.5)
+	#disable hitbox
 func attack_id() -> String: 
 	var attack_string = character_id.weapon.attack_string(character_id.atk_weight, character_id.atk_number)
 	return attack_string

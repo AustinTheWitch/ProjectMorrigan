@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://dxdepd7o8lhyu"
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
-size = Vector2(350, 867)
+size = Vector2(337.5, 865)
 
 [sub_resource type="Animation" id="Animation_gu6f8"]
 length = 0.001
@@ -177,13 +177,10 @@ one_shot = true
 [node name="attack_windup" type="Timer" parent="timers"]
 one_shot = true
 
-[node name="attack_cooldown" type="Timer" parent="timers"]
-one_shot = true
-
 [node name="sprite" type="Node2D" parent="."]
-scale = Vector2(0.4, 0.4)
 
 [node name="Polygons" type="Node2D" parent="sprite"]
+scale = Vector2(0.4, 0.4)
 
 [node name="Left Arm" type="Polygon2D" parent="sprite/Polygons"]
 position = Vector2(-155, -130)
@@ -247,7 +244,8 @@ polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)]
 bones = ["root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/head/jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/right arm", PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.49, 0.49, 0.49, 0.49, 0.49, 0.49), "root/chest/right arm/right hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/left arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/left arm/left hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/right leg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/right leg/right calf", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/right leg/right calf/right foot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/left leg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/left leg/left calf", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/chest/left leg/left calf/left foot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="sprite"]
-position = Vector2(20, 90)
+position = Vector2(0, 37)
+scale = Vector2(0.4, 0.4)
 modification_stack = SubResource("SkeletonModificationStack2D_fhl08")
 
 [node name="root" type="Bone2D" parent="sprite/Skeleton2D"]
@@ -303,7 +301,7 @@ bone_angle = 0.0
 [node name="left arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(62.5, -135.5)
 rotation = 0.307178
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(0.999999, 0, 0, 0.999999, 69, -130)
 
 [node name="left hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left arm"]
@@ -340,6 +338,7 @@ wpn_user = NodePath("..")
 position = Vector2(74, 0)
 
 [node name="collisionshape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 2.00001)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_fhl08")
 
@@ -363,4 +362,3 @@ drag_left_margin = 0.55
 [connection signal="timeout" from="timers/blink_cooldown" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="timers/combo_reset" to="." method="_on_combo_reset_timeout"]
 [connection signal="timeout" from="timers/attack_windup" to="." method="_on_attack_windup_timeout"]
-[connection signal="timeout" from="timers/attack_cooldown" to="state_machine/attack" method="_on_attack_cooldown_timeout"]

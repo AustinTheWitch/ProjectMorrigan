@@ -22,8 +22,6 @@ func attack_string(atk_weight: bool, atk_number: int) -> String:
 	var atk_id: String
 	if atk_weight: atk_id += "heavy"
 	else: atk_id += "light"
-	if atk_number > 3: atk_number = 0
-	else: atk_number += 1
 	atk_id += str(atk_number)
 	return atk_id
 
