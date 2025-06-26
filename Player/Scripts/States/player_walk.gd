@@ -1,8 +1,5 @@
-extends character_state
-class_name player_states
-
-static var facing: float = 1.0
-static var player_previous_state: String
+extends player_states
+class_name player_walk
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

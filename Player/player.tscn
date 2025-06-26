@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=26 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://dxdepd7o8lhyu" path="res://Testing/weapon_resource.gd" id="2_dkpta"]
@@ -10,10 +10,16 @@
 [ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Player/Scripts/States/player_run.gd" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Player/Scripts/States/player_fall.gd" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Player/Scripts/States/player_blink.gd" id="6_apopc"]
+[ext_resource type="Script" uid="uid://bjfcdwo4j6ar8" path="res://Player/Scripts/States/player_walk.gd" id="6_lfmf2"]
 [ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Player/Scripts/States/player_ward.gd" id="7_apopc"]
 [ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Player/Scripts/States/player_attack.gd" id="8_5htga"]
 [ext_resource type="PackedScene" uid="uid://dh2makgj1qib0" path="res://Testing/weapon.tscn" id="9_apopc"]
+[ext_resource type="Script" uid="uid://cdne5yqlbuvl1" path="res://Player/Scripts/States/player_deflect.gd" id="9_dkpta"]
+[ext_resource type="Script" uid="uid://comd3egcedqto" path="res://Player/Scripts/States/player_dropattack.gd" id="9_n471f"]
+[ext_resource type="Script" uid="uid://cl3l7npu1m15j" path="res://Player/Scripts/States/player_ground.gd" id="9_o28un"]
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Player/sword.res" id="11_p5o4e"]
+[ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Player/Scripts/States/player_windup.gd" id="12_pisgm"]
+[ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Player/Scripts/States/player_cast.gd" id="14_b1ygp"]
 
 [sub_resource type="Resource" id="Resource_pisgm"]
 script = ExtResource("2_dkpta")
@@ -129,19 +135,16 @@ _data = {
 &"RESET": SubResource("Animation_gu6f8")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon", "animation_player", "ui", "blink_timer", "attack_windup", "combo_reset")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "weapon", "animation_player", "ui")]
 collision_mask = 6
 platform_floor_layers = 4294901762
 platform_wall_layers = 4
 script = ExtResource("1_4ntmi")
+weapon_loadout = Array[ExtResource("2_dkpta")]([SubResource("Resource_pisgm")])
 sprite = NodePath("sprite")
 weapon = NodePath("weapon")
 animation_player = NodePath("AnimationPlayer")
 ui = NodePath("game_ui")
-blink_timer = NodePath("timers/blink_cooldown")
-weapon_loadout = Array[ExtResource("2_dkpta")]([SubResource("Resource_pisgm")])
-attack_windup = NodePath("timers/attack_windup")
-combo_reset = NodePath("timers/combo_reset")
 metadata/_custom_type_script = "uid://bf2vyimpd3nff"
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
@@ -151,30 +154,56 @@ start_state = NodePath("idle")
 [node name="idle" type="Node" parent="state_machine"]
 script = ExtResource("4_00tjw")
 
+[node name="walk" type="Node" parent="state_machine"]
+script = ExtResource("6_lfmf2")
+
 [node name="run" type="Node" parent="state_machine"]
 script = ExtResource("4_x3vf3")
 
 [node name="fall" type="Node" parent="state_machine"]
 script = ExtResource("5_x3vf3")
 
+[node name="dropattack" type="Node" parent="state_machine"]
+script = ExtResource("9_n471f")
+
+[node name="ground" type="Node" parent="state_machine"]
+script = ExtResource("9_o28un")
+
 [node name="blink" type="Node" parent="state_machine"]
 script = ExtResource("6_apopc")
+
+[node name="deflect" type="Node" parent="state_machine"]
+script = ExtResource("9_dkpta")
 
 [node name="ward" type="Node" parent="state_machine"]
 script = ExtResource("7_apopc")
 
+[node name="windup" type="Node" parent="state_machine"]
+script = ExtResource("12_pisgm")
+
 [node name="attack" type="Node" parent="state_machine"]
 script = ExtResource("8_5htga")
 
+[node name="cast" type="Node" parent="state_machine"]
+script = ExtResource("14_b1ygp")
+
 [node name="timers" type="Node" parent="."]
 
-[node name="blink_cooldown" type="Timer" parent="timers"]
+[node name="attack" type="Timer" parent="timers"]
 one_shot = true
 
-[node name="combo_reset" type="Timer" parent="timers"]
+[node name="blink" type="Timer" parent="timers"]
+
+[node name="combo" type="Timer" parent="timers"]
 one_shot = true
 
-[node name="attack_windup" type="Timer" parent="timers"]
+[node name="deflect" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="windup" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="recovery" type="Timer" parent="timers"]
 one_shot = true
 
 [node name="sprite" type="Node2D" parent="."]
@@ -359,6 +388,9 @@ drag_left_margin = 0.55
 
 [node name="game_ui" parent="." instance=ExtResource("4_gwnis")]
 
-[connection signal="timeout" from="timers/blink_cooldown" to="." method="_on_blink_timeout"]
-[connection signal="timeout" from="timers/combo_reset" to="." method="_on_combo_reset_timeout"]
-[connection signal="timeout" from="timers/attack_windup" to="." method="_on_attack_windup_timeout"]
+[connection signal="timeout" from="timers/attack" to="." method="_on_attack_timeout"]
+[connection signal="timeout" from="timers/blink" to="." method="_on_blink_timeout"]
+[connection signal="timeout" from="timers/combo" to="." method="_on_combo_reset_timeout"]
+[connection signal="timeout" from="timers/deflect" to="." method="_on_deflect_timeout"]
+[connection signal="timeout" from="timers/windup" to="." method="_on_attack_windup_timeout"]
+[connection signal="timeout" from="timers/recovery" to="." method="_on_recovery_timeout"]
