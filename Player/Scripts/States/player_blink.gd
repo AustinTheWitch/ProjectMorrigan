@@ -6,7 +6,9 @@ var start_point: Vector2
 
 func enter() -> void:
 	start_point = character_id.position
-	if player_previous_state == "run" or "blink": blink_direction = facing
+	print(player_previous_state)
+	if player_previous_state == "run" or player_previous_state == "fall": 
+		blink_direction = facing
 	else: blink_direction = -facing
 	character_id.blink_system()
 func physics_update(_delta: float) -> void:
