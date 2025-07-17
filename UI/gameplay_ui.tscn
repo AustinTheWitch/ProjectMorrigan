@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd7pvxebqq15t"]
+
+[ext_resource type="Script" uid="uid://cg1gpje11w4xt" path="res://UI/gameplay_ui.gd" id="1_mp46i"]
+[ext_resource type="PackedScene" uid="uid://bjygxb3nj0xfs" path="res://UI/healthbar.tscn" id="2_h0rig"]
+
+[node name="gameplay_ui" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_mp46i")
+metadata/_custom_type_script = "uid://dgoqdfcelytwh"
+
+[node name="healthbar" parent="." instance=ExtResource("2_h0rig")]
+anchors_preset = -1
+anchor_right = 0.235625
+anchor_bottom = 0.0377778
+metadata/_edit_use_anchors_ = true

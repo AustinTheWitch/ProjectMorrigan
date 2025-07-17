@@ -3,9 +3,8 @@ class_name character
 
 #nodes
 @export var sprite: Node2D
-@export var weapon: weapon_base
 @export var animation_player: AnimationPlayer
-@export var ui: base_ui
+@export var health_bar: health_element
 #signals
 signal damage_taken
 #stats
@@ -19,6 +18,14 @@ var warding: bool
 var deflecting: bool
 #blink
 var blink_distance: float #Default Value = 250.0
-
-func signal_connections() -> void: 
-	damage_taken.connect(ui.update_healthbar)
+#weapon
+var weapon: weapon_base
+var atk_type: bool = false
+var atk_number: int = 0
+var attacking: bool = false
+func attack_data() -> String:
+	var attack: String
+	if atk_type: attack = "heavy"
+	else: attack = "light"
+	attack += var_to_str(atk_number)
+	return attack

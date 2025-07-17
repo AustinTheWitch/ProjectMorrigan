@@ -1,7 +1,5 @@
-extends character_state
-class_name player_states
-
-static var player_previous_state: String
+extends player_states
+class_name player_death
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

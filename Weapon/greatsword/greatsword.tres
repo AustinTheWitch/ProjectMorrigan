@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WEAPON" load_steps=2 format=3 uid="uid://bij0r7fcl6qfm"]
+
+[ext_resource type="Script" uid="uid://dxdepd7o8lhyu" path="res://Weapon/weapon_resource.gd" id="1_wf1d1"]
+
+[resource]
+script = ExtResource("1_wf1d1")
+weapon_name = "greatsword"
+weapon_attacks = Dictionary[String, float]({
+"heavy0": 5.0,
+"heavy1": 3.0,
+"heavy2": 7.0,
+"heavy3": 8.0,
+"light0": 3.0,
+"light1": 2.0,
+"light2": 3.0,
+"light3": 1.0
+})
+metadata/_custom_type_script = "uid://dxdepd7o8lhyu"

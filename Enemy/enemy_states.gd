@@ -1,7 +1,7 @@
 extends character_state
-class_name player_states
+class_name enemy_states
 
-static var player_previous_state: String
+static var player_object: player
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

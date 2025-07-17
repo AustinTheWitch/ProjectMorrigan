@@ -13,7 +13,7 @@ func update(_delta: float) -> void:
 	#ward
 	elif Input.is_action_pressed("ward"): state_change.emit(self, "ward")
 	#attack
-	elif character_id.atk_weight: state_change.emit(self, "attack")
+	elif character_id.atk_type: state_change.emit(self, "attack")
 	elif !charging: state_change.emit(self, "attack")
 
 func physics_update(_delta: float) -> void: if !character_id.is_on_floor(): state_change.emit(self, "fall")
@@ -21,3 +21,4 @@ func exit() -> void:
 	charging = false
 	character_id.atk_ready = false
 	character_id.attack.start(character_id.atk_speed)
+	character_id.weapon.area_2d.set_collision_mask_value(6, true)
