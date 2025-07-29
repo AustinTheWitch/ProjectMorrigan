@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://vuvu0xcrtmew"]
+
+[ext_resource type="PackedScene" uid="uid://cjrjj8axukcn7" path="res://familiar_base.tscn" id="1_whr43"]
+[ext_resource type="Resource" uid="uid://w2lhf06xcnb6" path="res://test_fam.tres" id="2_on1md"]
+
+[node name="test_fam" instance=ExtResource("1_whr43")]
+active_familiar = ExtResource("2_on1md")

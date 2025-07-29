@@ -23,6 +23,8 @@ var weapon: weapon_base
 var atk_type: bool = false
 var atk_number: int = 0
 var attacking: bool = false
+#familiar
+var familiar: familiar_base
 func attack_data() -> String:
 	var attack: String
 	if atk_type: attack = "heavy"

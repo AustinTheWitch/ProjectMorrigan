@@ -1,5 +1,5 @@
-extends player_states
-class_name player_death
+extends enemy_state
+class_name knight_state
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

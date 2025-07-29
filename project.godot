@@ -96,5 +96,6 @@ weapon={
 2d_physics/layer_4="Weapon"
 2d_physics/layer_5="Spells"
 2d_physics/layer_6="Enemies"
+2d_physics/layer_7="Familiar"
 2d_physics/layer_9="Layer 9"
 2d_physics/layer_10="Layer 10"

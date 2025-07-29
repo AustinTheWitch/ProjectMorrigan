@@ -20,5 +20,4 @@ func _process(delta: float) -> void:
 		var colliding_object = raycast_2d.get_collider()
 		if colliding_object is player: player_detected = true
 		else: player_detected = false
-
 func _physics_process(delta: float) -> void: pass

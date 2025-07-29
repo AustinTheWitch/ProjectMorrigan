@@ -1,5 +1,5 @@
-extends enemy_states
-class_name knight_states
+extends familiar_state
+class_name familiar_skill
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

@@ -17,7 +17,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Weapon/greatsword/greatsword.res" id="11_p5o4e"]
 [ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Player/Scripts/States/player_windup.gd" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Player/Scripts/States/player_cast.gd" id="14_b1ygp"]
-[ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Player/player_death.gd" id="15_o28un"]
+[ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Player/Scripts/States/player_death.gd" id="15_o28un"]
 [ext_resource type="PackedScene" uid="uid://cr0leb6npj8ni" path="res://Weapon/greatsword/greatsword.tscn" id="16_b1ygp"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
