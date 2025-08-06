@@ -45,6 +45,3 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_4us7q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true

@@ -7,13 +7,13 @@ var player_detected: bool
 
 func _ready() -> void:
 	#healthbar update
-	damage_taken.connect(health_bar.update_healthbar)
+	update_health.connect(health_bar.update_healthbar)
 	#stats
 	speed = 300
 	current_health = 20
 	max_health = 20
 	#connections and signals
-	damage_taken.emit(current_health, max_health)
+	update_health.emit(current_health, max_health)
 
 func _process(delta: float) -> void: 
 	if raycast_2d.is_colliding():

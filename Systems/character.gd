@@ -6,11 +6,14 @@ class_name character
 @export var animation_player: AnimationPlayer
 @export var health_bar: health_element
 #signals
+signal update_health
+signal familiar_heal
 signal damage_taken
+
 #stats
 var speed: float
-var current_health: int
-var max_health: int
+var current_health: float
+var max_health: float
 #gravity
 const GRAVITY: float = 980.0 #Default Value - 980.0 ; Custom Value - 175.0
 #ward

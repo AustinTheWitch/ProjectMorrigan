@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_fgct7")
 max_charges = 3
-current_charges = 3
+current_charges = 0
 movement = "grounded"
 metadata/_custom_type_script = "uid://ys24r0k324oy"

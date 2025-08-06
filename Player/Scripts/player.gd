@@ -18,10 +18,12 @@ var atk_speed: float
 var atk_string: String
 #fall recovery
 var recovered: bool
+#resting
+var resting: bool = false
 
 func _ready() -> void:
 	#healthbar update
-	damage_taken.connect(health_bar.update_healthbar)
+	update_health.connect(health_bar.update_healthbar)
 	#stats
 	speed = 400
 	current_health = 20
@@ -33,7 +35,11 @@ func _ready() -> void:
 	atk_speed = 2.5
 	atk_ready = true
 	#signals
-	damage_taken.emit(current_health, max_health)
+	update_health.emit(current_health, max_health)
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Debug"): 
+		current_health -= 9
+		print(current_health)
 #blink functions
 func blink_system()-> void:
 	blink_charges += 1
@@ -45,3 +51,7 @@ func _on_attack_windup_timeout() -> void: atk_type = true
 func _on_deflect_timeout() -> void: deflecting = false
 func _on_attack_timeout() -> void: atk_ready = true
 func _on_recovery_timeout() -> void: recovered = true
+#signal binds
+func familiar_binding() -> void: 
+	if !resting: familiar_heal.connect(familiar.healing_skill)
+	elif resting: familiar_heal.disconnect(familiar.healing_skill)
