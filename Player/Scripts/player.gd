@@ -22,7 +22,7 @@ var recovered: bool
 var resting: bool = false
 
 func _ready() -> void:
-	#healthbar update
+	#signal connects
 	update_health.connect(health_bar.update_healthbar)
 	#stats
 	speed = 400
@@ -51,7 +51,3 @@ func _on_attack_windup_timeout() -> void: atk_type = true
 func _on_deflect_timeout() -> void: deflecting = false
 func _on_attack_timeout() -> void: atk_ready = true
 func _on_recovery_timeout() -> void: recovered = true
-#signal binds
-func familiar_binding() -> void: 
-	if !resting: familiar_heal.connect(familiar.healing_skill)
-	elif resting: familiar_heal.disconnect(familiar.healing_skill)

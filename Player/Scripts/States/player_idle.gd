@@ -9,11 +9,6 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("weapon") and character_id.atk_ready: state_change.emit(self, "windup")
 	elif Input.is_action_just_pressed("blink") and character_id.blink_charges < character_id.max_charges: state_change.emit(self, "blink")
 	elif Input.is_action_just_pressed("ward"): state_change.emit(self, "deflect")
-	#healing input
-	if Input.is_action_just_pressed("familiar"): 
-		character_id.familiar_heal.emit(character_id.current_health, character_id.max_health)
-		print(character_id.current_health)
-
 func physics_update(_delta: float) -> void: 
 	if Input.get_axis("ui_left", "ui_right"): state_change.emit(self, "run")
 	if !character_id.is_on_floor(): state_change.emit(self, "fall")

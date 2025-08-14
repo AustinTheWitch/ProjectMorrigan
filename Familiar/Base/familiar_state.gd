@@ -1,5 +1,7 @@
-extends familiar_state
-class_name familiar_skill
+extends character_state
+class_name familiar_state
+
+static var summoner_object: character
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

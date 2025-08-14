@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ky2x88w01ehf" path="res://Systems/character.gd" id="1_oi3s1"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_mqcb0"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="3_vw1jo"]
-[ext_resource type="PackedScene" uid="uid://bjygxb3nj0xfs" path="res://UI/healthbar.tscn" id="4_qvgeo"]
+[ext_resource type="PackedScene" uid="uid://bjygxb3nj0xfs" path="res://UI/Health/healthbar.tscn" id="4_qvgeo"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_np0bx"]
 

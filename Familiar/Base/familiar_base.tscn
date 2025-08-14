@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjrjj8axukcn7"]
 
-[ext_resource type="Script" uid="uid://u8efjkejqgue" path="res://Familiar/familiar_base.gd" id="1_manxn"]
-[ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_4us7q"]
-[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="2_7nff8"]
-[ext_resource type="Script" uid="uid://c3u0qixf17ws1" path="res://familiar_idle.gd" id="3_j426g"]
-[ext_resource type="Script" uid="uid://dbednymkt7nsm" path="res://familiar_follow.gd" id="4_j426g"]
-[ext_resource type="Script" uid="uid://blwkkij82olo8" path="res://familiar_skill.gd" id="5_re18d"]
+[ext_resource type="Script" uid="uid://u8efjkejqgue" path="res://Familiar/Base/familiar_base.gd" id="1_syniq"]
+[ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_m8x6g"]
+[ext_resource type="Script" uid="uid://c3u0qixf17ws1" path="res://Familiar/Base/States/familiar_idle.gd" id="3_0vql4"]
+[ext_resource type="Script" uid="uid://dbednymkt7nsm" path="res://Familiar/Base/States/familiar_follow.gd" id="4_1wwlp"]
+[ext_resource type="Script" uid="uid://d1ioo4eueeo6x" path="res://Familiar/Base/States/familiar_heal.gd" id="5_m8x6g"]
+[ext_resource type="Texture2D" uid="uid://dcki82s7qbubv" path="res://icon.svg" id="5_prc20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4us7q"]
 size = Vector2(127, 126)
@@ -13,32 +13,32 @@ size = Vector2(127, 126)
 [node name="familiar_name_here" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation_player")]
 collision_layer = 64
 collision_mask = 6
-script = ExtResource("1_manxn")
+script = ExtResource("1_syniq")
 sprite = NodePath("Sprite")
 animation_player = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://ky2x88w01ehf"
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
-script = ExtResource("2_4us7q")
+script = ExtResource("2_m8x6g")
 start_state = NodePath("idle")
 metadata/_custom_type_script = "uid://cxvrrggpfuckj"
 
 [node name="idle" type="Node" parent="state_machine"]
-script = ExtResource("3_j426g")
+script = ExtResource("3_0vql4")
 metadata/_custom_type_script = "uid://c3u0qixf17ws1"
 
 [node name="follow" type="Node" parent="state_machine"]
-script = ExtResource("4_j426g")
+script = ExtResource("4_1wwlp")
 metadata/_custom_type_script = "uid://dbednymkt7nsm"
 
-[node name="skill" type="Node" parent="state_machine"]
-script = ExtResource("5_re18d")
-metadata/_custom_type_script = "uid://blwkkij82olo8"
+[node name="heal" type="Node" parent="state_machine"]
+script = ExtResource("5_m8x6g")
+metadata/_custom_type_script = "uid://d1ioo4eueeo6x"
 
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("2_7nff8")
+texture = ExtResource("5_prc20")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

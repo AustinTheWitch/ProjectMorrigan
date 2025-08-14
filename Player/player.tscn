@@ -381,3 +381,4 @@ follow_viewport_enabled = false
 [connection signal="timeout" from="timers/recovery" to="." method="_on_recovery_timeout"]
 
 [editable path="sprite/greatsword"]
+[editable path="gameplay_ui"]

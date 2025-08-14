@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd7pvxebqq15t"]
+[gd_scene load_steps=4 format=3 uid="uid://cd7pvxebqq15t"]
 
 [ext_resource type="Script" uid="uid://cg1gpje11w4xt" path="res://UI/gameplay_ui.gd" id="1_mp46i"]
-[ext_resource type="PackedScene" uid="uid://bjygxb3nj0xfs" path="res://UI/healthbar.tscn" id="2_h0rig"]
+[ext_resource type="PackedScene" uid="uid://bjygxb3nj0xfs" path="res://UI/Health/healthbar.tscn" id="2_h0rig"]
+[ext_resource type="PackedScene" uid="uid://dg1c7nbg7turl" path="res://UI/Familiar/familiar_ui.tscn" id="3_i7ma2"]
 
 [node name="gameplay_ui" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -12,4 +13,12 @@ metadata/_custom_type_script = "uid://dgoqdfcelytwh"
 anchors_preset = -1
 anchor_right = 0.235625
 anchor_bottom = 0.0377778
+metadata/_edit_use_anchors_ = true
+
+[node name="familiar_bar" parent="." instance=ExtResource("3_i7ma2")]
+anchors_preset = -1
+anchor_left = 0.008125
+anchor_top = 0.827778
+anchor_right = 0.07
+anchor_bottom = 0.985556
 metadata/_edit_use_anchors_ = true

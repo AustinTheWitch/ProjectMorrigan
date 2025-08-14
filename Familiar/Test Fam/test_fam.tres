@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="FAMILIAR" load_steps=2 format=3 uid="uid://w2lhf06xcnb6"]
 
-[ext_resource type="Script" uid="uid://ys24r0k324oy" path="res://familiar_resource.gd" id="1_fgct7"]
+[ext_resource type="Script" uid="uid://ys24r0k324oy" path="res://Systems/familiar_resource.gd" id="1_fgct7"]
 
 [resource]
 script = ExtResource("1_fgct7")
-max_charges = 3
-current_charges = 0
+tier = Array[int]([3, 4, 5])
 movement = "grounded"
 metadata/_custom_type_script = "uid://ys24r0k324oy"

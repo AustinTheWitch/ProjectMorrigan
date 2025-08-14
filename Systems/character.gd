@@ -7,7 +7,7 @@ class_name character
 @export var health_bar: health_element
 #signals
 signal update_health
-signal familiar_heal
+signal update_healing
 signal damage_taken
 
 #stats
