@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr0leb6npj8ni"]
+
+[ext_resource type="PackedScene" uid="uid://dh2makgj1qib0" path="res://Equipables/Weapons/weapon.tscn" id="1_no6a1"]
+[ext_resource type="Script" uid="uid://c51bskdyk10u4" path="res://Equipables/Weapons/greatsword/greatsword.gd" id="2_df38w"]
+[ext_resource type="Resource" uid="uid://bij0r7fcl6qfm" path="res://Equipables/Weapons/greatsword/greatsword.tres" id="3_df38w"]
+
+[node name="greatsword" instance=ExtResource("1_no6a1")]
+script = ExtResource("2_df38w")
+weapon = ExtResource("3_df38w")
