@@ -2,8 +2,11 @@ extends Node
 class_name character_state
 signal state_change
 
-@onready var character_id: character = get_parent().get_parent()
+@export var character_id: character
 static var facing: float = 1.0
+#attack variables
+static var atk_ready: bool
+var atk_weight: bool
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

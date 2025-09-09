@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Morrigan"
-run/main_scene="uid://j4ysifb2ojhx"
+run/main_scene="uid://85djv512wbbc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -107,6 +107,6 @@ interact={
 2d_physics/layer_5="Spells"
 2d_physics/layer_6="Enemies"
 2d_physics/layer_7="Familiar"
-2d_physics/layer_8="Bonfire"
+2d_physics/layer_8="Interactable"
 2d_physics/layer_9="Layer 9"
 2d_physics/layer_10="Layer 10"

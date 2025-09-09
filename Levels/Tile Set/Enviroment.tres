@@ -1,11 +1,11 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dn50m2ebyr0lg"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c5inh44lt1m3s"]
 
-[ext_resource type="Texture2D" uid="uid://du5v7lary5maq" path="res://Levels/Tiles/Blockout/Blockout [Floor].png" id="1_bowct"]
-[ext_resource type="Texture2D" uid="uid://cihvmjrk0p6bj" path="res://Levels/Tiles/Blockout/Blockout [Wall].png" id="2_jrgva"]
-[ext_resource type="Texture2D" uid="uid://da402xykubaq7" path="res://Levels/Tiles/Blockout/Blockout (Ramp).png" id="3_2iqd3"]
+[ext_resource type="Texture2D" uid="uid://du5v7lary5maq" path="res://Levels/Tiles/Blockout/Blockout [Floor].png" id="1_vm1tf"]
+[ext_resource type="Texture2D" uid="uid://cihvmjrk0p6bj" path="res://Levels/Tiles/Blockout/Blockout [Wall].png" id="2_gsmlc"]
+[ext_resource type="Texture2D" uid="uid://b3yhyalfll5vf" path="res://Levels/Tiles/Blockout/Blockout (Ramp).png" id="3_kc35g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_asqht"]
-texture = ExtResource("1_bowct")
+texture = ExtResource("1_vm1tf")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -17,7 +17,7 @@ texture_region_size = Vector2i(128, 128)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_etc4l"]
-texture = ExtResource("2_jrgva")
+texture = ExtResource("2_gsmlc")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -41,10 +41,12 @@ texture_region_size = Vector2i(128, 128)
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1jto"]
-texture = ExtResource("3_2iqd3")
+texture = ExtResource("3_kc35g")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, 64, -22, 64, 64)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, 64, 1, 64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 1, 64, -64, 64, 64, -64, 64)
 
 [resource]
 tile_size = Vector2i(128, 128)

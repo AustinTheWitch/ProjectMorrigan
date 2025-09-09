@@ -20,8 +20,6 @@ func weapon_load(weapon_data: WEAPON) -> void:
 	weapon_attacks = weapon_data.weapon_attacks
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !body is character: return
-	var attack_string: String = user.attack_data()
-	body.current_health = damage_formula(body, attack_string)
-	body.update_health.emit(body.current_health, body.max_health)
+	
 func damage_formula(body: Node2D, attack_string: String) -> float:
 	return 1.0

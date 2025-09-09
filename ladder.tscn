@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfdq6lgyfvxaw"]
+
+[ext_resource type="Script" uid="uid://s3rj27joj75a" path="res://ladder.gd" id="1_cq4ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cq4ai"]
+size = Vector2(176, 525)
+
+[node name="ladder" type="Area2D"]
+collision_layer = 128
+script = ExtResource("1_cq4ai")
+metadata/_custom_type_script = "uid://s3rj27joj75a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cq4ai")
+
+[node name="bottom" type="Node2D" parent="."]
+position = Vector2(0, 264)
+
+[node name="top" type="Node2D" parent="."]
+position = Vector2(0, -263)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -23,14 +23,8 @@ var deflecting: bool
 var blink_distance: float #Default Value = 250.0
 #weapon
 var weapon: weapon_base
-var atk_type: bool = false
+var atk_string: String
 var atk_number: int = 0
-var attacking: bool = false
+
 #familiar
 var familiar: familiar_base
-func attack_data() -> String:
-	var attack: String
-	if atk_type: attack = "heavy"
-	else: attack = "light"
-	attack += var_to_str(atk_number)
-	return attack

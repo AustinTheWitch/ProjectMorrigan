@@ -1,5 +1,5 @@
 extends player_states
-class_name player_cast
+class_name player_damagetaken
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

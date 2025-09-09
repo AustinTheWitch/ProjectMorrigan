@@ -1,5 +1,7 @@
 extends player_states
-class_name player_walk
+class_name player_door
+
+var interactable_used: String
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

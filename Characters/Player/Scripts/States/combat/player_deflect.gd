@@ -21,3 +21,4 @@ func physics_update(_delta: float) -> void:
 
 func exit() -> void:
 	character_id.deflecting = false
+	player_previous_state = "deflect"

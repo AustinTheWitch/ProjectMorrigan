@@ -1,6 +1,7 @@
 extends knight_state
 class_name knight_idle
 
+
 func enter() -> void: 
 	character_id.velocity = Vector2.ZERO
 func update(_delta: float) -> void: 

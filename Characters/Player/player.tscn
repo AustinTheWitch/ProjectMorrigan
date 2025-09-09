@@ -1,22 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=23 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Characters/Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
-[ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Characters/Player/Scripts/States/player_idle.gd" id="4_00tjw"]
+[ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Characters/Player/Scripts/States/move/player_idle.gd" id="4_00tjw"]
 [ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://UI/gameplay_ui.tscn" id="4_gwnis"]
-[ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Characters/Player/Scripts/States/player_run.gd" id="4_x3vf3"]
-[ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Characters/Player/Scripts/States/player_fall.gd" id="5_x3vf3"]
-[ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Characters/Player/Scripts/States/player_blink.gd" id="6_apopc"]
-[ext_resource type="Script" uid="uid://bjfcdwo4j6ar8" path="res://Characters/Player/Scripts/States/player_walk.gd" id="6_lfmf2"]
-[ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Characters/Player/Scripts/States/player_ward.gd" id="7_apopc"]
-[ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Characters/Player/Scripts/States/player_attack.gd" id="8_5htga"]
-[ext_resource type="Script" uid="uid://cdne5yqlbuvl1" path="res://Characters/Player/Scripts/States/player_deflect.gd" id="9_dkpta"]
-[ext_resource type="Script" uid="uid://comd3egcedqto" path="res://Characters/Player/Scripts/States/player_dropattack.gd" id="9_n471f"]
-[ext_resource type="Script" uid="uid://cl3l7npu1m15j" path="res://Characters/Player/Scripts/States/player_ground.gd" id="9_o28un"]
+[ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Characters/Player/Scripts/States/move/player_run.gd" id="4_x3vf3"]
+[ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Characters/Player/Scripts/States/move/player_fall.gd" id="5_x3vf3"]
+[ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Characters/Player/Scripts/States/move/player_blink.gd" id="6_apopc"]
+[ext_resource type="Script" uid="uid://bjfcdwo4j6ar8" path="res://Characters/Player/Scripts/States/combat/player_damagetaken.gd" id="6_lfmf2"]
+[ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Characters/Player/Scripts/States/combat/player_ward.gd" id="7_apopc"]
+[ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Characters/Player/Scripts/States/combat/player_lightattack.gd" id="8_5htga"]
+[ext_resource type="Script" uid="uid://bwhhil8h7vsht" path="res://Characters/Player/Scripts/States/combat/player_heavyattack.gd" id="9_8fwmd"]
+[ext_resource type="Script" uid="uid://cdne5yqlbuvl1" path="res://Characters/Player/Scripts/States/combat/player_deflect.gd" id="9_dkpta"]
+[ext_resource type="Script" uid="uid://comd3egcedqto" path="res://Characters/Player/Scripts/States/combat/player_dropattack.gd" id="9_n471f"]
+[ext_resource type="Script" uid="uid://cl3l7npu1m15j" path="res://Characters/Player/Scripts/States/move/player_ground.gd" id="9_o28un"]
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Equipables/Weapons/greatsword/greatsword.res" id="11_p5o4e"]
-[ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Characters/Player/Scripts/States/player_windup.gd" id="12_pisgm"]
-[ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/Scripts/States/player_cast.gd" id="14_b1ygp"]
+[ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Characters/Player/Scripts/States/combat/player_windup.gd" id="12_pisgm"]
+[ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/Scripts/States/interact/player_door.gd" id="15_8fwmd"]
 [ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Characters/Player/Scripts/States/player_death.gd" id="15_o28un"]
 [ext_resource type="PackedScene" uid="uid://cr0leb6npj8ni" path="res://Equipables/Weapons/greatsword/greatsword.tscn" id="16_b1ygp"]
 
@@ -24,98 +25,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(337.5, 865)
-
-[sub_resource type="Animation" id="Animation_gu6f8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/Skeleton2D/root/chest/right arm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-75, -123)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Skeleton2D/root/chest/left arm:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(62.5, -135.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite/Skeleton2D/root/chest/right leg:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sprite/Skeleton2D/root/chest/left leg:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sprite/Skeleton2D/root/chest/left arm:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.307178]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("sprite/Skeleton2D/root/chest/right arm:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("sprite/greatsword:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkpta"]
-_data = {
-&"RESET": SubResource("Animation_gu6f8")
-}
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation_player", "health_bar")]
 collision_mask = 6
@@ -129,46 +38,70 @@ metadata/_custom_type_script = "uid://bf2vyimpd3nff"
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("2_x3vf3")
-start_state = NodePath("idle")
+start_state = NodePath("move/idle")
 
-[node name="idle" type="Node" parent="state_machine"]
+[node name="move" type="Node" parent="state_machine"]
+
+[node name="idle" type="Node" parent="state_machine/move" node_paths=PackedStringArray("character_id")]
 script = ExtResource("4_00tjw")
+character_id = NodePath("../../..")
 
-[node name="walk" type="Node" parent="state_machine"]
-script = ExtResource("6_lfmf2")
-
-[node name="run" type="Node" parent="state_machine"]
+[node name="run" type="Node" parent="state_machine/move" node_paths=PackedStringArray("character_id")]
 script = ExtResource("4_x3vf3")
+character_id = NodePath("../../..")
 
-[node name="fall" type="Node" parent="state_machine"]
+[node name="fall" type="Node" parent="state_machine/move" node_paths=PackedStringArray("character_id")]
 script = ExtResource("5_x3vf3")
+character_id = NodePath("../../..")
 
-[node name="dropattack" type="Node" parent="state_machine"]
-script = ExtResource("9_n471f")
-
-[node name="ground" type="Node" parent="state_machine"]
+[node name="ground" type="Node" parent="state_machine/move" node_paths=PackedStringArray("character_id")]
 script = ExtResource("9_o28un")
+character_id = NodePath("../../..")
 
-[node name="blink" type="Node" parent="state_machine"]
+[node name="blink" type="Node" parent="state_machine/move" node_paths=PackedStringArray("character_id")]
 script = ExtResource("6_apopc")
+character_id = NodePath("../../..")
 
-[node name="deflect" type="Node" parent="state_machine"]
-script = ExtResource("9_dkpta")
+[node name="combat" type="Node" parent="state_machine"]
 
-[node name="ward" type="Node" parent="state_machine"]
-script = ExtResource("7_apopc")
-
-[node name="windup" type="Node" parent="state_machine"]
-script = ExtResource("12_pisgm")
-
-[node name="attack" type="Node" parent="state_machine"]
+[node name="lightattack" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
 script = ExtResource("8_5htga")
+character_id = NodePath("../../..")
 
-[node name="cast" type="Node" parent="state_machine"]
-script = ExtResource("14_b1ygp")
+[node name="heavyattack" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
+script = ExtResource("9_8fwmd")
+character_id = NodePath("../../..")
 
-[node name="death" type="Node" parent="state_machine"]
+[node name="windup" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("windup", "character_id")]
+script = ExtResource("12_pisgm")
+windup = NodePath("../../../timers/windup")
+character_id = NodePath("../../..")
+
+[node name="deflect" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
+script = ExtResource("9_dkpta")
+character_id = NodePath("../../..")
+
+[node name="ward" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
+script = ExtResource("7_apopc")
+character_id = NodePath("../../..")
+
+[node name="dropattack" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
+script = ExtResource("9_n471f")
+character_id = NodePath("../../..")
+
+[node name="interact" type="Node" parent="state_machine"]
+
+[node name="door" type="Node" parent="state_machine/interact" node_paths=PackedStringArray("character_id")]
+script = ExtResource("15_8fwmd")
+character_id = NodePath("../../..")
+
+[node name="death" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
 script = ExtResource("15_o28un")
+character_id = NodePath("../..")
+
+[node name="damagetaken" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
+script = ExtResource("6_lfmf2")
+character_id = NodePath("../..")
 
 [node name="timers" type="Node" parent="."]
 
@@ -357,7 +290,6 @@ shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_dkpta"),
 &"greatsword": ExtResource("11_p5o4e")
 }
 
@@ -373,7 +305,7 @@ follow_viewport_enabled = false
 [connection signal="timeout" from="timers/blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="timers/combo" to="." method="_on_combo_reset_timeout"]
 [connection signal="timeout" from="timers/deflect" to="." method="_on_deflect_timeout"]
-[connection signal="timeout" from="timers/windup" to="." method="_on_attack_windup_timeout"]
+[connection signal="timeout" from="timers/windup" to="state_machine/combat/windup" method="_on_windup_timeout"]
 [connection signal="timeout" from="timers/recovery" to="." method="_on_recovery_timeout"]
 
 [editable path="sprite/greatsword"]

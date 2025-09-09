@@ -20,7 +20,7 @@ func physics_update(_delta: float) -> void:
 	#idle
 	if character_id.velocity.x == 0.0: state_change.emit(self, "idle")
 	#fall
-	if !character_id.is_on_floor(): state_change.emit(self, "fall")
+	if !character_id.is_on_floor(): state_change.emit(self, "move/fall")
 func exit() -> void:
 	player_previous_state = "run"
 	if character_id.is_on_floor(): character_id.velocity = Vector2.ZERO

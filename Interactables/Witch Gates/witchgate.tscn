@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv77yrvv4fn2l"]
+
+[ext_resource type="PackedScene" uid="uid://qrolrec7621k" path="res://Interactables/interactable.tscn" id="1_261ke"]
+[ext_resource type="Script" uid="uid://bwkkqirud3uol" path="res://Interactables/Witch Gates/witchgate.gd" id="1_rrxl2"]
+[ext_resource type="Texture2D" uid="uid://dpjyk626wjuhu" path="res://Levels/Tiles/Blockout/Blockout (Bonfire).png" id="3_jwi0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwi0u"]
+size = Vector2(210, 347)
+
+[node name="witchgate" instance=ExtResource("1_261ke")]
+script = ExtResource("1_rrxl2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.306802, 0.505065)
+texture = ExtResource("3_jwi0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jwi0u")

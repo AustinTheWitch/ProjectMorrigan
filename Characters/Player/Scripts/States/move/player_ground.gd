@@ -7,5 +7,5 @@ func enter() -> void:
 func update(_delta: float) -> void: if character_id.recovered: state_change.emit(self, "idle")
 func physics_update(_delta: float) -> void: pass
 func exit() -> void: 
-	print("fall damage here")
 	player_previous_state = "ground"
+	print("fall damage here")

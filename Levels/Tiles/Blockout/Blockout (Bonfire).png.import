@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3yhyalfll5vf"
-path="res://.godot/imported/Blockout (Ramp).png-94a55b37f89ba36a499ac2b1c7076ba6.ctex"
+uid="uid://dpjyk626wjuhu"
+path="res://.godot/imported/Blockout (Bonfire).png-c6d0d3ae00e4870d4edcdcaaf6c73ace.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Tiles/Blockout/Blockout (Ramp).png"
-dest_files=["res://.godot/imported/Blockout (Ramp).png-94a55b37f89ba36a499ac2b1c7076ba6.ctex"]
+source_file="res://Levels/Tiles/Blockout/Blockout (Bonfire).png"
+dest_files=["res://.godot/imported/Blockout (Bonfire).png-c6d0d3ae00e4870d4edcdcaaf6c73ace.ctex"]
 
 [params]
 
