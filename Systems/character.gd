@@ -17,8 +17,7 @@ var max_health: float
 #gravity
 const GRAVITY: float = 980.0 #Default Value - 980.0 ; Custom Value - 175.0
 #ward
-var warding: bool
-var deflecting: bool
+var defense_type: String
 #blink
 var blink_distance: float #Default Value = 250.0
 #weapon

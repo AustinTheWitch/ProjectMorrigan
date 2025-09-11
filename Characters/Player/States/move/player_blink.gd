@@ -5,12 +5,14 @@ static var blink_direction: float
 var start_point: Vector2
 
 func enter() -> void:
+	character_id.defense_type = "null"
 	start_point = character_id.position
-	print(player_previous_state)
+	print("BLINK STATE")
 	if player_previous_state == "run" or player_previous_state == "fall": 
 		blink_direction = facing
 	else: blink_direction = -facing
-	character_id.blink_system()
+	character_id.blink_charges += 1
+	character_id.blink.start(character_id.blink_cooldown)
 func physics_update(_delta: float) -> void:
 	#set velocity
 	character_id.velocity.x = (character_id.speed * 5) * blink_direction

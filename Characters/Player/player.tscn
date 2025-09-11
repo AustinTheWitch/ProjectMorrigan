@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Characters/Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
-[ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Characters/Player/Scripts/States/move/player_idle.gd" id="4_00tjw"]
+[ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Characters/Player/States/move/player_idle.gd" id="4_00tjw"]
 [ext_resource type="PackedScene" uid="uid://cd7pvxebqq15t" path="res://UI/gameplay_ui.tscn" id="4_gwnis"]
-[ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Characters/Player/Scripts/States/move/player_run.gd" id="4_x3vf3"]
-[ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Characters/Player/Scripts/States/move/player_fall.gd" id="5_x3vf3"]
-[ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Characters/Player/Scripts/States/move/player_blink.gd" id="6_apopc"]
-[ext_resource type="Script" uid="uid://bjfcdwo4j6ar8" path="res://Characters/Player/Scripts/States/combat/player_damagetaken.gd" id="6_lfmf2"]
-[ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Characters/Player/Scripts/States/combat/player_ward.gd" id="7_apopc"]
-[ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Characters/Player/Scripts/States/combat/player_lightattack.gd" id="8_5htga"]
-[ext_resource type="Script" uid="uid://bwhhil8h7vsht" path="res://Characters/Player/Scripts/States/combat/player_heavyattack.gd" id="9_8fwmd"]
-[ext_resource type="Script" uid="uid://cdne5yqlbuvl1" path="res://Characters/Player/Scripts/States/combat/player_deflect.gd" id="9_dkpta"]
-[ext_resource type="Script" uid="uid://comd3egcedqto" path="res://Characters/Player/Scripts/States/combat/player_dropattack.gd" id="9_n471f"]
-[ext_resource type="Script" uid="uid://cl3l7npu1m15j" path="res://Characters/Player/Scripts/States/move/player_ground.gd" id="9_o28un"]
+[ext_resource type="Script" uid="uid://bfytrd6meg48f" path="res://Characters/Player/States/move/player_run.gd" id="4_x3vf3"]
+[ext_resource type="Script" uid="uid://dn7nne6stlgjq" path="res://Characters/Player/States/move/player_fall.gd" id="5_x3vf3"]
+[ext_resource type="Script" uid="uid://52aqf1fv0pch" path="res://Characters/Player/States/move/player_blink.gd" id="6_apopc"]
+[ext_resource type="Script" uid="uid://bjfcdwo4j6ar8" path="res://Characters/Player/States/combat/player_damagetaken.gd" id="6_lfmf2"]
+[ext_resource type="Script" uid="uid://owf2bd3t48up" path="res://Characters/Player/States/combat/player_ward.gd" id="7_apopc"]
+[ext_resource type="Script" uid="uid://b0adritugtaqg" path="res://Characters/Player/States/combat/player_lightattack.gd" id="8_5htga"]
+[ext_resource type="Script" uid="uid://bwhhil8h7vsht" path="res://Characters/Player/States/combat/player_heavyattack.gd" id="9_8fwmd"]
+[ext_resource type="Script" uid="uid://cdne5yqlbuvl1" path="res://Characters/Player/States/combat/player_deflect.gd" id="9_dkpta"]
+[ext_resource type="Script" uid="uid://comd3egcedqto" path="res://Characters/Player/States/combat/player_dropattack.gd" id="9_n471f"]
+[ext_resource type="Script" uid="uid://cl3l7npu1m15j" path="res://Characters/Player/States/move/player_ground.gd" id="9_o28un"]
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Equipables/Weapons/greatsword/greatsword.res" id="11_p5o4e"]
-[ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Characters/Player/Scripts/States/combat/player_windup.gd" id="12_pisgm"]
-[ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/Scripts/States/interact/player_door.gd" id="15_8fwmd"]
-[ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Characters/Player/Scripts/States/player_death.gd" id="15_o28un"]
+[ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Characters/Player/States/combat/player_windup.gd" id="12_pisgm"]
+[ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/States/interact/player_door.gd" id="14_8fwmd"]
+[ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Characters/Player/States/player_death.gd" id="15_o28un"]
 [ext_resource type="PackedScene" uid="uid://cr0leb6npj8ni" path="res://Equipables/Weapons/greatsword/greatsword.tscn" id="16_b1ygp"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
@@ -77,8 +77,9 @@ script = ExtResource("12_pisgm")
 windup = NodePath("../../../timers/windup")
 character_id = NodePath("../../..")
 
-[node name="deflect" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
+[node name="deflect" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("deflect", "character_id")]
 script = ExtResource("9_dkpta")
+deflect = NodePath("../../../timers/deflect")
 character_id = NodePath("../../..")
 
 [node name="ward" type="Node" parent="state_machine/combat" node_paths=PackedStringArray("character_id")]
@@ -91,9 +92,8 @@ character_id = NodePath("../../..")
 
 [node name="interact" type="Node" parent="state_machine"]
 
-[node name="door" type="Node" parent="state_machine/interact" node_paths=PackedStringArray("character_id")]
-script = ExtResource("15_8fwmd")
-character_id = NodePath("../../..")
+[node name="door" type="Node" parent="state_machine/interact"]
+script = ExtResource("14_8fwmd")
 
 [node name="death" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
 script = ExtResource("15_o28un")
@@ -304,7 +304,7 @@ follow_viewport_enabled = false
 [connection signal="timeout" from="timers/attack" to="." method="_on_attack_timeout"]
 [connection signal="timeout" from="timers/blink" to="." method="_on_blink_timeout"]
 [connection signal="timeout" from="timers/combo" to="." method="_on_combo_reset_timeout"]
-[connection signal="timeout" from="timers/deflect" to="." method="_on_deflect_timeout"]
+[connection signal="timeout" from="timers/deflect" to="state_machine/combat/deflect" method="_on_deflect_timeout"]
 [connection signal="timeout" from="timers/windup" to="state_machine/combat/windup" method="_on_windup_timeout"]
 [connection signal="timeout" from="timers/recovery" to="." method="_on_recovery_timeout"]
 

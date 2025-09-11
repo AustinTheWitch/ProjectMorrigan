@@ -1,18 +1,18 @@
 extends Area2D
 class_name interactable
 
-var in_range: bool
-var interacted: bool
+@export var key: String
 @export var lock: bool
-@export var key: interactable
-var user: character
+var interact_name: String
+var interact_state: bool
+
 func _on_body_entered(body: Node2D) -> void: 
-	in_range = true
 	print("here")
+	body.interaction = true
 func _on_body_exited(body: Node2D) -> void: 
-	in_range = false
-	user = null
 	print("left")
-func interaction() -> void: 
-	if Input.is_action_just_pressed("interact") and in_range: print("NO INTERACTION FUNC SETUP")
+	body.interaction = false
+
+func interaction() -> void: pass
+	#if Input.is_action_just_pressed("interact") and in_range: print("NO INTERACTION FUNC SETUP")
 func _process(delta: float) -> void: interaction()

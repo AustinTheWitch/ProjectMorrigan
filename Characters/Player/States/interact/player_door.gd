@@ -1,9 +1,7 @@
 extends player_states
 class_name player_door
 
-var interactable_used: String
-
-func enter() -> void: pass
+func enter() -> void: print("DOOR STATE")
 func update(_delta: float) -> void: pass
 func physics_update(_delta: float) -> void: pass
 func exit() -> void: pass

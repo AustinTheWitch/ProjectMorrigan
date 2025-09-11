@@ -4,9 +4,11 @@ signal state_change
 
 @export var character_id: character
 static var facing: float = 1.0
-#attack variables
-static var atk_ready: bool
+static var wpn_equipped: String
+static var active_state: String
+#combat variables
 var atk_weight: bool
+var warding: bool
 
 func enter() -> void: pass
 func update(_delta: float) -> void: pass

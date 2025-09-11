@@ -6,7 +6,7 @@ func enter() -> void:
 func update(_delta: float) -> void: 
 	if Input.is_action_just_pressed("blink") and character_id.blink_charges < character_id.max_charges: state_change.emit(self, "blink")
 	if Input.is_action_pressed("ward"): state_change.emit(self, "deflect")
-	if Input.is_action_pressed("weapon") and character_id.atk_ready: state_change.emit(self, "windup")
+	if Input.is_action_pressed("weapon"): state_change.emit(self, "windup")
 func physics_update(_delta: float) -> void:
 	#setting velocity
 	var direction: Vector2 
@@ -20,7 +20,7 @@ func physics_update(_delta: float) -> void:
 	#idle
 	if character_id.velocity.x == 0.0: state_change.emit(self, "idle")
 	#fall
-	if !character_id.is_on_floor(): state_change.emit(self, "move/fall")
+	if !character_id.is_on_floor(): state_change.emit(self, "fall")
 func exit() -> void:
 	player_previous_state = "run"
 	if character_id.is_on_floor(): character_id.velocity = Vector2.ZERO

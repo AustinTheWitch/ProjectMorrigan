@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://85djv512wbbc"]
+[gd_scene load_steps=4 format=4 uid="uid://85djv512wbbc"]
 
 [ext_resource type="TileSet" uid="uid://c5inh44lt1m3s" path="res://Levels/Tile Set/Enviroment.tres" id="1_7nsip"]
 [ext_resource type="PackedScene" uid="uid://b4afmkxu4ioj7" path="res://Characters/Player/player.tscn" id="2_hx30r"]
 [ext_resource type="PackedScene" uid="uid://1eihoen24hec" path="res://Interactables/Doors/door.tscn" id="3_hx30r"]
-[ext_resource type="PackedScene" uid="uid://c3t3yfjhbrgww" path="res://Interactables/lever.tscn" id="4_g36y1"]
-[ext_resource type="PackedScene" uid="uid://bfdq6lgyfvxaw" path="res://ladder.tscn" id="5_f1kqd"]
 
 [node name="tutorial" type="Node2D"]
 
@@ -14,19 +12,11 @@ tile_set = ExtResource("1_7nsip")
 
 [node name="doors" type="Node2D" parent="."]
 
-[node name="door" parent="doors" node_paths=PackedStringArray("key") instance=ExtResource("3_hx30r")]
+[node name="door" parent="doors" instance=ExtResource("3_hx30r")]
 position = Vector2(2687, -323)
-lock = true
-key = NodePath("../../Levers/lever")
+lock = false
 
 [node name="Levers" type="Node2D" parent="."]
 
-[node name="lever" parent="Levers" node_paths=PackedStringArray("interaction_target") instance=ExtResource("4_g36y1")]
-position = Vector2(50, -265)
-interaction_target = NodePath("../../doors/door")
-
 [node name="Player" parent="." instance=ExtResource("2_hx30r")]
 position = Vector2(221, -184)
-
-[node name="ladder" parent="." instance=ExtResource("5_f1kqd")]
-position = Vector2(901, -269)

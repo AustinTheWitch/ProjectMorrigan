@@ -3,9 +3,6 @@ class_name player
 #timers
 @onready var blink: Timer = $timers/blink
 @onready var combo: Timer = $timers/combo
-@onready var windup: Timer = $timers/windup
-@onready var deflect: Timer = $timers/deflect
-@onready var attack: Timer = $timers/attack
 @onready var recovery: Timer = $timers/recovery
 #blink stats
 var blink_cooldown: float = 1.7
@@ -19,9 +16,10 @@ var recovered: bool
 #resting
 var resting: bool = false
 #keychain check
-var keychain: Array
+var keychain: Array [String]
 #interaction input possible
-var interaction_possible: bool
+static var interaction: bool
+
 
 func _ready() -> void:
 	#signal connects
@@ -39,12 +37,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"): 
 		current_health -= 9
+		update_health.emit(current_health, max_health)
 		print(current_health)
-#blink functions
-func blink_system()-> void:
-	blink_charges += 1
-	blink.start(blink_cooldown)
 func _on_blink_timeout() -> void: blink_charges -= 1
-#combat timers
 func _on_combo_reset_timeout() -> void: atk_number = 0
 func _on_recovery_timeout() -> void: recovered = true

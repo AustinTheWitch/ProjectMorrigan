@@ -1,8 +1,6 @@
 extends interactable
-class_name ladder
 
-@export var end_point: Node2D
-
+@export var interaction_target: interactable
 #func interaction() -> void: 
 	#if Input.is_action_just_pressed("interact") and in_range:
-		#print("ladder in use")
+		#interaction_target.interacted = !interaction_target.interacted
