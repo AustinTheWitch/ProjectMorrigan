@@ -1,15 +1,13 @@
 extends interactable
 class_name door
 
-@onready var static_body_2d: StaticBody2D = $door_sprite/StaticBody2D
-
-func _ready() -> void: interact_name = "door"
-
-#func interaction() -> void:
-	#static_body_2d.set_collision_layer_value(2, !interacted)
-	#if Input.is_action_just_pressed("interact") and in_range:
-		#if lock: 
-			#print("DOOR LOCKED")
-			#if key == null: print("ASSIGN A KEY")
-		#else: interacted = !interacted
-		#print(interacted)
+@export var key: String
+func _ready() -> void: pass
+func interaction() -> void:
+	if lock: 
+		print("DOOR IS LOCKED. FIND KEY OR SWITCH.")
+		if key == "": print("ASSIGN A KEY OR SWITCH TO THIS INTERACTABLE")
+	else: 
+		interact_state = true
+		collision_shape_2d.set_disabled(interact_state)
+		animation_player.play(animation)

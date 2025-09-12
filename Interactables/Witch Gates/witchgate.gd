@@ -1,14 +1,15 @@
 extends interactable
 class_name witch_gate
 
-var gate_active: bool = false
-#func interaction() -> void: 
-	#visible = !lock
-	#if Input.is_action_just_pressed("interact") and in_range: 
-		#if lock: return
-		#if gate_active: print("Gate Used")
-		#else:
-			#gate_active = true 
-			#print("Gate Activated")
+@export var inactive: bool
+
+func interaction() -> void:
+	if lock: print("GATE IS UNAVAILABLE. FIND A KEY")
+	elif inactive:
+		inactive = false
+		#animation_player.play("activate_gate")
+	else: pass
+		#animation_player.play("use_gate")
+	
 
 	

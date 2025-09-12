@@ -10,7 +10,7 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("weapon"): state_change.emit(self, "windup")
 	if Input.is_action_just_pressed("blink") and character_id.blink_charges < character_id.max_charges: state_change.emit(self, "Blink")
 	if Input.is_action_just_pressed("ward"): state_change.emit(self, "deflect")
-	if Input.is_action_just_pressed("interact"): state_change.emit(self, "door")
+	if Input.is_action_just_pressed("interact") and !character_id.interact == null: interaction_check()
 func physics_update(_delta: float) -> void: 
 	if Input.get_axis("ui_left", "ui_right"): state_change.emit(self, "run")
 	if !character_id.is_on_floor(): state_change.emit(self, "fall")

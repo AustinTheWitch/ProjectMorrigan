@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3t3yfjhbrgww"]
+[gd_scene load_steps=8 format=3 uid="uid://c3t3yfjhbrgww"]
 
 [ext_resource type="PackedScene" uid="uid://qrolrec7621k" path="res://Interactables/interactable.tscn" id="1_hg2mc"]
 [ext_resource type="Script" uid="uid://f5ayb0dh7yf7" path="res://Interactables/Levers/lever.gd" id="2_hg2mc"]
@@ -7,13 +7,54 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg2mc"]
 size = Vector2(66, 66.5)
 
+[sub_resource type="Animation" id="Animation_ktomx"]
+resource_name = "lever_pull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.91986]
+}
+
+[sub_resource type="Animation" id="Animation_eh8xq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24ebu"]
+_data = {
+&"RESET": SubResource("Animation_eh8xq"),
+&"lever_pull": SubResource("Animation_ktomx")
+}
+
 [node name="lever" instance=ExtResource("1_hg2mc")]
 script = ExtResource("2_hg2mc")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_hg2mc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(-1.19209e-07, -1.90735e-06)
 scale = Vector2(0.0955138, 0.0955138)
 texture = ExtResource("3_81l78")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_hg2mc")
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_24ebu")
+}

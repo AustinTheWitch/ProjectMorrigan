@@ -9,11 +9,12 @@ size = Vector2(210, 347)
 
 [node name="witchgate" instance=ExtResource("1_261ke")]
 script = ExtResource("1_rrxl2")
+inactive = false
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-scale = Vector2(0.306802, 0.505065)
-texture = ExtResource("3_jwi0u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_jwi0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.306802, 0.505065)
+texture = ExtResource("3_jwi0u")

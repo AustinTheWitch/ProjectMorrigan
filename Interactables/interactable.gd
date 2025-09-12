@@ -1,18 +1,21 @@
 extends Area2D
 class_name interactable
 
-@export var key: String
 @export var lock: bool
-var interact_name: String
-var interact_state: bool
+@export var animation: String
 
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+static var interact_state: bool
+
+func _ready() -> void:
+	if collision_shape_2d == null: 
+		print("NO COLLISION BOX DETECTED OR FOUND. ADD OR ASSIGN ONE")
+		return
 func _on_body_entered(body: Node2D) -> void: 
 	print("here")
-	body.interaction = true
+	body.interact = self
 func _on_body_exited(body: Node2D) -> void: 
 	print("left")
-	body.interaction = false
-
-func interaction() -> void: pass
-	#if Input.is_action_just_pressed("interact") and in_range: print("NO INTERACTION FUNC SETUP")
-func _process(delta: float) -> void: interaction()
+	body.interact = null
+func interaction() -> void: print("NO INTERACTION FUNC SETUP")

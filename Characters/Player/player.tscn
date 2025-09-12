@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=26 format=3 uid="uid://b4afmkxu4ioj7"]
 
-[ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Characters/Player/Scripts/player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Characters/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cxvrrggpfuckj" path="res://Systems/state_machine.gd" id="2_x3vf3"]
 [ext_resource type="Script" uid="uid://m53s72a5b1gu" path="res://Characters/Player/States/move/player_idle.gd" id="4_00tjw"]
@@ -18,8 +18,11 @@
 [ext_resource type="AnimationLibrary" uid="uid://7f05av6db3rg" path="res://Equipables/Weapons/greatsword/greatsword.res" id="11_p5o4e"]
 [ext_resource type="Script" uid="uid://clg88nvfreukp" path="res://Characters/Player/States/combat/player_windup.gd" id="12_pisgm"]
 [ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/States/interact/player_door.gd" id="14_8fwmd"]
+[ext_resource type="Script" uid="uid://csgywfi5ahlhh" path="res://Characters/Player/States/interact/player_lever.gd" id="15_jec2i"]
 [ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Characters/Player/States/player_death.gd" id="15_o28un"]
 [ext_resource type="PackedScene" uid="uid://cr0leb6npj8ni" path="res://Equipables/Weapons/greatsword/greatsword.tscn" id="16_b1ygp"]
+[ext_resource type="Script" uid="uid://bbyd0tc2vucba" path="res://Characters/Player/player_use_gate.gd" id="18_kpgn3"]
+[ext_resource type="Script" uid="uid://ub1cb5datt62" path="res://Characters/Player/player_activate_gate.gd" id="19_6ip0i"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
 
@@ -95,6 +98,9 @@ character_id = NodePath("../../..")
 [node name="door" type="Node" parent="state_machine/interact"]
 script = ExtResource("14_8fwmd")
 
+[node name="lever" type="Node" parent="state_machine/interact"]
+script = ExtResource("15_jec2i")
+
 [node name="death" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
 script = ExtResource("15_o28un")
 character_id = NodePath("../..")
@@ -102,6 +108,14 @@ character_id = NodePath("../..")
 [node name="damagetaken" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
 script = ExtResource("6_lfmf2")
 character_id = NodePath("../..")
+
+[node name="witch_gate" type="Node" parent="state_machine"]
+
+[node name="use_gate" type="Node" parent="state_machine/witch_gate"]
+script = ExtResource("18_kpgn3")
+
+[node name="activate_gate" type="Node" parent="state_machine/witch_gate"]
+script = ExtResource("19_6ip0i")
 
 [node name="timers" type="Node" parent="."]
 

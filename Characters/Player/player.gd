@@ -18,7 +18,7 @@ var resting: bool = false
 #keychain check
 var keychain: Array [String]
 #interaction input possible
-static var interaction: bool
+static var interact: interactable
 
 
 func _ready() -> void:
@@ -35,10 +35,7 @@ func _ready() -> void:
 	blink_distance = 800.0
 	atk_speed = 1.1
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Debug"): 
-		current_health -= 9
-		update_health.emit(current_health, max_health)
-		print(current_health)
+	if Input.is_action_just_pressed("Debug"): pass
 func _on_blink_timeout() -> void: blink_charges -= 1
 func _on_combo_reset_timeout() -> void: atk_number = 0
 func _on_recovery_timeout() -> void: recovered = true
