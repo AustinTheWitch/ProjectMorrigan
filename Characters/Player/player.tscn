@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4afmkxu4ioj7"]
+[gd_scene load_steps=28 format=3 uid="uid://b4afmkxu4ioj7"]
 
 [ext_resource type="Script" uid="uid://bf2vyimpd3nff" path="res://Characters/Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://tgf0k1cylafx" path="res://gBot_pieces.png" id="2_fhl08"]
@@ -20,14 +20,17 @@
 [ext_resource type="Script" uid="uid://dem78x8e5e2yn" path="res://Characters/Player/States/interact/player_door.gd" id="14_8fwmd"]
 [ext_resource type="Script" uid="uid://csgywfi5ahlhh" path="res://Characters/Player/States/interact/player_lever.gd" id="15_jec2i"]
 [ext_resource type="Script" uid="uid://bd4xe1hxvi1o2" path="res://Characters/Player/States/player_death.gd" id="15_o28un"]
+[ext_resource type="Script" uid="uid://pi4nhcdn028e" path="res://Characters/Player/States/interact/player_pickup.gd" id="16_5jopl"]
 [ext_resource type="PackedScene" uid="uid://cr0leb6npj8ni" path="res://Equipables/Weapons/greatsword/greatsword.tscn" id="16_b1ygp"]
-[ext_resource type="Script" uid="uid://bbyd0tc2vucba" path="res://Characters/Player/player_use_gate.gd" id="18_kpgn3"]
-[ext_resource type="Script" uid="uid://ub1cb5datt62" path="res://Characters/Player/player_activate_gate.gd" id="19_6ip0i"]
+[ext_resource type="Script" uid="uid://bbyd0tc2vucba" path="res://Characters/Player/States/hexgate/player_use.gd" id="18_kpgn3"]
+[ext_resource type="Script" uid="uid://ub1cb5datt62" path="res://Characters/Player/States/hexgate/player_activate.gd" id="19_6ip0i"]
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_fhl08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 size = Vector2(337.5, 865)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yee8r"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation_player", "health_bar")]
 collision_mask = 6
@@ -95,11 +98,16 @@ character_id = NodePath("../../..")
 
 [node name="interact" type="Node" parent="state_machine"]
 
-[node name="door" type="Node" parent="state_machine/interact"]
+[node name="door" type="Node" parent="state_machine/interact" node_paths=PackedStringArray("character_id")]
 script = ExtResource("14_8fwmd")
+character_id = NodePath("../../..")
 
-[node name="lever" type="Node" parent="state_machine/interact"]
+[node name="lever" type="Node" parent="state_machine/interact" node_paths=PackedStringArray("character_id")]
 script = ExtResource("15_jec2i")
+character_id = NodePath("../../..")
+
+[node name="pickup" type="Node" parent="state_machine/interact"]
+script = ExtResource("16_5jopl")
 
 [node name="death" type="Node" parent="state_machine" node_paths=PackedStringArray("character_id")]
 script = ExtResource("15_o28un")
@@ -111,11 +119,13 @@ character_id = NodePath("../..")
 
 [node name="witch_gate" type="Node" parent="state_machine"]
 
-[node name="use_gate" type="Node" parent="state_machine/witch_gate"]
+[node name="use_gate" type="Node" parent="state_machine/witch_gate" node_paths=PackedStringArray("character_id")]
 script = ExtResource("18_kpgn3")
+character_id = NodePath("../../..")
 
-[node name="activate_gate" type="Node" parent="state_machine/witch_gate"]
+[node name="activate_gate" type="Node" parent="state_machine/witch_gate" node_paths=PackedStringArray("character_id")]
 script = ExtResource("19_6ip0i")
+character_id = NodePath("../../..")
 
 [node name="timers" type="Node" parent="."]
 
@@ -259,8 +269,8 @@ bone_angle = 0.0
 
 [node name="left arm" type="Bone2D" parent="sprite/Skeleton2D/root/chest"]
 position = Vector2(62.5, -135.5)
-rotation = 0.307178
-scale = Vector2(0.999993, 0.999993)
+rotation = -0.666716
+scale = Vector2(0.999991, 0.999991)
 rest = Transform2D(0.999999, 0, 0, 0.999999, 69, -130)
 
 [node name="left hand" type="Bone2D" parent="sprite/Skeleton2D/root/chest/left arm"]
@@ -304,6 +314,7 @@ shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
+&"": SubResource("AnimationLibrary_yee8r"),
 &"greatsword": ExtResource("11_p5o4e")
 }
 

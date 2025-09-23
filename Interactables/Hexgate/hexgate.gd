@@ -1,10 +1,11 @@
 extends interactable
-class_name witch_gate
+class_name hexgate
 
 @export var inactive: bool
 
 func interaction() -> void:
-	if lock: print("GATE IS UNAVAILABLE. FIND A KEY")
+	if lock: 
+		print("GATE IS UNAVAILABLE. FIND A KEY")
 	elif inactive:
 		inactive = false
 		#animation_player.play("activate_gate")

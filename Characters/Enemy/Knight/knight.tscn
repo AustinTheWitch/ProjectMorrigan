@@ -18,24 +18,29 @@ raycast_2d = NodePath("RayCast2D")
 [node name="state_machine" parent="." index="0" node_paths=PackedStringArray("start_state")]
 start_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="state_machine" index="0"]
+[node name="idle" type="Node" parent="state_machine" index="0" node_paths=PackedStringArray("character_id")]
 script = ExtResource("4_vkfug")
+character_id = NodePath("../..")
 metadata/_custom_type_script = "uid://d2nxel7ex1i5r"
 
-[node name="chase" type="Node" parent="state_machine" index="1"]
+[node name="chase" type="Node" parent="state_machine" index="1" node_paths=PackedStringArray("character_id")]
 script = ExtResource("4_oi3s1")
+character_id = NodePath("../..")
 metadata/_custom_type_script = "uid://buviw35t3p4bl"
 
-[node name="attack" type="Node" parent="state_machine" index="2"]
+[node name="attack" type="Node" parent="state_machine" index="2" node_paths=PackedStringArray("character_id")]
 script = ExtResource("5_vw1jo")
+character_id = NodePath("../..")
 metadata/_custom_type_script = "uid://bq37hvy75epm0"
 
-[node name="combat" type="Node" parent="state_machine" index="3"]
+[node name="combat" type="Node" parent="state_machine" index="3" node_paths=PackedStringArray("character_id")]
 script = ExtResource("6_pgnys")
+character_id = NodePath("../..")
 metadata/_custom_type_script = "uid://dil4vk27nh8el"
 
-[node name="death" type="Node" parent="state_machine" index="4"]
+[node name="death" type="Node" parent="state_machine" index="4" node_paths=PackedStringArray("character_id")]
 script = ExtResource("7_a54mf")
+character_id = NodePath("../..")
 metadata/_custom_type_script = "uid://gnd20f2y8tl1"
 
 [node name="left foot" parent="sprite/Skeleton2D/root/chest/left leg/left calf" index="0"]

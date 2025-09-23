@@ -7,3 +7,10 @@
 [node name="greatsword" instance=ExtResource("1_no6a1")]
 script = ExtResource("2_df38w")
 weapon = ExtResource("3_df38w")
+
+[node name="Sprite2D" parent="Sprite" index="0"]
+position = Vector2(0, -21.5)
+scale = Vector2(0.15625, 0.570313)
+
+[node name="CollisionShape2D" parent="Sprite/Area2D" index="0"]
+position = Vector2(0, -21.625)

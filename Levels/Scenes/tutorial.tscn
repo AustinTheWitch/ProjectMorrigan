@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://85djv512wbbc"]
+[gd_scene load_steps=8 format=4 uid="uid://85djv512wbbc"]
 
 [ext_resource type="TileSet" uid="uid://c5inh44lt1m3s" path="res://Levels/Tile Set/Enviroment.tres" id="1_7nsip"]
 [ext_resource type="PackedScene" uid="uid://b4afmkxu4ioj7" path="res://Characters/Player/player.tscn" id="2_hx30r"]
 [ext_resource type="PackedScene" uid="uid://c3t3yfjhbrgww" path="res://Interactables/Levers/lever.tscn" id="3_g36y1"]
 [ext_resource type="PackedScene" uid="uid://1eihoen24hec" path="res://Interactables/Doors/door.tscn" id="3_hx30r"]
-[ext_resource type="PackedScene" uid="uid://dv77yrvv4fn2l" path="res://Interactables/Witch Gates/witchgate.tscn" id="5_f1kqd"]
+[ext_resource type="PackedScene" uid="uid://c8kxnpvpwwvij" path="res://Interactables/Pickup/pickup.tscn" id="5_bpdj3"]
+[ext_resource type="PackedScene" uid="uid://dv77yrvv4fn2l" path="res://Interactables/Hexgate/hexgate.tscn" id="5_f1kqd"]
+[ext_resource type="PackedScene" uid="uid://b0fa0r31lyy4a" path="res://Characters/Enemy/Knight/knight.tscn" id="7_fux6k"]
 
 [node name="tutorial" type="Node2D"]
 
@@ -19,19 +21,31 @@ position = Vector2(2687, -323)
 lock = true
 animation = "door_open"
 
-[node name="Levers" type="Node2D" parent="."]
+[node name="levers" type="Node2D" parent="."]
 
-[node name="lever" parent="Levers" node_paths=PackedStringArray("unlock") instance=ExtResource("3_g36y1")]
-position = Vector2(702, -234)
+[node name="lever" parent="levers" node_paths=PackedStringArray("unlock") instance=ExtResource("3_g36y1")]
+position = Vector2(2267, -219)
 scale = Vector2(1.6, 1.68)
 unlock = NodePath("../../doors/door")
 animation = "lever_pull"
 
-[node name="Witch Gates" type="Node2D" parent="."]
+[node name="hexgates" type="Node2D" parent="."]
 
-[node name="witchgate" parent="Witch Gates" instance=ExtResource("5_f1kqd")]
-position = Vector2(1266, -179)
+[node name="hexgate" parent="hexgates" instance=ExtResource("5_f1kqd")]
+position = Vector2(7588, -187)
 inactive = true
+lock = true
+
+[node name="pickups" type="Node2D" parent="."]
+
+[node name="pickup" parent="pickups" instance=ExtResource("5_bpdj3")]
+position = Vector2(8929, -74)
+key_name = "loot_item"
+lock = true
 
 [node name="Player" parent="." instance=ExtResource("2_hx30r")]
 position = Vector2(221, -184)
+
+[node name="knight" parent="." node_paths=PackedStringArray("player_target") instance=ExtResource("7_fux6k")]
+position = Vector2(1904, -187)
+player_target = NodePath("../Player")

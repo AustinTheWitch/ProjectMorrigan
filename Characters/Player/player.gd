@@ -16,7 +16,7 @@ var recovered: bool
 #resting
 var resting: bool = false
 #keychain check
-var keychain: Array [String]
+static var keychain: Array[String]
 #interaction input possible
 static var interact: interactable
 

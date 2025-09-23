@@ -20,5 +20,6 @@ func weapon_load(weapon_data: WEAPON) -> void:
 	weapon_attacks = weapon_data.weapon_attacks
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !body is character: return
+	else: attack_hit.emit()
 func damage_formula(body: Node2D, attack_string: String) -> float:
 	return 1.0

@@ -6,13 +6,7 @@
 script = ExtResource("1_wf1d1")
 weapon_name = "greatsword"
 weapon_attacks = Dictionary[String, float]({
-"heavy0": 5.0,
-"heavy1": 3.0,
-"heavy2": 7.0,
-"heavy3": 8.0,
-"light0": 3.0,
-"light1": 2.0,
-"light2": 3.0,
-"light3": 1.0
+"heavy": 5.0,
+"light": 2.0
 })
 metadata/_custom_type_script = "uid://dxdepd7o8lhyu"

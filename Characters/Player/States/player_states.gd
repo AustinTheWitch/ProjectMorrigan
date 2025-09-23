@@ -11,7 +11,8 @@ func interaction_check() -> void:
 	interact = character_id.interact
 	if interact is door: state_change.emit(self, "door")
 	elif interact is lever: state_change.emit(self, "lever")
-	elif interact is witch_gate: 
+	elif interact is hexgate: 
 		if interact.inactive: state_change.emit(self, "activate_gate")
 		else: state_change.emit(self, "use_gate")
+	elif interact is pickup: state_change.emit(self, "pickup")
 	else: print("CLASS NOT DEFINED OR FOUND")

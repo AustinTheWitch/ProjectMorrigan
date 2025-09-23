@@ -7,21 +7,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg2mc"]
 size = Vector2(66, 66.5)
 
-[sub_resource type="Animation" id="Animation_ktomx"]
-resource_name = "lever_pull"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.91986]
-}
-
 [sub_resource type="Animation" id="Animation_eh8xq"]
 length = 0.001
 tracks/0/type = "value"
@@ -37,6 +22,21 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ktomx"]
+resource_name = "lever_pull"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.91986]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_24ebu"]
 _data = {
 &"RESET": SubResource("Animation_eh8xq"),
@@ -45,6 +45,7 @@ _data = {
 
 [node name="lever" instance=ExtResource("1_hg2mc")]
 script = ExtResource("2_hg2mc")
+key_item = ""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_hg2mc")

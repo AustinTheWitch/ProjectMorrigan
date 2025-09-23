@@ -8,7 +8,6 @@ class_name character
 #signals
 signal update_health
 signal update_healing
-signal damage_taken
 
 #stats
 var speed: float
@@ -24,6 +23,5 @@ var blink_distance: float #Default Value = 250.0
 var weapon: weapon_base
 var atk_string: String
 var atk_number: int = 0
-
 #familiar
 var familiar: familiar_base
